@@ -1,0 +1,379 @@
+include _header.jade
+<section class="content-padding py-3 link_list_block">
+    <div class="container d-flex justify-content-center flex-wrap text-center">
+        <a href="#" class="text-decoration-none">
+            <span class="image"><img src="files/link-icon.jpg" class="img-fluid" alt=""></span>
+            <div class="text">Sale</div>
+        </a>
+        <a href="#" class="text-decoration-none">
+            <span class="image"><img src="files/link-icon2.jpg" class="img-fluid" alt=""></span>
+            <div class="text">Статьи</div>
+        </a>
+        <a href="#" class="text-decoration-none">
+            <span class="image"><img src="files/link-icon3.jpg" class="img-fluid" alt=""></span>
+            <div class="text">Топ</div>
+        </a>
+        <a href="#" class="text-decoration-none">
+            <span class="image"><img src="files/link-icon4.jpg" class="img-fluid" alt=""></span>
+            <div class="text">Проекты</div>
+        </a>
+        <a href="#" class="text-decoration-none">
+            <span class="image"><img src="files/link-icon5.jpg" class="img-fluid" alt=""></span>
+            <div class="text">Новое</div>
+        </a>
+    </div>
+</section>
+<section class="content-padding popular_category">
+    <div class="d-flex justify-content-between align-items-center">
+        <div class="title h4 mb-0">Популярные категории</div>
+    </div>
+    <div class="row g-3 list_category">
+        <div class="col-6">
+            <a href="#" class="d-flex align-items-center">
+                <span class="name fw-semibold">Кровати</span>
+                <span class="image">
+                    <img src="files/icon-cat.svg" alt="Кровати">
+                </span>
+            </a>
+            <a href="#" class="d-flex align-items-center">
+                <span class="name fw-semibold">Стулья</span>
+                <span class="image">
+                    <img src="files/icon-cat.svg" alt="Стулья">
+                </span>
+            </a>
+            <a href="#" class="d-flex align-items-center">
+                <span class="name fw-semibold">Текстиль</span>
+                <span class="image">
+                    <img src="files/icon-cat.svg" alt="Текстиль">
+                </span>
+            </a>
+        </div>
+        <div class="col-6">
+            <a href="#" class="d-flex align-items-center">
+                <span class="name fw-semibold">Столы</span>
+                <span class="label">НОВЫЕ МОДЕЛИ</span>
+                <span class="image">
+                    <img src="files/icon-cat.svg" alt="Столы">
+                </span>
+            </a>
+            <a href="#" class="d-flex align-items-center">
+                <span class="name fw-semibold">Освещение</span>
+                <span class="image">
+                    <img src="files/icon-cat.svg" alt="Освещение">
+                </span>
+            </a>
+            <a href="#" class="d-flex align-items-center">
+                <span class="name fw-semibold">Хранение</span>
+                <span class="image">
+                    <img src="files/icon-cat.svg" alt="Хранение">
+                </span>
+            </a>
+        </div>
+    </div>
+    <a href="#" class="btn btn_button border">Все категории</a>
+</section>
+<section class="content-padding poin_image_block">
+    <div class="row">
+        <div class="col-12">
+            <div class="position-relative">
+                <img src="files/image-point.jpg" alt="Мебель в проекте" class="img-fluid rounded">
+                <button class="btn btn_button ls position-absolute bottom-0 end-0 m-3"  data-bs-toggle="modal" data-bs-target="#order0Modal" data-bs-dismiss="modal">Мебель в проекте</button>
+                <button type="button" class="btn-light rounded-circle position-absolute" data-bs-toggle="tooltip" style="top: 39%; left: 64%;" data-bs-html="true" title="<b>Стол - Мольберт Malevich</b><br><span class='text-success'>31 320 ₽</span> <span class='text-muted text-decoration-line-through'>34 800 ₽</span>">
+                </button>
+                <button type="button" class="btn-light rounded-circle position-absolute" data-bs-toggle="tooltip" style="top: 60%; left: 20%;" data-bs-html="true" title="<b>Кровать с ящиками</b><br><span class='text-success'>45 000 ₽</span>">
+                </button>
+                <button type="button" class="btn-light rounded-circle position-absolute" data-bs-toggle="tooltip" style="top: 65%; left: 74%;" data-bs-html="true" title="<b>Стул детский</b><br><span class='text-success'>12 800 ₽</span>">
+                </button>
+                <button type="button" class="btn-light rounded-circle position-absolute" data-bs-toggle="tooltip" style="top: 77%; left: 45%;" data-bs-html="true" title="<b>Ковер</b><br><span class='text-success'>12 800 ₽</span>">
+                </button>
+            </div>
+            <p class="mt-3 text-muted">Светлые тона и натуральное дерево создают ощущение простора. Рабочая зона организована для учебы, а мягкий уголок — для игр и отдыха. Мебель легко адаптируется под меняющиеся потребности ребенка. </p>
+        </div>
+    </div>
+</section>
+<section class="product_list hits content-padding">
+    <div class="title d-flex justify-content-between align-items-center mb-5">
+        <h4 class="mb-0">Хиты продаж</h4>
+        <div class="d-flex align-items-center gap-2">
+            <a href="#" class="btn btn_button border">Все хиты</a>
+            <div class="arrows d-flex">
+                <div class="arrow_btn prev btn btn-outline-secondary btn-sm">‹</div>
+                <div class="arrow_btn next btn btn-outline-secondary btn-sm">›</div>
+            </div>
+        </div>
+    </div>
+    <div class="swiper mySwiper_products">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                include _product.jade
+            </div>
+            <div class="swiper-slide">
+                include _product.jade
+            </div>
+            <div class="swiper-slide">
+                include _product.jade
+            </div>
+            <div class="swiper-slide">
+                include _product.jade
+            </div>
+            <div class="swiper-slide">
+                include _product.jade
+            </div>
+        </div>
+    </div>
+</section>
+<section class="product_list news content-padding">
+    <div class="title d-flex justify-content-between align-items-center mb-5">
+        <h4 class="mb-0">Новинки</h4>
+        <div class="d-flex align-items-center gap-2">
+            <a href="#" class="btn btn_button border">Все хиты</a>
+            <div class="arrows d-flex">
+                <div class="arrow_btn prev btn btn-outline-secondary btn-sm">‹</div>
+                <div class="arrow_btn next btn btn-outline-secondary btn-sm">›</div>
+            </div>
+        </div>
+    </div>
+    <div class="swiper mySwiper_products">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                include _product.jade
+            </div>
+            <div class="swiper-slide">
+                include _product.jade
+            </div>
+            <div class="swiper-slide">
+                include _product.jade
+            </div>
+            <div class="swiper-slide">
+                include _product.jade
+            </div>
+            <div class="swiper-slide">
+                include _product.jade
+            </div>
+        </div>
+    </div>
+</section>
+<section class="accordion_block content-padding">
+    <div class="accordion_block_inner">
+        <div class="title">Дизайн студия</div>
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Дизайн детской комнаты </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <p>Создаем мебель на заказ, идеально подходящую под стиль и потребности вашего пространства. Предлагаем индивидуальные решения для дома и общественных интерьеров с учетом всех пожеланий по материалам, размерам и функциональности. Гарантируем высокое качество исполнения и уникальность каждого изделия.</p>
+                        <a href="#" class="btn btn_button">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"> Дизайн гостиной </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <p>Создаем мебель на заказ, идеально подходящую под стиль и потребности вашего пространства. Предлагаем индивидуальные решения для дома и общественных интерьеров с учетом всех пожеланий по материалам, размерам и функциональности. Гарантируем высокое качество исполнения и уникальность каждого изделия.</p>
+                        <a href="#" class="btn btn_button">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"> Дизайн кухни </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <p>Создаем мебель на заказ, идеально подходящую под стиль и потребности вашего пространства. Предлагаем индивидуальные решения для дома и общественных интерьеров с учетом всех пожеланий по материалам, размерам и функциональности. Гарантируем высокое качество исполнения и уникальность каждого изделия.</p>
+                        <a href="#" class="btn btn_button">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFour">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour"> Дизайн офиса </button>
+                </h2>
+                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <p>Создаем мебель на заказ, идеально подходящую под стиль и потребности вашего пространства. Предлагаем индивидуальные решения для дома и общественных интерьеров с учетом всех пожеланий по материалам, размерам и функциональности. Гарантируем высокое качество исполнения и уникальность каждого изделия.</p>
+                        <a href="#" class="btn btn_button">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="filosof_block content-padding">
+    <div class="">
+        <div class="row h-100">
+            <div class="col-lg-4 col-md-12 d-flex">
+                <div class="w-100">
+                    <div class="title">Наша философия простыми словами</div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 text_block">
+                <div class="content-area h-100 d-flex flex-column">
+                    <h3 class="section-name">Moonk начался с желания создавать мебель</h3>
+                    <p class="section-body">Мебель в которой важны не только форма и функция, но и свобода — быть собой, расти, играть, мечтать. Мы — авторский бренд, который объединяет мебель, студию дизайна и тщательно собранный маркетплейс товаров для детской комнаты. </p>
+                    <div>
+                        <a href="#" class="btn btn_button black">Узнать больше о нас</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="image-section h-100 d-flex">
+                    <img src="files/f1.jpg" alt="Moonk мебель" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content-padding contact_section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10">
+                <div class="contact_content">
+                    <div class="title">У вас остались вопросы? <br>Напишите нам и мы обязательно вам поможем</div>
+                    <a href="#" class="btn btn_button">Давайте разбираться</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content-padding features_section">
+    <div class="container">
+        <div class="row" style="--bs-gutter-x: 16px;">
+            <div class="col-md-4">
+                <div class="title">Чем мы<br>гордимся</div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature_card">
+                    <h3 class="feature_title">Эргономика<br>и эстетика</h3>
+                    <p class="feature_text">Мы создаем детскую мебель, которая помогает сохранить здоровье и развить чувство прекрасного. </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature_card">
+                    <h3 class="feature_title">Функциональность<br>и минимализм</h3>
+                    <p class="feature_text"> Мебель Moonk функциональна, но сохраняет лаконичность и минималистичный внешний вид. </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature_card">
+                    <h3 class="feature_title">Качественные<br>природные материалы</h3>
+                    <p class="feature_text"> Производим безопасную мебель из МДФ и березовой фанеры покрытой натуральным шпоном дуба. </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature_card">
+                    <h3 class="feature_title">Износостойкое<br>покрытие</h3>
+                    <p class="feature_text"> Все элементы мебели Moonk покрыты лакокрасочным материалом итальянского ТОП-бренда Sayerlack. </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature_card">
+                    <h3 class="feature_title">Гарантия<br>и сертификаты</h3>
+                    <p class="feature_text"> Мебель сертифицирована и сопровождается гарантией качества на 3 года, обеспечивая надежность и безопасность каждого изделия. </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content-padding poin_image_block">
+    <div class="row">
+        <div class="col-12">
+            <div class="position-relative">
+                <img src="files/image-point2.jpg" alt="Мебель в проекте" class="img-fluid rounded">
+                <button class="btn btn_button ls position-absolute bottom-0 end-0 m-3"  data-bs-toggle="modal" data-bs-target="#order1Modal" data-bs-dismiss="modal">Мебель в проекте</button>
+                <button type="button" class="btn-light rounded-circle position-absolute" data-bs-toggle="tooltip" style="top: 23%; left: 35%;" data-bs-html="true" title="<b>Стол - Мольберт Malevich</b><br><span class='text-success'>31 320 ₽</span> <span class='text-muted text-decoration-line-through'>34 800 ₽</span>">
+                </button>
+                <button type="button" class="btn-light rounded-circle position-absolute" data-bs-toggle="tooltip" style="top: 60%; left: 38%;" data-bs-html="true" title="<b>Кровать с ящиками</b><br><span class='text-success'>45 000 ₽</span>">
+                </button>
+                <button type="button" class="btn-light rounded-circle position-absolute" data-bs-toggle="tooltip" style="top: 33%; left: 80%;" data-bs-html="true" title="<b>Стул детский</b><br><span class='text-success'>12 800 ₽</span>">
+                </button>
+                <button type="button" class="btn-light rounded-circle position-absolute" data-bs-toggle="tooltip" style="top: 77%; left: 53%;" data-bs-html="true" title="<b>Ковер</b><br><span class='text-success'>12 800 ₽</span>">
+                </button>
+            </div>
+            <p class="mt-3 text-muted">Светлые тона и натуральное дерево создают ощущение простора. Рабочая зона организована для учебы, а мягкий уголок — для игр и отдыха. Мебель легко адаптируется под меняющиеся потребности ребенка. </p>
+        </div>
+    </div>
+</section>
+<section class="content-padding article_section">
+    <div class="container">
+        <div class="title d-flex justify-content-between align-items-end mb-5">
+            <h4 class="mb-0">Последние <br>статьи</h4>
+            <div class="d-flex align-items-center gap-2">
+                <a href="#" class="btn btn_button border">Все статьи</a>
+            </div>
+        </div>
+        <div class="row" style="--bs-gutter-x: 16px;">
+            <div class="col-md-3">
+                <div class="image">
+                    <a href="">
+                        <img src="files/art1.jpg" alt="">
+                    </a>
+                </div>
+                <div class="date">15.11.20244 минуты</div>
+                <div class="name"><a href="">Какую кровать выбрать для ребенка: мягкую или деревянную?</a></div>
+            </div>
+            <div class="col-md-3">
+                <div class="image">
+                    <a href="">
+                        <img src="files/art2.jpg" alt="">
+                    </a>
+                </div>
+                <div class="date">15.11.20244 минуты</div>
+                <div class="name"><a href="">Какую кровать выбрать для ребенка: мягкую или деревянную?</a></div>
+            </div>
+            <div class="col-md-3">
+                <div class="image">
+                    <a href="">
+                        <img src="files/art3.jpg" alt="">
+                    </a>
+                </div>
+                <div class="date">15.11.20244 минуты</div>
+                <div class="name"><a href="">Какую кровать выбрать для ребенка: мягкую или деревянную?</a></div>
+            </div>
+            <div class="col-md-3">
+                <div class="image">
+                    <a href="">
+                        <img src="files/art4.jpg" alt="">
+                    </a>
+                </div>
+                <div class="date">15.11.20244 минуты</div>
+                <div class="name"><a href="">Какую кровать выбрать для ребенка: мягкую или деревянную?</a></div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content-padding club_section">
+    <div class="container-fluid px-0">
+        <div class="row" style="--bs-gutter-x: 16px;">
+            <div class="col-lg-6 col-md-6 club_form">
+                <div class="club_content d-flex flex-column align-items-center justify-content-center h-100">
+                    <div class="inner">
+                        <div class="club_badge">КЛУБ MOONK</div>
+                        <div class="title">Вступайте в клуб Moonk — получите 2 000 ₽ на первую покупку</div>
+                        <p class="club_description">Станьте частью сообщества ценителей дизайна и детских интерьеров. Участники клуба получают эксклюзивные спецпредложения, ранний доступ к новинкам, советы по оформлению и подарки от Moonk и партнёров.</p>
+                        <a href="#" class="club_link">Подробнее о клубе</a>
+                        <form class="email_form">
+                            <div class="field">
+                                <input type="email" placeholder="Почта" required>
+                            </div>
+                            <div class="field check">
+                                <input class="form-check-input" type="checkbox" id="privacyCheck" required>
+                                <label class="form-check-label" for="privacyCheck"><i></i>Нажимая на кнопку «Вступить в клуб» я даю согласие на <b>обработку своих данных</b></label>
+                            </div>
+                            <button type="submit" class="btn btn_button black">Вступить в клуб</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 club_image">
+                <img src="files/form-img.jpg" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+include _footer.jade

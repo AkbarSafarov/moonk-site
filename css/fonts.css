@@ -1,0 +1,98 @@
+@font-face {
+    font-family: 'Forma DJR Cyrillic Text';
+    src: url('../fonts/forma-djr-cyrillic-text-light.eot');
+    src: local('forma-djr-cyrillic-text light'), local('forma-djr-cyrillic-text-light'),
+        url('../fonts/forma-djr-cyrillic-text-light.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/forma-djr-cyrillic-text-light.woff2') format('woff2'),
+        url('../fonts/forma-djr-cyrillic-text-light.woff') format('woff'),
+        url('../fonts/forma-djr-cyrillic-text-light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Forma DJR Cyrillic Text';
+    src: url('../fonts/forma-djr-cyrillic-text-medium.eot');
+    src: local('forma-djr-cyrillic-text medium'), local('forma-djr-cyrillic-text-medium'),
+        url('../fonts/forma-djr-cyrillic-text-medium.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/forma-djr-cyrillic-text-medium.woff2') format('woff2'),
+        url('../fonts/forma-djr-cyrillic-text-medium.woff') format('woff'),
+        url('../fonts/forma-djr-cyrillic-text-medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Forma DJR Cyrillic Text';
+    src: url('../fonts/forma-djr-cyrillic-text-regular.eot');
+    src: local('forma-djr-cyrillic-text regular'), local('forma-djr-cyrillic-text-regular'),
+        url('../fonts/forma-djr-cyrillic-text-regular.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/forma-djr-cyrillic-text-regular.woff2') format('woff2'),
+        url('../fonts/forma-djr-cyrillic-text-regular.woff') format('woff'),
+        url('../fonts/forma-djr-cyrillic-text-regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Forma DJR Cyrillic Text';
+    src: url('../fonts/forma-djr-cyrillic-text-bold.eot');
+    src: local('forma-djr-cyrillic-text bold'), local('forma-djr-cyrillic-text-bold'),
+        url('../fonts/forma-djr-cyrillic-text-bold.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/forma-djr-cyrillic-text-bold.woff2') format('woff2'),
+        url('../fonts/forma-djr-cyrillic-text-bold.woff') format('woff'),
+        url('../fonts/forma-djr-cyrillic-text-bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+
+
+
+@font-face {
+    font-family: 'Forma DJR Cyrillic Display';
+    src: url('../fonts/forma-djr-cyrillic-display-light.eot');
+    src: local('forma-djr-cyrillic-text light'), local('forma-djr-cyrillic-display-light'),
+        url('../fonts/forma-djr-cyrillic-display-light.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/forma-djr-cyrillic-display-light.woff2') format('woff2'),
+        url('../fonts/forma-djr-cyrillic-display-light.woff') format('woff'),
+        url('../fonts/forma-djr-cyrillic-display-light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Forma DJR Cyrillic Display';
+    src: url('../fonts/forma-djr-cyrillic-display-medium.eot');
+    src: local('forma-djr-cyrillic-text medium'), local('forma-djr-cyrillic-display-medium'),
+        url('../fonts/forma-djr-cyrillic-display-medium.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/forma-djr-cyrillic-display-medium.woff2') format('woff2'),
+        url('../fonts/forma-djr-cyrillic-display-medium.woff') format('woff'),
+        url('../fonts/forma-djr-cyrillic-display-medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Forma DJR Cyrillic Display';
+    src: url('../fonts/forma-djr-cyrillic-display-regular.eot');
+    src: local('forma-djr-cyrillic-text regular'), local('forma-djr-cyrillic-display-regular'),
+        url('../fonts/forma-djr-cyrillic-display-regular.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/forma-djr-cyrillic-display-regular.woff2') format('woff2'),
+        url('../fonts/forma-djr-cyrillic-display-regular.woff') format('woff'),
+        url('../fonts/forma-djr-cyrillic-display-regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Forma DJR Cyrillic Display';
+    src: url('../fonts/forma-djr-cyrillic-display-bold.eot');
+    src: local('forma-djr-cyrillic-text bold'), local('forma-djr-cyrillic-display-bold'),
+        url('../fonts/forma-djr-cyrillic-display-bold.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/forma-djr-cyrillic-display-bold.woff2') format('woff2'),
+        url('../fonts/forma-djr-cyrillic-display-bold.woff') format('woff'),
+        url('../fonts/forma-djr-cyrillic-display-bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
