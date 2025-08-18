@@ -3691,3 +3691,32 @@ img, textarea, input, table {
         width: 100%;
     }
 }
+
+#searchModal {
+
+    .search_input {
+        height: 44px;
+        background: none;
+        font-weight: 500;
+        font-size: 28px;
+        font-family: var(--second-family);
+        line-height: 80%;
+        color: #373737;
+        border: none;
+        outline: none;
+        border-bottom: 1px solid #ccc;
+        min-width: 430px;
+
+        @media all and (max-width: 767px) {
+            min-width: 100%;
+        }
+    }
+
+    .btn-close {
+        top: 48px !important;
+
+        @media all and (max-width: 767px) {
+            top: 30px !important;
+        }
+    }
+}
