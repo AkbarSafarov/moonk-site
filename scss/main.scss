@@ -535,6 +535,11 @@ img, textarea, input, table {
 .discount_banner {
     background: #dcff00;
     display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
 
     &.show {
         display: block;
@@ -585,11 +590,12 @@ img, textarea, input, table {
 }
 
 .header {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 100;
+    transition: all .3s;
 
     &.top {
         top: 38px;
@@ -1072,9 +1078,12 @@ img, textarea, input, table {
     .navbar-nav {
         padding: 0;
         margin: 0;
+        display: flex;
+        flex-direction: row;
 
         > li {
             position: static;
+            display: flex;
 
             > a {
                 font-weight: 500;
@@ -1084,7 +1093,6 @@ img, textarea, input, table {
                 color: var(--white);
                 padding: 17px 12px;
                 display: flex;
-                line-height: 22px;
                 position: relative;
                 align-items: center;
 
@@ -1092,7 +1100,7 @@ img, textarea, input, table {
                     width: 22px;
                     height: 22px;
                     border: none;
-                    margin: -5px 0 0 2px;
+                    margin: 0 0 0 2px;
                     background: url("data:image/svg+xml,%3Csvg width='22' height='22' viewBox='0 0 22 22' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 13.5L8 9.5L14 9.5L11 13.5Z' fill='white' /%3E%3C/svg%3E") 50% no-repeat;
                 }
 
@@ -1141,8 +1149,14 @@ img, textarea, input, table {
                 padding-left: 0;
             }
 
+            ul {
+                position: absolute;
+            }
+
             > ul {
+                position: absolute;
                 width: auto;
+                top: 100%;
                 left: -44px;
                 right: -44px;   
                 border-radius: 0;
@@ -1175,6 +1189,7 @@ img, textarea, input, table {
                     }
 
                     > ul {
+                        position: absolute;
                         left: 308px;
                         width: 264px;
                         top: 32px !important;
@@ -1293,8 +1308,6 @@ img, textarea, input, table {
         &.fixed_block {
             background: var(--white);
             position: fixed;
-            top: 100;
-            top: 0;
             border-bottom: 1px solid var(--gray);
 
             .menu-header {
@@ -1695,12 +1708,10 @@ img, textarea, input, table {
     position: relative;
 
     .btn_button {
-        position: absolute;
-        top: 93px;
-        right: 44px;
         padding: 14px 24px;
         font-size: 15px;
         line-height: 133%;
+        white-space: nowrap;
     }
 
     .title{
@@ -1709,19 +1720,19 @@ img, textarea, input, table {
         line-height: 80%;
         color: #373737;
         font-family: var(--second-family);
-        max-width: 400px;
     }
 
     .list_category {
         padding-top: 40px;
-
+        gap: 0 1rem;
+        
         a {
             padding: 24px 0;
-            border-bottom: 1px solid #000;
             border-bottom: 1.50px solid var(--graphite-100);
             text-decoration: none;
             gap: 10px;
             position: relative;
+            flex: 0 0 calc(50% - .5rem);
 
             .name {
                 font-weight: 500;
@@ -1778,6 +1789,10 @@ img, textarea, input, table {
                 }
             }
         }
+    }
+
+    > .btn_button {
+        display: none;
     }
 
     @media all and (max-width: 991px) {
@@ -1840,6 +1855,10 @@ img, textarea, input, table {
 
         .title{
             font-size: 36px;
+
+            & + .btn_button {
+                display: none;
+            }
         }
 
         .btn_button {
@@ -1853,7 +1872,7 @@ img, textarea, input, table {
 
         .list_category {
             padding-top: 24px;
-            display: block;
+            display: block !important;
             padding-bottom: 24px;
 
             .col-6 {
