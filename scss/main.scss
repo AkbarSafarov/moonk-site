@@ -1801,15 +1801,12 @@ img, textarea, input, table {
         .title{
             font-size: 40px;
             line-height: 85%;
-            max-width: 300px;
         }
 
         .btn_button {
             padding: 12px 24px;
             font-size: 14px;
             line-height: 143%;
-            top: 62px;
-            right: 32px;
         }
 
         .list_category {
@@ -1855,6 +1852,10 @@ img, textarea, input, table {
 
         .title{
             font-size: 36px;
+
+            br {
+                display: none;
+            }
 
             & + .btn_button {
                 display: none;
@@ -2087,8 +2088,8 @@ img, textarea, input, table {
             line-height: 85%;
         }
 
-        .arrow_btn {
-            display: none;
+        .arrows {
+            display: none !important;
         }
 
         .mySwiper_products {
@@ -2104,12 +2105,22 @@ img, textarea, input, table {
         padding-top: 40px;
         padding-bottom: 40px;
 
+        .title {
+            justify-content: start !important;
+            gap: 4px !important;
+        }
+
         h4 {
             font-size: 36px;
         }
 
         .btn_button {
-            display: none;
+            width: 32px;
+            height: 32px;
+            padding: 0;
+            border: none !important;
+            background: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.3335 21.3327L18.6668 15.9993L13.3335 10.666' stroke='%23373737' stroke-width='1.5' stroke-linecap='square' /%3E%3C/svg%3E") 50% no-repeat !important;
+            font-size: 0;
         }
 
         .mySwiper_products {
@@ -2807,10 +2818,19 @@ img, textarea, input, table {
             }
         }
 
-        .btn_button {
-            display: none;
+        .title {
+            justify-content: start !important;
+            gap: 4px !important;
         }
 
+        .btn_button {
+            width: 32px;
+            height: 32px;
+            padding: 0;
+            border: none !important;
+            background: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.3335 21.3327L18.6668 15.9993L13.3335 10.666' stroke='%23373737' stroke-width='1.5' stroke-linecap='square' /%3E%3C/svg%3E") 50% no-repeat !important;
+            font-size: 0;
+        }
         .row {
             flex-wrap: nowrap;
             margin: 0 -16px 0 0;
@@ -3406,6 +3426,10 @@ img, textarea, input, table {
     font-size: 0;
     opacity: 0;
     overflow: hidden;
+
+    @media all and (min-width: 992px) {
+        display: none;
+    }
 
     &.top {
         top: 88px;
