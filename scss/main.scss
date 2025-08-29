@@ -514,6 +514,13 @@ img, textarea, input, table {
         &:hover {
             opacity: .8;
         }
+
+        &.xl {
+            padding: 16px 32px;
+            font-size: 16px;
+            line-height: 125%;
+            font-weight: 500;
+        }
     }
 }
 
@@ -2550,7 +2557,7 @@ img, textarea, input, table {
         color: var(--white);
         font-family: var(--second-family);
         margin-bottom: 32px;
-        max-width: 550px;
+        //max-width: 550px;
     }
 
     .container {
@@ -2559,6 +2566,18 @@ img, textarea, input, table {
         background: #373737 url(../img/bg.png) 100% 50% no-repeat;
         width: 100%;
         max-width: 100%;
+        min-height: 262px;
+    }
+
+    .text {
+        font-weight: 400;
+        font-size: 16px;
+        max-width: 550px;
+        line-height: 105%;
+        letter-spacing: 0.02em;
+        color: var(--white);
+        margin-bottom: 32px;
+        margin-top: -16px;
     }
 
     @media all and (max-width: 991px) {
@@ -2575,6 +2594,12 @@ img, textarea, input, table {
         .container {
             padding: 24px;
             background-size: contain;
+        }
+
+        .text {
+            font-size: 14px;
+            margin-top: -12px;
+            margin-bottom: 24px;
         }
     }
 
@@ -2594,6 +2619,76 @@ img, textarea, input, table {
         .container {
             padding: 24px;
             background: #373737 url(../img/bg-mob.png) 50% 108px no-repeat;
+        }
+
+        &.yellow,&.yellow2 {
+            .title {
+                margin-bottom: 12px;
+            }
+
+            .text {
+                margin: 0 0 128px;
+            }
+        }
+    }
+
+    &.blue {
+        .container {
+            background: #373737 url(../img/bg-blue.svg) 100% 50% no-repeat;
+        }
+
+        @media all and (max-width: 767px)  {
+            .container {
+                background: #373737 url(../img/bg-blue-mob.png) 50% 108px no-repeat;
+            }
+        }
+    }
+
+    &.blue2 {
+        .container {
+            background: #373737 url(../img/bg-blue2.svg) 100% 50% no-repeat;
+        }
+
+        @media all and (max-width: 767px)  {
+            .container {
+                background: #373737 url(../img/bg-blue2-mob.png) 50% 108px no-repeat;
+            }
+        }
+    }
+
+    &.orange {
+        .container {
+            background: #373737 url(../img/bg-orange.png) 100% 50% no-repeat;
+        }
+
+        @media all and (max-width: 767px)  {
+            .container {
+                background: #373737 url(../img/bg-orange-mob.png) 50% 108px no-repeat;
+            }
+        }
+    }
+
+    &.orange2 {
+        .container {
+            background: #373737 url(../img/bg-orange2.png) 100% 50% no-repeat;
+        }
+
+        @media all and (max-width: 767px)  {
+            .container {
+                background: #373737 url(../img/bg-orange2-mob.png) 50% 108px no-repeat;
+            }
+        }
+    }
+
+    &.yellow2 {
+        .container {
+            background: #373737 url(../img/bg-yellow2.png) 100% 50% no-repeat;
+        }
+
+        @media all and (max-width: 767px)  {
+            .container {
+                background: #373737 url(../img/bg-yellow2-mob.png) 50% 108px no-repeat;
+            }
         }
     }
 }

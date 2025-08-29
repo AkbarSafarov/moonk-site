@@ -1,0 +1,313 @@
+include _header-inner.jade
+<section class="content-padding title_page">
+    <div class="d-flex justify-content-between gap-3">
+        <h1 class="title">Дизайн <br>общественных <br>пространств</h1>
+        <div class="text">Мы создаем минималистичные и функциональные пространства, предлагая дизайн-проекты, индивидуальное проектирование и реализацию «под ключ». Работаем с фанерой, МДФ, австрийским ЛДСП Egger и металлом, проектируя корпусную мебель для учебных, творческих, игровых и общественных зон, включая шкафы, стеллажи и раздевалки.</div>
+    </div>
+</section>
+<section class="slider_room_block content-padding">
+    <div class="position-relative">
+        <div class="swiper mySwiper_room" data-id="mySwiper_room" data-arrow="room">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="files/room-sl2.jpg" alt="">
+                    <div class="inner">
+                        <div class="name">Реализуем проекты полного <br>цикла: от создания <br>концепции до монтажа</div>
+                        <div class="slide_btn">
+                            <a href="" class="btn btn_button">Заказать проект</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="files/room-sl.jpg" alt="">
+                    <div class="inner">
+                        <div class="name">Детские, которые</div>
+                        <div class="slide_btn">
+                            <a href="" class="btn btn_button">Заказать проект</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination-room"></div>
+    </div>
+</section>
+<section class="content-padding projects_section">
+    <div class="title">Наши проекты</div>
+    <div class="row" style="--bs-gutter-x: 16px;">
+        <div class="col-md-4">
+            include _project-item.jade
+        </div>
+        <div class="col-md-4">
+            include _project-item.jade
+        </div>
+        <div class="col-md-4">
+            include _project-item.jade
+        </div>
+    </div>
+</section>
+<section class="content-padding contact_section orange">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10">
+                <div class="contact_content">
+                    <div class="title">Превратите детскую вашего <br>ребенка в пространство для <br>игр, учебы и отдыха</div>
+                    <a href="#" class="btn btn_button">Написать</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content-padding tabs_section">
+    <div class="container">
+        <div class="title ">
+            <h4>Дизайнерская мебель <br>для детских садов и школ</h4>
+            <div class="body">Большой опыт производства серийных и индивидуальных предметов позволяет <br>нам спроектировать и изготовить самые разные изделия «под ключ» – от <br>маленьких табуретов до больших стеллажей и раздевалок. Мы базируемся в <br>Москве, но можем организовать доставку и монтаж в различные города России.</div>
+        </div>
+        <div class="d-none d-lg-block">
+            <div class="row h-100" style="--bs-gutter-x: 16px;">
+                <!-- Левая колонка с кнопками -->
+                <div class="col-lg-4 col-md-12 d-flex">
+                    <div class="nav flex-column tabs_title nav-pills w-100" id="tabs-list" role="tablist" aria-orientation="vertical">
+                        <button class="active tab_title" id="tab-1-btn" data-bs-toggle="pill" data-bs-target="#tab-1" type="button" role="tab">Проектирование</button>
+                        <button class="tab_title" id="tab-2-btn" data-bs-toggle="pill" data-bs-target="#tab-2" type="button" role="tab">Подбор материалов</button>
+                        <button class="tab_title" id="tab-3-btn" data-bs-toggle="pill" data-bs-target="#tab-3" type="button" role="tab">Изготовление</button>
+                        <button class="tab_title" id="tab-4-btn" data-bs-toggle="pill" data-bs-target="#tab-4" type="button" role="tab">Доставка и монтаж</button>
+                    </div>
+                </div>
+                <!-- Центральная колонка с контентом -->
+                <div class="col-lg-4 col-md-6 tabs_body">
+                    <div class="tab-content h-100 d-flex" id="tabs-content">
+                        <div class="tab-pane fade show active tab_body content-area" id="tab-1" role="tabpanel">
+                            <h3 class="section-name">Этап 1</h3>
+                            <p class="section-body">На этапе проектирования мы разрабатываем функциональные и эстетичные решения, учитывая особенности пространства, задачи проекта и пожелания клиента. Создаем чертежи, 3D-визуализации и прорабатываем каждую деталь, чтобы результат полностью соответствовал ожиданиям.</p>
+                        </div>
+                        <div class="tab-pane fade tab_body content-area" id="tab-2" role="tabpanel">
+                            <h3 class="section-name">Этап 2</h3>
+                            <p class="section-body">На этапе подбора материалов мы тщательно анализируем доступные варианты, чтобы найти оптимальное сочетание цены, качества и дизайна.</p>
+                        </div>
+                        <div class="tab-pane fade tab_body content-area" id="tab-3" role="tabpanel">
+                            <h3 class="section-name">Этап 3</h3>
+                            <p class="section-body">Этап изготовления включает в себя полный цикл работ на производстве, чтобы обеспечить надежность и долговечность.</p>
+                        </div>
+                        <div class="tab-pane fade tab_body content-area" id="tab-4" role="tabpanel">
+                            <h3 class="section-name">Этап 4</h3>
+                            <p class="section-body">Доставка и монтаж осуществляются нашими специалистами с учетом всех нюансов, чтобы результат был безупречным.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Правая колонка с картинками -->
+                <div class="col-lg-4 col-md-6 tabs_imag">
+                    <div class="tab-content h-100 d-flex">
+                        <img src="files/tab.jpg" alt="Moonk мебель" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- MOBILE (accordion) -->
+        <div class="d-lg-none">
+            <div class="image-section mb-4">
+                <img src="files/tab.jpg" class="img-fluid" alt="">
+            </div>
+            <div class="accordion" id="accordionTabs">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"><span>Этап 1</span> Проектирование                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionTabs">
+                        <div class="accordion-body">На этапе проектирования мы разрабатываем функциональные и эстетичные решения, учитывая особенности пространства, задачи проекта и пожелания клиента. Создаем чертежи, 3D-визуализации и прорабатываем каждую деталь, чтобы результат полностью соответствовал ожиданиям.                       </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"><span>Этап 2</span> Подбор материалов                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionTabs">
+                        <div class="accordion-body">                            На этапе подбора материалов мы тщательно анализируем...
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree"> <span>Этап 3</span> Изготовление                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionTabs">
+                        <div class="accordion-body">                            Этап изготовления включает полный цикл работ...                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour"> <span>Этап 4</span> Доставка и монтаж                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionTabs">
+                        <div class="accordion-body">                            Доставка и монтаж нашими специалистами...                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="slider_bn_block content-padding">
+    <div class="position-relative">
+        <div class="arrows d-flex">
+            <div class="arrow_btn prev btn btn-outline-secondary btn-sm">‹</div>
+            <div class="arrow_btn next btn btn-outline-secondary btn-sm">›</div>
+        </div>
+        <div class="swiper mySwiper_bn" data-id="mySwiper_bn" data-arrow="bn">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="files/bn.jpg" alt="">
+                    <div class="inner">
+                        <div class="slide_btn">
+                            <a href="" class="btn btn_button">Подробнее о проекте</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="files/room-sl.jpg" alt="">
+                    <div class="inner">
+                        <div class="slide_btn">
+                            <a href="" class="btn btn_button">Подробнее о проекте</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination-bn"></div>
+    </div>
+</section>
+<section class="content-padding partners_section">
+    <div class="container">
+        <div class="title ">
+            <h4>Наши партнеры</h4>
+        </div>
+            <div class="row" style="--bs-gutter-x: 16px; --bs-gutter-y: 16px;">
+                <div class="col-lg-2 col-md-3 col-6 d-flex justify-content-center align-items-center">
+                    <a href="">
+                        <img src="files/part1.png" alt="">
+                    </a>
+                </div>
+                <div class="col-lg-2 col-md-3 col-6 d-flex justify-content-center align-items-center">
+                    <a href="">
+                        <img src="files/part2.png" alt="">
+                    </a>
+                </div>
+                <div class="col-lg-2 col-md-3 col-6 d-flex justify-content-center align-items-center">
+                    <a href="">
+                        <img src="files/part3.png" alt="">
+                    </a>
+                </div>
+                <div class="col-lg-2 col-md-3 col-6 d-flex justify-content-center align-items-center">
+                    <a href="">
+                        <img src="files/part4.png" alt="">
+                    </a>
+                </div>
+                <div class="col-lg-2 col-md-3 col-6 d-flex justify-content-center align-items-center">
+                    <a href="">
+                        <img src="files/part5.png" alt="">
+                    </a>
+                </div>
+                <div class="col-lg-2 col-md-3 col-6 d-flex justify-content-center align-items-center">
+                    <a href="">
+                        <img src="files/part6.png" alt="">
+                    </a>
+                </div>
+                <div class="col-lg-2 col-md-3 col-6 d-flex justify-content-center align-items-center">
+                    <a href="">
+                        <img src="files/part7.png" alt="">
+                    </a>
+                </div>
+                <div class="col-lg-2 col-md-3 col-6 d-flex justify-content-center align-items-center">
+                    <a href="">
+                        <img src="files/part8.png" alt="">
+                    </a>
+                </div>
+                <div class="col-lg-2 col-md-3 col-6 d-flex justify-content-center align-items-center">
+                    <a href="">
+                        <img src="files/part9.png" alt="">
+                    </a>
+                </div>
+                <div class="col-lg-2 col-md-3 col-6 d-flex justify-content-center align-items-center">
+                    <a href="">
+                        <img src="files/part10.png" alt="">
+                    </a>
+                </div>
+                <div class="col-lg-2 col-md-3 col-6 d-flex justify-content-center align-items-center">
+                    <a href="">
+                        <img src="files/part11.png" alt="">
+                    </a>
+                </div>
+                <div class="col-lg-2 col-md-3 col-6 d-flex justify-content-center align-items-center">
+                    <a href="">
+                        <img src="files/part12.png" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content-padding review_section">
+    <div class="container">
+        <div class="title d-flex justify-content-between gap-3 align-items-end mb-5">
+            <h4 class="mb-0">Отзывы</h4>
+            <div class="arrows d-flex">
+                <div class="arrow_btn prev btn btn-outline-secondary btn-sm">‹</div>
+                <div class="arrow_btn next btn btn-outline-secondary btn-sm">›</div>
+            </div>
+        </div>
+        <div class="swiper mySwiper_review">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="image">
+                        <a href="">
+                            <img src="files/re1.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="ins">@veronika</div>
+                    <div class="name"><a href="">Приобрел стол и стулья от Moonk — стильный, минималистичный дизайн и отличное качество! Мебель идеально вписалась в интерьер и приятно удивила своей прочностью. Буду заказывать еще!</a></div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="image">
+                        <a href="">
+                            <img src="files/re2.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="ins">@mamdom</div>
+                    <div class="name"><a href="">Диван от Moonk стал настоящим украшением нашей гостиной. Удобный, из качественных материалов, а сборка заняла всего пару минут. Рекомендую всем, кто ценит стиль и комфорт!</a></div>
+                    <div class="video_time">2:45</div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="image">
+                        <a href="">
+                            <img src="files/re3.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="ins">@child_ma</div>
+                    <div class="name"><a href="">Диван от Moonk стал настоящим украшением нашей гостиной. Удобный, из качественных материалов, а сборка заняла всего пару минут. Рекомендую всем, кто ценит стиль и комфорт!</a></div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="image">
+                        <a href="">
+                            <img src="files/re4.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="ins">@funfamily</div>
+                    <div class="name"><a href="">Шкаф от Moonk превзошел ожидания: лаконичный дизайн, продуманные детали и экологичные материалы. Очень довольны покупкой и обслуживанием!</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content-padding contact_section orange2">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10">
+                <div class="contact_content">
+                    <div class="title">У вас остались вопросы?<br>Напишите нам и мы обязательно вам поможем <br>Текстовое описание</div>
+                    <a href="#" class="btn btn_button">Давайте разбираться</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+include _footer.jade

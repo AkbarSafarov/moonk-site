@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function() {
             speed: 1000,
             on: {
                 autoplayTimeLeft(s, time, progress) {
-                    const activeButton = document.querySelector('.swiper-pagination-bullet-active::before');
+                    const activeButton = document.querySelector('.swiper-pagination-top .swiper-pagination-bullet-active::before');
                     if (activeButton) {
                         const remainingTime = (time / 1000);
                         activeButton.style.animationDuration = `${remainingTime}s`;
@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 },
                 slideChange() {
                     setTimeout(() => {
-                        const activeButton = document.querySelector('.swiper-pagination-bullet-active');
+                        const activeButton = document.querySelector('.swiper-pagination-top .swiper-pagination-bullet-active');
                         if (activeButton) {
                             const beforeEl = activeButton.querySelector('::before');
                             if (beforeEl) {
@@ -243,69 +243,218 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
     const menuWrap = document.querySelector('.menu_top .navbar-nav');
-    if (!menuWrap) return;
 
-    const handleMenuItems = (wrap, hasName) => {
-        const menuItems = wrap.querySelectorAll('li a');
+    if (menuWrap){
 
-        menuItems.forEach(anchor => {
-            const submenu = anchor.parentElement.querySelector('ul');
+        const handleMenuItems = (wrap, hasName) => {
+            const menuItems = wrap.querySelectorAll('li a');
 
-            if (hasName) {
-                const nameParent = document.createElement('li');
-                nameParent.classList.add('name_parent');
+            menuItems.forEach(anchor => {
+                const submenu = anchor.parentElement.querySelector('ul');
 
-                const parentLi = anchor.closest('li');
+                if (hasName) {
+                    const nameParent = document.createElement('li');
+                    nameParent.classList.add('name_parent');
 
-                if (submenu) {
-                    parentLi.classList.add('parent_li');
-                    submenu.prepend(nameParent);
-                    nameParent.textContent = anchor?.textContent || '';
+                    const parentLi = anchor.closest('li');
+
+                    if (submenu) {
+                        parentLi.classList.add('parent_li');
+                        submenu.prepend(nameParent);
+                        nameParent.textContent = anchor?.textContent || '';
+                    }
+
+                    nameParent.addEventListener('click', ({ target }) => {
+                        const activeMenu = menuWrap.querySelector('ul.activity');
+                        activeMenu?.classList.remove('activity');
+
+                        const parentElement = target.closest('.loaded');
+                        parentElement?.classList.remove('loaded', 'activity');
+
+                        const activityParent = parentElement?.closest('.loaded');
+                        activityParent?.classList.add('activity');
+                    });
                 }
 
-                nameParent.addEventListener('click', ({ target }) => {
-                    const activeMenu = menuWrap.querySelector('ul.activity');
-                    activeMenu?.classList.remove('activity');
+                if (submenu) {
+                    const arrow = document.createElement('i');
+                    arrow.classList.add('arrow');
+                    anchor.append(arrow);
 
-                    const parentElement = target.closest('.loaded');
-                    parentElement?.classList.remove('loaded', 'activity');
+                    arrow.addEventListener('click', (event) => {
+                        event.preventDefault();
 
-                    const activityParent = parentElement?.closest('.loaded');
-                    activityParent?.classList.add('activity');
-                });
-            }
-
-            if (submenu) {
-                const arrow = document.createElement('i');
-                arrow.classList.add('arrow');
-                anchor.append(arrow);
-
-                arrow.addEventListener('click', (event) => {
-                    event.preventDefault();
-
-                    const currentLi = arrow.closest('li');
-                    currentLi.parentElement.querySelectorAll('li').forEach(siblingLi => {
-                        if (siblingLi !== currentLi) siblingLi.classList.remove('hasSubmenu');
-                    });
-                    
-                    const isActiveLi = currentLi.classList.contains('active');
-                    if(isActiveLi) {
-                        currentLi.classList.remove('active');
-                    } else {
-                        currentLi.classList.toggle('hasSubmenu');
-    
-                        if (hasName) {
-                            const siblingUl = currentLi.querySelector('ul');
-                            const activeMenu = menuWrap.querySelector('ul.activity');
-                            
-                            activeMenu?.classList.remove('activity');
-                            siblingUl?.classList.add('loaded', 'activity');
+                        const currentLi = arrow.closest('li');
+                        currentLi.parentElement.querySelectorAll('li').forEach(siblingLi => {
+                            if (siblingLi !== currentLi) siblingLi.classList.remove('hasSubmenu');
+                        });
+                        
+                        const isActiveLi = currentLi.classList.contains('active');
+                        if(isActiveLi) {
+                            currentLi.classList.remove('active');
+                        } else {
+                            currentLi.classList.toggle('hasSubmenu');
+        
+                            if (hasName) {
+                                const siblingUl = currentLi.querySelector('ul');
+                                const activeMenu = menuWrap.querySelector('ul.activity');
+                                
+                                activeMenu?.classList.remove('activity');
+                                siblingUl?.classList.add('loaded', 'activity');
+                            }
                         }
+                    });
+                }
+            });
+        };
+
+        handleMenuItems(menuWrap, true);
+    }
+
+    const sliderRoom = document.querySelector('.mySwiper_room');
+
+    if (sliderRoom) {
+        const swiperRoom = new Swiper('.mySwiper_room', {
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination-room',
+                clickable: true,
+            },
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            },
+            speed: 1000,
+            on: {
+                autoplayTimeLeft(s, time, progress) {
+                    const activeButton = document.querySelector('.swiper-pagination-room .swiper-pagination-bullet-active::before');
+                    if (activeButton) {
+                        const remainingTime = (time / 1000);
+                        activeButton.style.animationDuration = `${remainingTime}s`;
                     }
-                });
+                },
+                slideChange() {
+                    setTimeout(() => {
+                        const activeButton = document.querySelector('.swiper-pagination-room .swiper-pagination-bullet-active');
+                        if (activeButton) {
+                            const beforeEl = activeButton.querySelector('::before');
+                            if (beforeEl) {
+                                beforeEl.style.animation = 'none';
+                                setTimeout(() => {
+                                    beforeEl.style.animation = 'progressBar 6s linear infinite';
+                                }, 10);
+                            }
+                        }
+                    }, 50);
+                }
             }
         });
-    };
+    }
 
-    handleMenuItems(menuWrap, true);
+    const loadingBtn = document.querySelector('.loading_btn');
+
+    if(loadingBtn){
+        loadingBtn.addEventListener('click', function(e){
+            e.preventDefault();
+            loadingBtn.classList.add('loaded');
+
+            setTimeout(function(){
+                loadingBtn.classList.remove('loaded');
+            }, 2000)
+        });
+    }
+
+    const sliderReview = document.querySelector('.mySwiper_review');
+
+    if (sliderReview) {
+
+        const swiperReview = new Swiper(".mySwiper_review", {
+            slidesPerView: 4,
+            spaceBetween: 16,
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            navigation: {
+                nextEl: ".review_section .arrow_btn.next",
+                prevEl: ".review_section .arrow_btn.prev",
+            },
+            breakpoints: {
+                0: { slidesPerView: 'auto' },
+                992: { slidesPerView: 4 }
+            }
+        });
+    }
+
+    const sliderDetals = document.querySelector('.mySwiper_project_detals');
+
+    if (sliderDetals) {
+
+        const swiperDetals = new Swiper(".mySwiper_project_detals", {
+            slidesPerView: 1,
+            spaceBetween: 16,
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            navigation: {
+                nextEl: ".project_detals_section .arrow_btn.next",
+                prevEl: ".project_detals_section .arrow_btn.prev",
+            }
+        });
+    }
+
+    const sliderBn = document.querySelector('.mySwiper_bn');
+
+    if (sliderBn) {
+        const swiperBn = new Swiper('.mySwiper_bn', {
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination-bn',
+                clickable: true,
+            },
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            },
+            navigation: {
+                nextEl: ".slider_bn_block .arrow_btn.next",
+                prevEl: ".slider_bn_block .arrow_btn.prev",
+            },
+            speed: 1000,
+            on: {
+                autoplayTimeLeft(s, time, progress) {
+                    const activeButton = document.querySelector('.swiper-pagination-room .swiper-pagination-bullet-active::before');
+                    if (activeButton) {
+                        const remainingTime = (time / 1000);
+                        activeButton.style.animationDuration = `${remainingTime}s`;
+                    }
+                },
+                slideChange() {
+                    setTimeout(() => {
+                        const activeButton = document.querySelector('.swiper-pagination-room .swiper-pagination-bullet-active');
+                        if (activeButton) {
+                            const beforeEl = activeButton.querySelector('::before');
+                            if (beforeEl) {
+                                beforeEl.style.animation = 'none';
+                                setTimeout(() => {
+                                    beforeEl.style.animation = 'progressBar 6s linear infinite';
+                                }, 10);
+                            }
+                        }
+                    }, 50);
+                }
+            }
+        });
+    }
 });

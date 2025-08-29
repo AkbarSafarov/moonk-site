@@ -1,0 +1,362 @@
+include _header-inner.jade
+<section class="content-padding title_page">
+    <div class="d-flex justify-content-between gap-3">
+        <h1 class="title">Дизайн детской <br>комнаты</h1>
+        <div class="text">Мы верим, что детские могут быть минималистичными и современными, яркими и оригинальными. Создаем функциональные и стильные интерьеры, где детям нравится творить и учиться. Реализуем проекты полного цикла: от создания концепции до монтажа — в частных и общественных пространствах. Не ограничиваемся площадью: беремся за дизайн помещений от 5 м².</div>
+    </div>
+</section>
+<section class="slider_room_block content-padding">
+    <div class="position-relative">
+        <div class="swiper mySwiper_room" data-id="mySwiper_room" data-arrow="room">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="files/room-sl.jpg" alt="">
+                    <div class="inner">
+                        <div class="name">Детские, которые <br>вдохновляют</div>
+                        <div class="slide_btn">
+                            <a href="" class="btn btn_button">Заказать проект</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <img src="files/room-sl.jpg" alt="">
+                    <div class="inner">
+                        <div class="name">Детские, которые</div>
+                        <div class="slide_btn">
+                            <a href="" class="btn btn_button">Заказать проект</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination-room"></div>
+    </div>
+</section>
+<section class="content-padding features_section">
+    <div class="container">
+        <div class="row" style="--bs-gutter-x: 16px;">
+            <div class="col-md-4">
+                <div class="title">Почему <br>выбирают <br>именно нас</div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature_card">
+                    <h3 class="feature_title">Знаем все о <br>детской мебели</h3>
+                    <p class="feature_text">Мы создаем детскую мебель, которая помогает сохранить здоровье и развить чувство прекрасного.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature_card">
+                    <h3 class="feature_title">Каждый проект для нас <br>уникален и неповторим</h3>
+                    <p class="feature_text">Мебель Moonk функциональна, но сохраняет лаконичность и минималистичный внешний вид.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature_card">
+                    <h3 class="feature_title">Мебель Moonk безопасная<br> и функциональная</h3>
+                    <p class="feature_text">Производим безопасную мебель из МДФ и березовой фанеры покрытый натуральным шпоном дуба.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature_card">
+                    <h3 class="feature_title">Более 6 лет мы проектируем<br> предметы с нуля</h3>
+                    <p class="feature_text">Все элементы мебели Moonk покрыты лакокрасочными материалами итальянского ТОП-бренда Sayerlack.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature_card">
+                    <h3 class="feature_title">Всегда на связи, чтобы<br> ответить на любые вопросы</h3>
+                    <p class="feature_text">Мебель сертифицирована и сопровождается гарантией качества на 3 года, обеспечивая надежность и безопасность каждого изделия.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content-padding projects_section">
+    <div class="title">Наши проекты</div>
+    <div class="row" style="--bs-gutter-x: 16px;">
+        <div class="col-md-4">
+            include _project-item.jade
+        </div>
+        <div class="col-md-4">
+            include _project-item.jade
+        </div>
+        <div class="col-md-4">
+            include _project-item.jade
+        </div>
+        <div class="col-md-4">
+            include _project-item.jade
+        </div>
+        <div class="col-md-4">
+            include _project-item.jade
+        </div>
+        <div class="col-md-4">
+            include _project-item.jade
+        </div>
+    </div>
+    <div class="d-flex justify-content-center">
+        <a href="#" class="btn btn_button border loading_btn">Показать еще <i class="bi bi-loading"></i></a>
+    </div>
+</section>
+<section class="content-padding contact_section blue">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10">
+                <div class="contact_content">
+                    <div class="title">Превратите детскую вашего <br>ребенка в пространство для <br>игр, учебы и отдыха</div>
+                    <a href="#" class="btn btn_button">Написать</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content-padding service_price_section">
+    <div class="container">
+        <div class="title d-flex justify-content-between gap-3 align-items-end mb-5">
+            <h4 class="mb-0">Услуги и цены</h4>
+        </div>
+        <div class="row" style="--bs-gutter-x: 16px;">
+            <div class="col-md-4">
+                <div class="item">
+                    <div class="name">Консультация <br>дизайнера</div>
+                    <div class="text">Вам нужно освежить детскую комнату, добавить уюта и индивидуальности, без ремонта и закупки большого количества мебели.</div>
+                    <div class="param_name">Что входит: </div>
+                    <ul>
+                        <li>Сбор пожеланий</li>
+                        <li>Звонок по Zoom с дизайнером</li>
+                        <li>Два варианта планировочных решений</li>
+                        <li>Подборка референсов и идей по стилистике</li>
+                        <li>и колористике</li>
+                    </ul>
+                    <div class="bottom">
+                        <div class="price">
+                            <div class="current">10 000 ₽</div>
+                            <div class="date">Срок: Индивидуальный</div>
+                        </div>
+                        <a href="#" class="btn btn_button black xl">Написать</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="item">
+                    <div class="name">Экспресс <br>проект</div>
+                    <div class="text">Вам нужно продумать дизайн детской, используя серийную мебель.</div>
+                    <div class="param_name">Что входит: </div>
+                    <ul>
+                        <li>Подборка мебели, декора, текстиля и освещения</li>
+                        <li>2 варианта плана расстановки мебели</li>
+                        <li>3D-визуализация</li>
+                        <li>Смета</li>
+                    </ul>
+                    <div class="bottom">
+                        <div class="price">
+                            <div class="current">2 500 ₽ / м2</div>
+                            <div class="date">Срок: 14 дней</div>
+                        </div>
+                        <a href="#" class="btn btn_button black xl">Заказать проект</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="item">
+                    <div class="name">Полный <br>дизайн-проект</div>
+                    <div class="text">Вам нужен полный дизайн-проект с детальной проработкой и/или изготовлением индивидуальных изделий.</div>
+                    <div class="param_name">Что входит: </div>
+                    <ul>
+                        <li>Подборка мебели, декора, текстиля и освещения</li>
+                        <li>2 варианта плана расстановки мебели</li>
+                        <li>3D-визуализация</li>
+                        <li>Смета</li>
+                        <li>2 варианта стилистического решения (коллажа)</li>
+                        <li>Разработка, чертежи и 3D-визуализация индивидуальных изделий</li>
+                        <li>План размещения розеток, выключателей и освещения</li>
+                        <li>План отделки стен, потолка и пола</li>
+                        <li>Развертки стен с привязкой мебели</li>
+                    </ul>
+                    <div class="bottom">
+                        <div class="price">
+                            <div class="current">4 000 ₽ / м2</div>
+                            <div class="date">Срок: 40 дней</div>
+                        </div>
+                        <a href="#" class="btn btn_button black xl">Заказать проект</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content-padding project_detals_section">
+    <div class="container">
+        <div class="title d-flex justify-content-between gap-3 align-items-end mb-5">
+            <h4 class="mb-0">Проекты в деталях</h4>
+            <div class="arrows d-flex">
+                <div class="arrow_btn prev btn btn-outline-secondary btn-sm">‹</div>
+                <div class="arrow_btn next btn btn-outline-secondary btn-sm">›</div>
+            </div>
+        </div>
+        <div class="swiper mySwiper_project_detals">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="image">
+                        <a href="">
+                            <img src="files/det.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="detals">
+                        <div class="name">Яркая комната для мальчика 12 м² с рабочей зоной, местом для игр и удобным хранением</div>
+                        <div class="text">Светлая детская для мальчика на Столетова, 16 м². Уютная и светлая комната, созданная для комфорта и функциональности. Пространство включает зону для учебы, игр и отдыха, а также вместительные системы хранения. Экологичные материалы и безопасная мебель обеспечивают комфорт.</div>
+                        <div class="items">
+                            <div class="item d-flex align-items-center">
+                                <div class="icon">
+                                    <img src="files/det1.png" alt="">
+                                </div>
+                                <div class="item_name">Стол Malevich</div>
+                            </div>
+                            <div class="item d-flex align-items-center">
+                                <div class="icon">
+                                    <img src="files/det2.png" alt="">
+                                </div>
+                                <div class="item_name">Парта Magnus</div>
+                            </div>
+                            <div class="item d-flex align-items-center">
+                                <div class="icon">
+                                    <img src="files/det2.png" alt="">
+                                </div>
+                                <div class="item_name">Растущий стул Magnus</div>
+                            </div>
+                        </div>
+                        <a href="" class="btn btn_button border">Подробнее о проекте</a>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="image">
+                        <a href="">
+                            <img src="files/det.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="detals">
+                        <div class="name">Яркая комната для мальчика 12 м² с рабочей зоной, местом для игр и удобным хранением</div>
+                        <div class="text">Светлая детская для мальчика на Столетова, 16 м². Уютная и светлая комната, созданная для комфорта и функциональности. Пространство включает зону для учебы, игр и отдыха, а также вместительные системы хранения. Экологичные материалы и безопасная мебель обеспечивают комфорт.</div>
+                        <div class="items">
+                            <div class="item d-flex align-items-center">
+                                <div class="icon">
+                                    <img src="files/det1.png" alt="">
+                                </div>
+                                <div class="item_name">Стол Malevich</div>
+                            </div>
+                            <div class="item d-flex align-items-center">
+                                <div class="icon">
+                                    <img src="files/det2.png" alt="">
+                                </div>
+                                <div class="item_name">Парта Magnus</div>
+                            </div>
+                            <div class="item d-flex align-items-center">
+                                <div class="icon">
+                                    <img src="files/det2.png" alt="">
+                                </div>
+                                <div class="item_name">Растущий стул Magnus</div>
+                            </div>
+                        </div>
+                        <a href="" class="btn btn_button border">Подробнее о проекте</a>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="image">
+                        <a href="">
+                            <img src="files/det.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="detals">
+                        <div class="name">Яркая комната для мальчика 12 м² с рабочей зоной, местом для игр и удобным хранением</div>
+                        <div class="text">Светлая детская для мальчика на Столетова, 16 м². Уютная и светлая комната, созданная для комфорта и функциональности. Пространство включает зону для учебы, игр и отдыха, а также вместительные системы хранения. Экологичные материалы и безопасная мебель обеспечивают комфорт.</div>
+                        <div class="items">
+                            <div class="item d-flex align-items-center">
+                                <div class="icon">
+                                    <img src="files/det1.png" alt="">
+                                </div>
+                                <div class="item_name">Стол Malevich</div>
+                            </div>
+                            <div class="item d-flex align-items-center">
+                                <div class="icon">
+                                    <img src="files/det2.png" alt="">
+                                </div>
+                                <div class="item_name">Парта Magnus</div>
+                            </div>
+                            <div class="item d-flex align-items-center">
+                                <div class="icon">
+                                    <img src="files/det2.png" alt="">
+                                </div>
+                                <div class="item_name">Растущий стул Magnus</div>
+                            </div>
+                        </div>
+                        <a href="" class="btn btn_button border">Подробнее о проекте</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content-padding review_section">
+    <div class="container">
+        <div class="title d-flex justify-content-between gap-3 align-items-end mb-5">
+            <h4 class="mb-0">Отзывы</h4>
+            <div class="arrows d-flex">
+                <div class="arrow_btn prev btn btn-outline-secondary btn-sm">‹</div>
+                <div class="arrow_btn next btn btn-outline-secondary btn-sm">›</div>
+            </div>
+        </div>
+        <div class="swiper mySwiper_review">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="image">
+                        <a href="">
+                            <img src="files/re1.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="ins">@veronika</div>
+                    <div class="name"><a href="">Приобрел стол и стулья от Moonk — стильный, минималистичный дизайн и отличное качество! Мебель идеально вписалась в интерьер и приятно удивила своей прочностью. Буду заказывать еще!</a></div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="image">
+                        <a href="">
+                            <img src="files/re2.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="ins">@mamdom</div>
+                    <div class="name"><a href="">Диван от Moonk стал настоящим украшением нашей гостиной. Удобный, из качественных материалов, а сборка заняла всего пару минут. Рекомендую всем, кто ценит стиль и комфорт!</a></div>
+                    <div class="video_time">2:45</div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="image">
+                        <a href="">
+                            <img src="files/re3.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="ins">@child_ma</div>
+                    <div class="name"><a href="">Диван от Moonk стал настоящим украшением нашей гостиной. Удобный, из качественных материалов, а сборка заняла всего пару минут. Рекомендую всем, кто ценит стиль и комфорт!</a></div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="image">
+                        <a href="">
+                            <img src="files/re4.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="ins">@funfamily</div>
+                    <div class="name"><a href="">Шкаф от Moonk превзошел ожидания: лаконичный дизайн, продуманные детали и экологичные материалы. Очень довольны покупкой и обслуживанием!</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content-padding contact_section blue2">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10">
+                <div class="contact_content">
+                    <div class="title">Не знаете какой пакет вам подойдет? <br>Оставьте заявку, мы обязательно <br>поможем вам</div>
+                    <a href="#" class="btn btn_button">Написать</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+include _footer.jade

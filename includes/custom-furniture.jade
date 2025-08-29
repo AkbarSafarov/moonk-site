@@ -1,0 +1,240 @@
+include _header-inner.jade
+<section class="content-padding title_page">
+    <div class="d-flex justify-content-between align-items-end gap-3">
+        <h1 class="title">Мебель на заказ: <br>креатив без <br>границ</h1>
+        <div class="text">Разрабатываем мебель на заказ любой сложности с 2016 года. Мы берем на себя полный цикл работы — от разработки до монтажа, с вниманием к каждому миллиметру. Создаем мебель, которая гармонично дополняет пространство, отражает общий стиль интерьера и отвечает всем нормам безопасности.</div>
+    </div>
+</section>
+<section class="slider_room_block content-padding">
+    <div class="position-relative">
+        <div class="swiper mySwiper_room" data-id="mySwiper_room" data-arrow="room">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide custom">
+                    <img src="files/room-sl3.jpg" alt="">
+                    <div class="inner">
+                        <div class="slide_btn">
+                            <a href="" class="btn btn_button">Заказать мебель</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content-padding projects_section">
+    <div class="title">Индивидуальные решения, <br> созданные для вашего <br>пространства</div>
+    <div class="body">От минималистичных столов до сложных игровых комплексов. <br>В каждом проекте — наша страсть к деталям и стремление к совершенству.</div>
+    <div class="row" style="--bs-gutter-x: 16px;">
+        <div class="col-md-4">
+            include _project-item.jade
+        </div>
+        <div class="col-md-4">
+            include _project-item.jade
+        </div>
+        <div class="col-md-4">
+            include _project-item.jade
+        </div>
+    </div>
+    <div class="d-flex justify-content-center">
+        <a href="#" class="btn btn_button border loading_btn">Показать еще <i class="bi bi-loading"></i></a>
+    </div>
+</section>
+<section class="content-padding features_section">
+    <div class="container">
+        <div class="row" style="--bs-gutter-x: 16px;">
+            <div class="col-md-4">
+                <div class="title">Идея,<br>экспертиза, <br>продукт</div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature_card">
+                    <h3 class="feature_title">Безопасность <br>и надежность</h3>
+                    <p class="feature_text">8 лет создаем мебель, учитывая эргономику, прочность и комфорт. Все изделия соответствуют высоким стандартам безопасности и прослужат долгие годы</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature_card">
+                    <h3 class="feature_title">Гибкость <br>решений</h3>
+                    <p class="feature_text">Мебель Moonk функциональна, но сохраняет лаконичность и минималистичный внешний вид.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature_card">
+                    <h3 class="feature_title">Материалы <br>премиум-класса</h3>
+                    <p class="feature_text">Используем фанеру, натуральный шпон, МДФ и металл. Надежные покрытия защищают от царапин и влаги, продлевая срок службы.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature_card">
+                    <h3 class="feature_title">Полный цикл услуг</h3>
+                    <p class="feature_text">От идеи до установки — мы берем на себя весь процесс, чтобы вы получили готовое, продуманное решение без лишних забот.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature_card">
+                    <h3 class="feature_title">Уникальность и персонализация</h3>
+                    <p class="feature_text">Индивидуальные размеры, цветовые решения и конструкция — каждая деталь подбирается под ваш интерьер и стиль жизни.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content-padding contact_section yellow">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10">
+                <div class="contact_content">
+                    <div class="title">Расскажите нам о своей идее</div>
+                    <div class="text">Мы готовы взяться за любой проект: от небольшой мебели до сложных конструкций. Оставьте заявку — и мы свяжемся с вами, чтобы обсудить детали.</div>
+                    <a href="#" class="btn btn_button">Отправить</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content-padding tabs_section">
+    <div class="container">
+        <div class="title ">
+            <h4>От рисунка до реализации – <br>полный цикл разработки</h4>
+            <div class="body">Мы берем на себя весь процесс: от проектирования до установки. <br>Каждое изделие продумывается до мелочей, чтобы идеально <br>вписаться в ваш интерьер и прослужить долгие годы.</div>
+        </div>
+        <div class="d-none d-lg-block">
+            <div class="row h-100" style="--bs-gutter-x: 16px;">
+                <!-- Левая колонка с кнопками -->
+                <div class="col-lg-4 col-md-12 d-flex">
+                    <div class="nav flex-column tabs_title nav-pills w-100" id="tabs-list" role="tablist" aria-orientation="vertical">
+                        <button class="active tab_title" id="tab-1-btn" data-bs-toggle="pill" data-bs-target="#tab-1" type="button" role="tab">Проектирование</button>
+                        <button class="tab_title" id="tab-2-btn" data-bs-toggle="pill" data-bs-target="#tab-2" type="button" role="tab">Подбор материалов</button>
+                        <button class="tab_title" id="tab-3-btn" data-bs-toggle="pill" data-bs-target="#tab-3" type="button" role="tab">Изготовление</button>
+                        <button class="tab_title" id="tab-4-btn" data-bs-toggle="pill" data-bs-target="#tab-4" type="button" role="tab">Доставка и монтаж</button>
+                    </div>
+                </div>
+                <!-- Центральная колонка с контентом -->
+                <div class="col-lg-4 col-md-6 tabs_body">
+                    <div class="tab-content h-100 d-flex" id="tabs-content">
+                        <div class="tab-pane fade show active tab_body content-area" id="tab-1" role="tabpanel">
+                            <h3 class="section-name">Этап 1</h3>
+                            <p class="section-body">На этапе проектирования мы разрабатываем функциональные и эстетичные решения, учитывая особенности пространства, задачи проекта и пожелания клиента. Создаем чертежи, 3D-визуализации и прорабатываем каждую деталь, чтобы результат полностью соответствовал ожиданиям.</p>
+                        </div>
+                        <div class="tab-pane fade tab_body content-area" id="tab-2" role="tabpanel">
+                            <h3 class="section-name">Этап 2</h3>
+                            <p class="section-body">На этапе подбора материалов мы тщательно анализируем доступные варианты, чтобы найти оптимальное сочетание цены, качества и дизайна.</p>
+                        </div>
+                        <div class="tab-pane fade tab_body content-area" id="tab-3" role="tabpanel">
+                            <h3 class="section-name">Этап 3</h3>
+                            <p class="section-body">Этап изготовления включает в себя полный цикл работ на производстве, чтобы обеспечить надежность и долговечность.</p>
+                        </div>
+                        <div class="tab-pane fade tab_body content-area" id="tab-4" role="tabpanel">
+                            <h3 class="section-name">Этап 4</h3>
+                            <p class="section-body">Доставка и монтаж осуществляются нашими специалистами с учетом всех нюансов, чтобы результат был безупречным.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Правая колонка с картинками -->
+                <div class="col-lg-4 col-md-6 tabs_imag">
+                    <div class="tab-content h-100 d-flex">
+                        <img src="files/tabg2.jpg" alt="Moonk мебель" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- MOBILE (accordion) -->
+        <div class="d-lg-none">
+            <div class="image-section mb-4">
+                <img src="files/tabg2.jpg" class="img-fluid" alt="">
+            </div>
+            <div class="accordion" id="accordionTabs">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"><span>Этап 1</span> Проектирование                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionTabs">
+                        <div class="accordion-body">На этапе проектирования мы разрабатываем функциональные и эстетичные решения, учитывая особенности пространства, задачи проекта и пожелания клиента. Создаем чертежи, 3D-визуализации и прорабатываем каждую деталь, чтобы результат полностью соответствовал ожиданиям.                       </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"><span>Этап 2</span> Подбор материалов                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionTabs">
+                        <div class="accordion-body">                            На этапе подбора материалов мы тщательно анализируем...
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree"> <span>Этап 3</span> Изготовление                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionTabs">
+                        <div class="accordion-body">                            Этап изготовления включает полный цикл работ...                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour"> <span>Этап 4</span> Доставка и монтаж                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionTabs">
+                        <div class="accordion-body">                            Доставка и монтаж нашими специалистами...                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content-padding faq_section">
+    <div class="container">
+        <div class="row" style="--bs-gutter-x: 16px;">
+            <div class="title col-lg-4 col-md-6">
+                <h4>Ответим <br>на ваши вопросы</h4>
+            </div>
+            <div class="accordion col-lg-8 col-md-6" id="accordionTabsFaq">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOneFaq" aria-expanded="true">Какой срок изготовления?</button>
+                    </h2>
+                    <div id="collapseOneFaq" class="accordion-collapse collapse show" data-bs-parent="#accordionTabsFaq">
+                        <div class="accordion-body">Примерно 45 рабочих дней, в зависимости от сложности.</div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwoFaq">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwoFaq">Вы работаете с нестандартными проектами?</button>
+                    </h2>
+                    <div id="collapseTwoFaq" class="accordion-collapse collapse" data-bs-parent="#accordionTabsFaq">
+                        <div class="accordion-body">                            На этапе подбора материалов мы тщательно анализируем...
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThreeFaq">Можно ли у вас заказать дизайн всей детской?</button>
+                    </h2>
+                    <div id="collapseThreeFaq" class="accordion-collapse collapse" data-bs-parent="#accordionTabsFaq">
+                        <div class="accordion-body">                            Этап изготовления включает полный цикл работ...                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFourFaq">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFourFaq">У вас есть доставка и установка?</button>
+                    </h2>
+                    <div id="collapseFourFaq" class="accordion-collapse collapse" data-bs-parent="#accordionTabsFaq">
+                        <div class="accordion-body">                            Доставка и монтаж нашими специалистами...                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content-padding contact_section yellow2">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10">
+                <div class="contact_content">
+                    <div class="title">Создадим мебель, <br>о которой вы мечтаете</div>
+                    <div class="text">Наша цель — создать мебель, которая будет радовать вас каждый день. Оставьте заявку, и мы начнем прямо сейчас.</div>
+                    <a href="#" class="btn btn_button">Отправить</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+include _footer.jade
