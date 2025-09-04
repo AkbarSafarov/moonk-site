@@ -24,15 +24,17 @@ include _header-inner.jade
 <section class="content-padding projects_section">
     <div class="title">Индивидуальные решения, <br> созданные для вашего <br>пространства</div>
     <div class="body">От минималистичных столов до сложных игровых комплексов. <br>В каждом проекте — наша страсть к деталям и стремление к совершенству.</div>
-    <div class="row" style="--bs-gutter-x: 16px;">
-        <div class="col-md-4">
-            include _project-item.jade
-        </div>
-        <div class="col-md-4">
-            include _project-item.jade
-        </div>
-        <div class="col-md-4">
-            include _project-item.jade
+    <div class="swiper projects-swiper">
+        <div class="swiper-wrapper row"  style="--bs-gutter-x: 16px;">    
+            <div class="swiper-slide col-md-4">
+                include _project-item.jade
+            </div>
+            <div class="swiper-slide col-md-4">
+                include _project-item.jade
+            </div>
+            <div class="swiper-slide col-md-4">
+                include _project-item.jade
+            </div>
         </div>
     </div>
     <div class="d-flex justify-content-center">
@@ -85,7 +87,7 @@ include _header-inner.jade
                 <div class="contact_content">
                     <div class="title">Расскажите нам о своей идее</div>
                     <div class="text">Мы готовы взяться за любой проект: от небольшой мебели до сложных конструкций. Оставьте заявку — и мы свяжемся с вами, чтобы обсудить детали.</div>
-                    <a href="#" class="btn btn_button">Отправить</a>
+                    <a href="#" class="btn btn_button" data-bs-toggle="modal" data-bs-target="#formModal" data-bs-dismiss="modal">Отправить</a>
                 </div>
             </div>
         </div>

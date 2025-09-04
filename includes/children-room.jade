@@ -73,24 +73,26 @@ include _header-inner.jade
 </section>
 <section class="content-padding projects_section">
     <div class="title">Наши проекты</div>
-    <div class="row" style="--bs-gutter-x: 16px;">
-        <div class="col-md-4">
-            include _project-item.jade
-        </div>
-        <div class="col-md-4">
-            include _project-item.jade
-        </div>
-        <div class="col-md-4">
-            include _project-item.jade
-        </div>
-        <div class="col-md-4">
-            include _project-item.jade
-        </div>
-        <div class="col-md-4">
-            include _project-item.jade
-        </div>
-        <div class="col-md-4">
-            include _project-item.jade
+    <div class="swiper projects-swiper">
+        <div class="swiper-wrapper row" style="--bs-gutter-x: 16px;">    
+            <div class="swiper-slide col-md-4">
+                include _project-item.jade
+            </div>
+            <div class="swiper-slide col-md-4">
+                include _project-item.jade
+            </div>
+            <div class="swiper-slide col-md-4">
+                include _project-item.jade
+            </div>
+            <div class="swiper-slide col-md-4">
+                include _project-item.jade
+            </div>
+            <div class="swiper-slide col-md-4">
+                include _project-item.jade
+            </div>
+            <div class="swiper-slide col-md-4">
+                include _project-item.jade
+            </div>
         </div>
     </div>
     <div class="d-flex justify-content-center">
@@ -114,70 +116,72 @@ include _header-inner.jade
         <div class="title d-flex justify-content-between gap-3 align-items-end mb-5">
             <h4 class="mb-0">Услуги и цены</h4>
         </div>
-        <div class="row" style="--bs-gutter-x: 16px;">
-            <div class="col-md-4">
-                <div class="item">
-                    <div class="name">Консультация <br>дизайнера</div>
-                    <div class="text">Вам нужно освежить детскую комнату, добавить уюта и индивидуальности, без ремонта и закупки большого количества мебели.</div>
-                    <div class="param_name">Что входит: </div>
-                    <ul>
-                        <li>Сбор пожеланий</li>
-                        <li>Звонок по Zoom с дизайнером</li>
-                        <li>Два варианта планировочных решений</li>
-                        <li>Подборка референсов и идей по стилистике</li>
-                        <li>и колористике</li>
-                    </ul>
-                    <div class="bottom">
-                        <div class="price">
-                            <div class="current">10 000 ₽</div>
-                            <div class="date">Срок: Индивидуальный</div>
+        <div class="swiper service_price-swiper">
+            <div class="swiper-wrapper row" style="--bs-gutter-x: 16px;">    
+                <div class="swiper-slide col-md-4">
+                    <div class="item">
+                        <div class="name">Консультация <br>дизайнера</div>
+                        <div class="text">Вам нужно освежить детскую комнату, добавить уюта и индивидуальности, без ремонта и закупки большого количества мебели.</div>
+                        <div class="param_name">Что входит: </div>
+                        <ul>
+                            <li>Сбор пожеланий</li>
+                            <li>Звонок по Zoom с дизайнером</li>
+                            <li>Два варианта планировочных решений</li>
+                            <li>Подборка референсов и идей по стилистике</li>
+                            <li>и колористике</li>
+                        </ul>
+                        <div class="bottom">
+                            <div class="price">
+                                <div class="current">10 000 ₽</div>
+                                <div class="date">Срок: Индивидуальный</div>
+                            </div>
+                            <a href="#" class="btn btn_button black xl">Написать</a>
                         </div>
-                        <a href="#" class="btn btn_button black xl">Написать</a>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="item">
-                    <div class="name">Экспресс <br>проект</div>
-                    <div class="text">Вам нужно продумать дизайн детской, используя серийную мебель.</div>
-                    <div class="param_name">Что входит: </div>
-                    <ul>
-                        <li>Подборка мебели, декора, текстиля и освещения</li>
-                        <li>2 варианта плана расстановки мебели</li>
-                        <li>3D-визуализация</li>
-                        <li>Смета</li>
-                    </ul>
-                    <div class="bottom">
-                        <div class="price">
-                            <div class="current">2 500 ₽ / м2</div>
-                            <div class="date">Срок: 14 дней</div>
+                <div class="swiper-slide col-md-4">
+                    <div class="item">
+                        <div class="name">Экспресс <br>проект</div>
+                        <div class="text">Вам нужно продумать дизайн детской, используя серийную мебель.</div>
+                        <div class="param_name">Что входит: </div>
+                        <ul>
+                            <li>Подборка мебели, декора, текстиля и освещения</li>
+                            <li>2 варианта плана расстановки мебели</li>
+                            <li>3D-визуализация</li>
+                            <li>Смета</li>
+                        </ul>
+                        <div class="bottom">
+                            <div class="price">
+                                <div class="current">2 500 ₽ / м2</div>
+                                <div class="date">Срок: 14 дней</div>
+                            </div>
+                            <a href="#" class="btn btn_button black xl">Заказать проект</a>
                         </div>
-                        <a href="#" class="btn btn_button black xl">Заказать проект</a>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="item">
-                    <div class="name">Полный <br>дизайн-проект</div>
-                    <div class="text">Вам нужен полный дизайн-проект с детальной проработкой и/или изготовлением индивидуальных изделий.</div>
-                    <div class="param_name">Что входит: </div>
-                    <ul>
-                        <li>Подборка мебели, декора, текстиля и освещения</li>
-                        <li>2 варианта плана расстановки мебели</li>
-                        <li>3D-визуализация</li>
-                        <li>Смета</li>
-                        <li>2 варианта стилистического решения (коллажа)</li>
-                        <li>Разработка, чертежи и 3D-визуализация индивидуальных изделий</li>
-                        <li>План размещения розеток, выключателей и освещения</li>
-                        <li>План отделки стен, потолка и пола</li>
-                        <li>Развертки стен с привязкой мебели</li>
-                    </ul>
-                    <div class="bottom">
-                        <div class="price">
-                            <div class="current">4 000 ₽ / м2</div>
-                            <div class="date">Срок: 40 дней</div>
+                <div class="swiper-slide col-md-4">
+                    <div class="item">
+                        <div class="name">Полный <br>дизайн-проект</div>
+                        <div class="text">Вам нужен полный дизайн-проект с детальной проработкой и/или изготовлением индивидуальных изделий.</div>
+                        <div class="param_name">Что входит: </div>
+                        <ul>
+                            <li>Подборка мебели, декора, текстиля и освещения</li>
+                            <li>2 варианта плана расстановки мебели</li>
+                            <li>3D-визуализация</li>
+                            <li>Смета</li>
+                            <li>2 варианта стилистического решения (коллажа)</li>
+                            <li>Разработка, чертежи и 3D-визуализация индивидуальных изделий</li>
+                            <li>План размещения розеток, выключателей и освещения</li>
+                            <li>План отделки стен, потолка и пола</li>
+                            <li>Развертки стен с привязкой мебели</li>
+                        </ul>
+                        <div class="bottom">
+                            <div class="price">
+                                <div class="current">4 000 ₽ / м2</div>
+                                <div class="date">Срок: 40 дней</div>
+                            </div>
+                            <a href="#" class="btn btn_button black xl">Заказать проект</a>
                         </div>
-                        <a href="#" class="btn btn_button black xl">Заказать проект</a>
                     </div>
                 </div>
             </div>

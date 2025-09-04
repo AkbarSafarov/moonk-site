@@ -34,15 +34,17 @@ include _header-inner.jade
 </section>
 <section class="content-padding projects_section">
     <div class="title">Наши проекты</div>
-    <div class="row" style="--bs-gutter-x: 16px;">
-        <div class="col-md-4">
-            include _project-item.jade
-        </div>
-        <div class="col-md-4">
-            include _project-item.jade
-        </div>
-        <div class="col-md-4">
-            include _project-item.jade
+    <div class="swiper projects-swiper">
+        <div class="swiper-wrapper row" style="--bs-gutter-x: 16px;">    
+            <div class="swiper-slide col-md-4">
+                include _project-item.jade
+            </div>
+            <div class="swiper-slide col-md-4">
+                include _project-item.jade
+            </div>
+            <div class="swiper-slide col-md-4">
+                include _project-item.jade
+            </div>
         </div>
     </div>
 </section>
