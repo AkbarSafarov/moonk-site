@@ -1,0 +1,391 @@
+include _header-inner.jade
+<section class="content-padding title_page">
+    <h1 class="title mb-0">Дизайн детской</h1>
+</section>
+<section class="slider_bn_block content-padding pt-0 pb-0">
+    <div class="position-relative">
+        <div class="arrows d-flex">
+            <div class="arrow_btn prev btn btn-outline-secondary btn-sm">‹</div>
+            <div class="arrow_btn next btn btn-outline-secondary btn-sm">›</div>
+        </div>
+        <div class="swiper mySwiper_bn" data-id="mySwiper_bn" data-arrow="bn">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="files/rev.jpg" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="files/room-sl.jpg" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination-bn"></div>
+    </div>
+</section>
+<section class="content-padding say_section">
+    <div class="container">
+        <div class="title d-flex gap-4 align-items-end mb-5">
+            <div class="title_left">
+                <h4>Что говорят о нас</h4>
+            </div>
+            <a href="#" class="btn btn_button black xl" data-bs-toggle="modal" data-bs-target="#reviewSliderModal" data-bs-dismiss="modal">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 20.9999L3 2.99988H21V20.9999H3Z" stroke="white" stroke-width="1.5" stroke-linecap="round" />
+                    <path d="M3 17.486L8.15198 12L10.432 14.28L15.7191 9L21 14.281" stroke="white" stroke-width="1.5" stroke-linecap="round" />
+                    <path d="M8.58211 6.29289C8.97263 6.68342 8.97263 7.31658 8.58211 7.70711C8.19158 8.09763 7.55842 8.09763 7.16789 7.70711C6.77737 7.31658 6.77737 6.68342 7.16789 6.29289C7.55842 5.90237 8.19158 5.90237 8.58211 6.29289Z" fill="white" />
+                </svg>
+                <span>Смотреть еще</span></a>
+            <div class="arrows d-flex">
+                <div class="arrow_btn prev btn btn-outline-secondary btn-sm">‹</div>
+                <div class="arrow_btn next btn btn-outline-secondary btn-sm">›</div>
+            </div>
+        </div>
+        <div class="swiper say_review">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="image">
+                            <img src="files/rev_s1.png" alt="">
+                        </div>
+                        <div class="right">
+                            <div class="name">Рената Серебрякова</div>
+                            <div class="city">Москва</div>
+                        </div>
+                    </div>
+                    <div class="text">«Мебель MOONK — это очень красивые и удобные предметы, в которых продумана каждая деталь. Они естественно вписались в наш эклектичный интерьер. У этих вещей детский размер, но совершенно зрелая эстетика. Для меня важно качество вещей. Зоя каждый день варит суп, какао и заваривает чай для кукол на столе MOONK, это означает, что по столу по несколько часов в день разлита вода. И с его поверхностью ничего не происходит. Она такая же, как и была в первый день.»</div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="image">
+                            <img src="files/rev_s2.png" alt="">
+                        </div>
+                        <div class="right">
+                            <div class="name">Тамара Мамедова</div>
+                            <div class="city">Москва</div>
+                        </div>
+                    </div>
+                    <div class="text">«После трёх уже поздно. Когда после долгих поисков чего-то без аляпистых узоров я уже почти отчаялась, —о чудо! — я встретила MOONK. Я не буду сейчас говорить, что отсутствие углов делает их мебель безопасной, а конструкцию максимально устойчивой. Ребята, помимо перечисленного, ЭТО ОЧЕНЬ КРАСИВО И СТИЛЬНО.»</div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="image">
+                            <img src="files/rev_s3.png" alt="">
+                        </div>
+                        <div class="right">
+                            <div class="name">Екатерина Данилова</div>
+                            <div class="city">Москва</div>
+                        </div>
+                    </div>
+                    <div class="text">«Мебель MOONK я заметила, когда ещё была беременна: она меня зацепила с первого взгляда. Долгое время я мечтала о ней, и была уверена, что куплю когда-нибудь. И тут решилась! Тактильно и визуально мебель вызывает только восторг! Безумно круто смотрится, а ещё я думаю легко впишется в любой интерьер. В итоге я купила не только мебель для ребенка, но и парту себе. Это бомба!»</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="modal fade modal-right review-slider-modal" id="reviewSliderModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-slideout">
+        <div class="modal-content">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+            <div class="modal-body">
+                <div class="arrows d-flex">
+                    <div class="arrow_btn prev btn btn-outline-secondary btn-sm">‹</div>
+                    <div class="arrow_btn next btn btn-outline-secondary btn-sm">›</div>
+                </div>
+                <div class="swiper review-slider-swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="image">
+                                <img src="files/rm.jpg" alt="">
+                            </div>
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="icon">
+                                    <img src="files/rev_s1.png" alt="">
+                                </div>
+                                <div class="right">
+                                    <div class="name">Рената Серебрякова</div>
+                                    <div class="city">Москва</div>
+                                </div>
+                            </div>
+                            <div class="text">«Мебель MOONK — это очень красивые и удобные предметы, в которых продумана каждая деталь. Они естественно вписались в наш эклектичный интерьер. У этих вещей детский размер, но совершенно зрелая эстетика. Для меня важно качество вещей. Зоя каждый день варит суп, какао и заваривает чай для кукол на столе MOONK, это означает, что по столу по несколько часов в день разлита вода. И с его поверхностью ничего не происходит. Она такая же, как и была в первый день.»</div>
+                            <div class="video_time">2:45</div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="icon">
+                                    <img src="files/rev_s2.png" alt="">
+                                </div>
+                                <div class="right">
+                                    <div class="name">Тамара Мамедова</div>
+                                    <div class="city">Москва</div>
+                                </div>
+                            </div>
+                            <div class="text">«После трёх уже поздно. Когда после долгих поисков чего-то без аляпистых узоров я уже почти отчаялась, —о чудо! — я встретила MOONK. Я не буду сейчас говорить, что отсутствие углов делает их мебель безопасной, а конструкцию максимально устойчивой. Ребята, помимо перечисленного, ЭТО ОЧЕНЬ КРАСИВО И СТИЛЬНО.»</div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="icon">
+                                    <img src="files/rev_s3.png" alt="">
+                                </div>
+                                <div class="right">
+                                    <div class="name">Екатерина Данилова</div>
+                                    <div class="city">Москва</div>
+                                </div>
+                            </div>
+                            <div class="text">«Мебель MOONK я заметила, когда ещё была беременна: она меня зацепила с первого взгляда. Долгое время я мечтала о ней, и была уверена, что куплю когда-нибудь. И тут решилась! Тактильно и визуально мебель вызывает только восторг! Безумно круто смотрится, а ещё я думаю легко впишется в любой интерьер. В итоге я купила не только мебель для ребенка, но и парту себе. Это бомба!»</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="content-padding reviews_items">
+    <div class="row" style="--bs-gutter-x: 16px;">
+        <div class="item col-lg-3 col-md-6 col-12 d-flex d-lg-block">
+            <div class="image xl_img">
+                <a href="">
+                    <img src="files/re1.jpg" alt="">
+                </a>
+            </div>
+            <div class="detal">
+                <div class="ins">@veronika</div>
+                <div class="name"><a href="">Приобрел стол и стулья от Moonk — стильный, минималистичный дизайн и отличное качество! Мебель идеально вписалась в интерьер и приятно удивила своей прочностью. Буду заказывать еще!</a></div>
+            </div>
+        </div>
+        <div class="item col-lg-3 col-md-6 col-12 d-flex d-lg-block">
+            <div class="image ls_img">
+                <a href="">
+                    <img src="files/re2.jpg" alt="">
+                </a>
+            </div>
+            <div class="detal">
+                <div class="ins">@mamdom</div>
+                <div class="name"><a href="">Диван от Moonk стал настоящим украшением нашей гостиной. Удобный, из качественных материалов, а сборка заняла всего пару минут. Рекомендую всем, кто ценит стиль и комфорт!</a></div>
+                <div class="video_time">2:45</div>
+            </div>
+        </div>
+        <div class="item col-lg-3 col-md-6 col-12 d-flex d-lg-block">
+            <div class="image xl_img">
+                <a href="">
+                    <img src="files/re3.jpg" alt="">
+                </a>
+            </div>
+            <div class="detal">
+                <div class="ins">@child_ma</div>
+                <div class="name"><a href="">Диван от Moonk стал настоящим украшением нашей гостиной. Удобный, из качественных материалов, а сборка заняла всего пару минут. Рекомендую всем, кто ценит стиль и комфорт!</a></div>
+            </div>
+        </div>
+        <div class="item col-lg-3 col-md-6 col-12 d-flex d-lg-block">
+            <div class="image ls_img">
+                <a href="">
+                    <img src="files/re4.jpg" alt="">
+                </a>
+            </div>
+            <div class="detal">
+                <div class="ins">@funfamily</div>
+                <div class="name"><a href="">Шкаф от Moonk превзошел ожидания: лаконичный дизайн, продуманные детали и экологичные материалы. Очень довольны покупкой и обслуживанием!</a></div>
+            </div>
+        </div>
+        <div class="item col-lg-3 col-md-6 col-12 d-flex d-lg-block">
+            <div class="image xl_img">
+                <a href="">
+                    <img src="files/art21.jpg" alt="">
+                </a>
+            </div>
+            <div class="detal">
+                <div class="ins">@funfamily</div>
+                <div class="name"><a href="">Шкаф от Moonk превзошел ожидания: лаконичный дизайн, продуманные детали и экологичные материалы. Очень довольны покупкой и обслуживанием!</a></div>
+            </div>
+        </div>
+        <div class="item col-lg-3 col-md-6 col-12 d-flex d-lg-block">
+            <div class="image ls_img">
+                <a href="">
+                    <img src="files/art22.jpg" alt="">
+                </a>
+            </div>
+            <div class="detal">
+                <div class="ins">@funfamily</div>
+                <div class="name"><a href="">Шкаф от Moonk превзошел ожидания: лаконичный дизайн, продуманные детали и экологичные материалы. Очень довольны покупкой и обслуживанием!</a></div>
+            </div>
+        </div>
+        <div class="item col-lg-3 col-md-6 col-12 d-flex d-lg-block">
+            <div class="image xl_img">
+                <a href="">
+                    <img src="files/art14.jpg" alt="">
+                </a>
+            </div>
+            <div class="detal">
+                <div class="ins">@funfamily</div>
+                <div class="name"><a href="">Шкаф от Moonk превзошел ожидания: лаконичный дизайн, продуманные детали и экологичные материалы. Очень довольны покупкой и обслуживанием!</a></div>
+            </div>
+        </div>
+        <div class="item col-lg-3 col-md-6 col-12 d-flex d-lg-block">
+            <div class="image ls_img">
+                <a href="">
+                    <img src="files/art23.jpg" alt="">
+                </a>
+            </div>
+            <div class="detal">
+                <div class="ins">@funfamily</div>
+                <div class="name"><a href="">Шкаф от Moonk превзошел ожидания: лаконичный дизайн, продуманные детали и экологичные материалы. Очень довольны покупкой и обслуживанием!</a></div>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center">
+        <a href="#" class="btn btn_button border loading_btn">Показать еще <i class="bi bi-loading"></i></a>
+    </div>
+</section>
+<section class="content-padding interiors_section">
+    <div class="container">
+        <div class="title d-flex gap-4 align-items-end mb-5">
+            <div class="title_left">
+                <h4>Ваши интерьеры</h4>
+                <div class="text">Мы любим видеть, как мебель Moonk живёт в реальных интерьерах. Если у вас есть оформленная детская комната с нашими изделиями — поделитесь ею с нами. Возможно, именно ваш проект вдохновит других родителей и станет частью нашей подборки.</div>
+            </div>
+            <a href="#" class="btn btn_button border" data-bs-toggle="modal" data-bs-target="#formInteriorModal" data-bs-dismiss="modal">Отправить свой интерьер</a>
+            <div class="arrows d-flex">
+                <div class="arrow_btn prev btn btn-outline-secondary btn-sm">‹</div>
+                <div class="arrow_btn next btn btn-outline-secondary btn-sm">›</div>
+            </div>
+        </div>
+        <div class="swiper interiors_review">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <a href="">
+                        <img src="files/in1.jpg" alt="">
+                        <div class="ins">@veronika</div>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="">
+                        <img src="files/in2.jpg" alt="">
+                        <div class="ins">@veronika</div>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="">
+                        <img src="files/in3.jpg" alt="">
+                        <div class="ins">@veronika</div>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="">
+                        <img src="files/in4.jpg" alt="">
+                        <div class="ins">@veronika</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <a href="#" class="d-md-none btn btn_button border" data-bs-toggle="modal" data-bs-target="#formInteriorModal" data-bs-dismiss="modal">Отправить свой интерьер</a>
+    </div>
+</section>
+<section class="accordion_block content-padding">
+    <div class="accordion_block_inner">
+        <div class="title">Дизайн студия</div>
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Дизайн детской комнаты </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <p>Создаем мебель на заказ, идеально подходящую под стиль и потребности вашего пространства. Предлагаем индивидуальные решения для дома и общественных интерьеров с учетом всех пожеланий по материалам, размерам и функциональности. Гарантируем высокое качество исполнения и уникальность каждого изделия.</p>
+                        <a href="#" class="btn btn_button">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"> Дизайн гостиной </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <p>Создаем мебель на заказ, идеально подходящую под стиль и потребности вашего пространства. Предлагаем индивидуальные решения для дома и общественных интерьеров с учетом всех пожеланий по материалам, размерам и функциональности. Гарантируем высокое качество исполнения и уникальность каждого изделия.</p>
+                        <a href="#" class="btn btn_button">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"> Дизайн кухни </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <p>Создаем мебель на заказ, идеально подходящую под стиль и потребности вашего пространства. Предлагаем индивидуальные решения для дома и общественных интерьеров с учетом всех пожеланий по материалам, размерам и функциональности. Гарантируем высокое качество исполнения и уникальность каждого изделия.</p>
+                        <a href="#" class="btn btn_button">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFour">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour"> Дизайн офиса </button>
+                </h2>
+                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <p>Создаем мебель на заказ, идеально подходящую под стиль и потребности вашего пространства. Предлагаем индивидуальные решения для дома и общественных интерьеров с учетом всех пожеланий по материалам, размерам и функциональности. Гарантируем высокое качество исполнения и уникальность каждого изделия.</p>
+                        <a href="#" class="btn btn_button">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="product_list hits content-padding">
+    <div class="title d-flex justify-content-between gap-3 align-items-center mb-5">
+        <h4 class="mb-0">Хиты продаж</h4>
+        <div class="d-flex align-items-center gap-2">
+            <a href="#" class="btn btn_button border">В каталог</a>
+            <div class="arrows d-flex">
+                <div class="arrow_btn prev btn btn-outline-secondary btn-sm">‹</div>
+                <div class="arrow_btn next btn btn-outline-secondary btn-sm">›</div>
+            </div>
+        </div>
+    </div>
+    <div class="swiper mySwiper_products">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                include _product.jade
+            </div>
+            <div class="swiper-slide">
+                include _product.jade
+            </div>
+            <div class="swiper-slide">
+                include _product.jade
+            </div>
+            <div class="swiper-slide">
+                include _product.jade
+            </div>
+            <div class="swiper-slide">
+                include _product.jade
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content-padding club_section">
+    <div class="container-fluid px-0">
+        <div class="row" style="--bs-gutter-x: 16px;">
+            <div class="col-lg-6 col-md-6 club_form">
+                <div class="club_content d-flex flex-column align-items-center justify-content-center h-100">
+                    <div class="inner">
+                        <div class="club_badge">КЛУБ MOONK</div>
+                        <div class="title">Что дальше? — <br>все просто!</div>
+                        <p class="club_description">Оставьте ваш контакт и получите доступ ко всем <br>привилегиям клуба Moonk</p>
+                        <form class="email_form">
+                            <div class="field required email-input">
+                                <input type="email" placeholder="Почта">
+                            </div>
+                            <div class="field check required">
+                                <label class="form-check-label"><input class="form-check-input" type="checkbox"><i></i>Нажимая на кнопку «Вступить в клуб» я даю согласие на <b>обработку своих данных</b></label>
+                            </div>
+                            <button type="submit" class="btn btn_button black form_button">Вступить в клуб</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 club_image">
+                <img src="files/form-img.jpg" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+include _footer.jade

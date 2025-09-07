@@ -788,7 +788,7 @@
 <p class="mb-1">Почта: <a href="mailto:order@moonk-design.com"><strong>order@moonk-design.com</strong></a></p>
 <p class="mb-2">Часы работы: <strong>10:00–19:00</strong></p>
 <div class="btn_action">
-<a href="#" class="btn btn_button border">Написать нам</a>
+<a href="#" class="btn btn_button border" data-bs-toggle="modal" data-bs-target="#callModal1" data-bs-dismiss="modal">Написать нам</a>
 <a href="#" class="btn btn-outline-dark btn-sm"><i class="bi bi-tg"></i></a>
 <a href="#" class="btn btn-outline-dark btn-sm"><i class="bi bi-wa"></i></a>
 </div>
@@ -834,7 +834,6 @@
 </div>
 </footer>
 </div>
-<!-- Модалка 1: список шоурумов -->
 <div class="modal fade modal-right" id="showroomsModal" tabindex="-1" aria-hidden="true">
 <div class="modal-dialog modal-dialog-slideout">
 <div class="modal-content">
@@ -1257,7 +1256,6 @@
 </div>
 </div>
 </div>
-<!-- Модалка 2: Москва -->
 <div class="modal fade modal-right modal-map" id="moscowModal" tabindex="-1" aria-hidden="true">
 <div class="modal-dialog modal-dialog-slideout">
 <div class="modal-content">
@@ -1279,7 +1277,6 @@
 </div>
 </div>
 </div>
-<!-- Модалка 3: Санкт-Петербург -->
 <div class="modal fade modal-right modal-map" id="spbModal" tabindex="-1" aria-hidden="true">
 <div class="modal-dialog modal-dialog-slideout">
 <div class="modal-content">
@@ -1290,6 +1287,27 @@
 <div class="modal-body">
 <div class="text-copy">
 <p>Адрес шоурума: Кожевенная линия, 40, «Севкабель Порт» (центральный вход, корпус слева — второй «детский этаж», офис 24).</p>
+<div class="btn_copy"></div>
+</div>
+<button class="btn btn_button black">Проложить маршрут</button>
+</div>
+<div class="map">
+<img src="files/map.jpg" class="img-fluid rounded" alt="Карта Москва">
+</div>
+</div>
+</div>
+</div>
+<div class="modal fade modal-right modal-map" id="addressModal1" tabindex="-1" aria-hidden="true">
+<div class="modal-dialog modal-dialog-slideout">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title">Шоурум Moonk в Москве</h5>
+<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+</div>
+<div class="modal-body">
+<div class="text-copy">
+<p>ТК «ЭлитСтрой материалы»:  МО, г. Одинцово, р.п. Заречье,  ул. Торговая, стр. 2, 2 этаж, сектор L4</p>
+<p>Посетить шоу-рум можно в любой день. Торговый комплекс работает ежедневно с 10:00 до 20:00.</p>
 <div class="btn_copy"></div>
 </div>
 <button class="btn btn_button black">Проложить маршрут</button>
@@ -1353,6 +1371,97 @@
 <input type="file">
 <span>Прикрепить файл</span>
 </label>
+</div>
+<div class="button_form">
+<input type="submit" class="btn_button black xl form_button" value="Отправить">
+<div class="field required check">
+<label class="form-check-label">
+<input type="checkbox">
+<i></i>
+<span>Нажимая на кнопку «Отправить», я даю согласие на <b>обработку своих данных</b></span>
+</label>
+</div>
+</div>                                                  
+</form>
+</div>
+</div>
+</div>
+</div>
+<div class="modal fade modal-right formModal-block" id="formSubscribeModal" tabindex="-1" aria-hidden="true">
+<div class="modal-dialog modal-dialog-slideout">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title">Подписка на новости</h5>
+<div class="text">Подпишитесь на новости Moonk — дизайн, советы, новые коллекции и специальные предложения прямо на вашу почту</div>
+<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+</div>
+<div class="modal-body">
+<form action="">
+<div class="field check d-flex flex-column gap-2">
+<label class="form-check-label">
+<input type="checkbox">
+<i></i>
+<span>Все</span>
+</label>
+<label class="form-check-label">
+<input type="checkbox">
+<i></i>
+<span>Новинки и поступления</span>
+</label>
+<label class="form-check-label">
+<input type="checkbox">
+<i></i>
+<span>Спецпредложения и закрытые распродажи</span>
+</label>
+<label class="form-check-label">
+<input type="checkbox">
+<i></i>
+<span>Проекты и вдохновение</span>
+</label>
+<label class="form-check-label">
+<input type="checkbox">
+<i></i>
+<span>Полезные советы</span>
+</label>
+<label class="form-check-label">
+<input type="checkbox">
+<i></i>
+<span>Новости студии и закулисье</span>
+</label>
+</div>
+<div class="field required email-input">
+<input type="text" placeholder="Почта*">
+</div>
+<div class="button_form">
+<input type="submit" class="btn_button black xl form_button" value="Отправить">
+<div class="field required check">
+<label class="form-check-label">
+<input type="checkbox">
+<i></i>
+<span>Нажимая на кнопку «Отправить», я даю согласие на <b>обработку своих данных</b></span>
+</label>
+</div>
+</div>                                                  
+</form>
+</div>
+</div>
+</div>
+</div>
+<div class="modal fade modal-right formModal-block" id="callModal1" tabindex="-1" aria-hidden="true">
+<div class="modal-dialog modal-dialog-slideout">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title">Связаться с нами</h5>
+<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+</div>
+<div class="modal-body">
+<form action="">
+<div class="field required">
+<input type="text" required placeholder="Имя*">
+</div>
+<div class="field required phone-input">
+<input type="text" required placeholder="Телефон*">
+<span class="clear-btn"></span>
 </div>
 <div class="button_form">
 <input type="submit" class="btn_button black xl form_button" value="Отправить">
