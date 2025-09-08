@@ -235,6 +235,12 @@
 			line-height: 115%;
 		}
 	}
+
+    @media all and (max-width: 767px){
+        br {
+            display: none;
+        }
+    }
 }
 
 .slider_room_block {
@@ -1087,7 +1093,7 @@
     }
         
 
-    @media all and (min-width: 768px) and (max-width: 1300px) {
+    @media all and (min-width: 560px) and (max-width: 1300px) {
         .row {
             margin: 0;
             flex-wrap: nowrap;
@@ -1148,7 +1154,7 @@
                         }
 
                         .btn_button {
-                            padding: 12px 24px;
+                            padding: 12px 16px;
                             font-size: 14px;
                         }
                     }
@@ -1161,7 +1167,7 @@
         }
     }
 
-    @media all and (max-width: 767px)  {
+    @media all and (max-width: 549px)  {
         padding-top: 20px;
         padding-bottom: 20px;
 
@@ -2506,14 +2512,16 @@
     }
 
     .hide_text {
-        max-height: 132px; 
-        overflow: hidden;
         transition: max-height 0.4s ease;
         margin-bottom: 32px;
     }
 
-    .hide_text.active {
-        max-height: 2000px; 
+    .hide_text p:not(:first-child) {
+        display: none;
+    }
+
+    .hide_text.active p {
+        display: block;
     }
 
     @media all and (max-width: 991px) {
@@ -2626,9 +2634,6 @@
         margin-bottom: -100px;
 
         .inner {
-            display: inline-block;
-            vertical-align: top;
-            max-width: 896px;
         }
     }
 
@@ -2991,7 +2996,7 @@
 
 .comfort_section {
     padding-top: 80px;
-    padding-bottom: 60px;
+    padding-bottom: 80px;
 
     h4 {
         font-weight: 500;

@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
             if (slider) slider.classList.remove('top');
             if (menuBurger) menuBurger.classList.remove('top');
         })
-    }
+    } 
 
     const contactsBtn = document.querySelector('.contactsBtn');
 
@@ -601,7 +601,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const btnMore = document.querySelector(".btn_button.more");
 
-    if(btnMore){
+    if (btnMore) {
         const textBlock = document.querySelector(".hide_text");
         const span = btnMore.querySelector("span");
 
@@ -610,9 +610,9 @@ document.addEventListener("DOMContentLoaded", function() {
             btnMore.classList.toggle("active");
 
             if (textBlock.classList.contains("active")) {
-              span.textContent = "Скрыть";
+                span.textContent = "Скрыть";
             } else {
-              span.textContent = "Подробнее";
+                span.textContent = "Подробнее";
             }
         });
     }
@@ -665,7 +665,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         const windowWidth = window.innerWidth;
 
-        if (windowWidth >= 768 && windowWidth < 1300) {
+        if (windowWidth >= 560 && windowWidth < 1300) {
             if (!swiperInstance) {
                 swiperInstance = new Swiper(".service_price-swiper", {
                     slidesPerView: 'auto',
@@ -789,7 +789,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     let comfortSwiper = null;
         
-    function initComfortSwiper() {
+    function initComfortSwiper2() {
         const comfortSlider = document.querySelector(".comfort-swiper");
 
         if(!comfortSlider) return;
@@ -809,9 +809,9 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    window.addEventListener('load', initComfortSwiper);
+    window.addEventListener('load', initComfortSwiper2);
     
-    window.addEventListener('resize', debounce(initComfortSwiper, 250));
+    window.addEventListener('resize', debounce(initComfortSwiper2, 250));
 
 
     let faqSliderSwiper = null;
