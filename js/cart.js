@@ -12,6 +12,29 @@ document.addEventListener('DOMContentLoaded', function(){
             });
         }
     })
+
+    const fizCheckbox = document.querySelector('input[name="fiz"]');
+    const yurCheckbox = document.querySelector('input[name="yur"]');
+
+    if(fizCheckbox && yurCheckbox) {
+        const innField = document.querySelector('.inn-field');
+
+        function toggleFields(e) {
+            if (e.target === fizCheckbox) {
+                yurCheckbox.checked = false;
+                innField.classList.add('d-none');
+            } else if (e.target === yurCheckbox) {
+                fizCheckbox.checked = false;
+                innField.classList.remove('d-none');
+            }
+        }
+
+        fizCheckbox.addEventListener("change", toggleFields);
+        yurCheckbox.addEventListener("change", toggleFields);
+
+        fizCheckbox.checked = true;
+        innField.classList.add('d-none');
+    }
 });
 
 $(function(){
