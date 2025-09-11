@@ -1060,6 +1060,240 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
+// Скрипт для поиска в модальном окне
+document.addEventListener('DOMContentLoaded', function() {
+    const searchModal = document.getElementById('searchModal');
+    const searchInput = document.querySelector('.search_input');
+    const recentResult = document.querySelector('.recent_result');
+    const emptyResult = document.querySelector('.empty_result');
+    const listProductsModal = document.querySelector('.list_products_modal');
+    const allResult = document.querySelector('.all_rezult');
+    
+    // Имитация данных продуктов для поиска
+    const mockProducts = [
+        {
+            id: 1,
+            name: 'Стул Malevich',
+            age: 'от 2 до 7 лет',
+            currentPrice: '16 700 ₽',
+            oldPrice: '24 000 ₽',
+            image: 'files/prod.jpg',
+            hoverImage: 'files/prod-hov.jpg',
+            colors: ['#3983a0', '#b792c5', '#e9e2d2', '#55abc4', '#9c4a3e', '#f1c73e', '#97b777', '#44659b']
+        },
+        {
+            id: 2,
+            name: 'Детская кровать',
+            age: 'от 3 до 10 лет',
+            currentPrice: '25 500 ₽',
+            oldPrice: '30 000 ₽',
+            image: 'files/prod.jpg',
+            hoverImage: 'files/prod-hov.jpg',
+            colors: ['#3983a0', '#b792c5', '#e9e2d2']
+        },
+        {
+            id: 3,
+            name: 'Детский стул',
+            age: 'от 1 до 5 лет',
+            currentPrice: '8 900 ₽',
+            oldPrice: '12 000 ₽',
+            image: 'files/prod.jpg',
+            hoverImage: 'files/prod-hov.jpg',
+            colors: ['#55abc4', '#9c4a3e', '#f1c73e', '#97b777']
+        }
+    ];
+
+    // Получение недавних поисков из localStorage
+    function getRecentSearches() {
+        const searches = localStorage.getItem('recentSearches');
+        return searches ? JSON.parse(searches) : ['Детская кровать', 'Стул', 'Детский стул'];
+    }
+
+    // Сохранение поиска в localStorage
+    function saveRecentSearch(query) {
+        let searches = getRecentSearches();
+        
+        searches = searches.filter(search => search.toLowerCase() !== query.toLowerCase());
+        searches.unshift(query);
+        searches = searches.slice(0, 10);
+        
+        localStorage.setItem('recentSearches', JSON.stringify(searches));
+        updateRecentSearches();
+    }
+
+    // Обновление списка недавних поисков
+    function updateRecentSearches() {
+        const searches = getRecentSearches();
+        recentResult.innerHTML = '';
+        
+        searches.forEach(search => {
+            const item = document.createElement('div');
+            item.className = 'item d-flex align-items-center';
+            item.innerHTML = `
+                <a href="#" class="d-flex align-items-center search-recent-link">
+                    <i class="bi bi-recent"></i>${search}
+                </a>
+                <div class="delete" data-search="${search}">
+                    <i class="bi bi-x"></i>
+                </div>
+            `;
+            recentResult.appendChild(item);
+        });
+
+        document.querySelectorAll('.search-recent-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const query = this.textContent.trim();
+                searchInput.value = query;
+                performSearch(query);
+            });
+        });
+
+        document.querySelectorAll('.delete').forEach(deleteBtn => {
+            deleteBtn.addEventListener('click', function() {
+                const searchToDelete = this.dataset.search;
+                deleteRecentSearch(searchToDelete);
+            });
+        });
+    }
+
+    function deleteRecentSearch(searchQuery) {
+        let searches = getRecentSearches();
+        searches = searches.filter(search => search !== searchQuery);
+        localStorage.setItem('recentSearches', JSON.stringify(searches));
+        updateRecentSearches();
+    }
+
+    // Создание HTML для продукта
+    function createProductHTML(product) {
+        const colorsHTML = product.colors.map(color => 
+            `<div class="color rounded-circle" style="background: ${color};"></div>`
+        ).join('');
+        
+        const moreColors = product.colors.length > 8 ? `<div class="more small text-muted">+${product.colors.length - 8}</div>` : '';
+
+        return `
+            <div class="card product_item border-0">
+                <div class="image">
+                    <div class="age">${product.age}</div>
+                    <a href="#">
+                        <img src="${product.image}" class="card-img-top" alt="">
+                        <img src="${product.hoverImage}" class="card-img-top hov" alt="">
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="colors d-flex flex-wrap align-items-center">
+                        ${colorsHTML}
+                        ${moreColors}
+                    </div>
+                    <div class="name mb-1">
+                        <a href="#" class="text-decoration-none">${product.name}</a>
+                        <div class="favorite-add"></div>
+                    </div>
+                    <div class="price d-flex gap-2 align-items-center">
+                        <span class="current text-dark">${product.currentPrice}</span>
+                        ${product.oldPrice ? `<span class="old text-muted text-decoration-line-through">${product.oldPrice}</span>` : ''}
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    function performSearch(query) {
+        if (!query.trim()) {
+            showInitialState();
+            return;
+        }
+
+        const filteredProducts = mockProducts.filter(product =>
+            product.name.toLowerCase().includes(query.toLowerCase())
+        );
+
+        if (filteredProducts.length === 0) {
+            showEmptyResult();
+        } else {
+            showSearchResults(filteredProducts, query);
+        }
+    }
+
+    function showInitialState() {
+        recentResult.style.display = 'flex';
+        emptyResult.style.display = 'none';
+        listProductsModal.style.display = 'none';
+        allResult.style.display = 'none';
+    }
+
+    function showEmptyResult() {
+        recentResult.style.display = 'none';
+        emptyResult.style.display = 'block';
+        listProductsModal.style.display = 'none';
+        allResult.style.display = 'none';
+    }
+
+    function showSearchResults(products, query) {
+        recentResult.style.display = 'none';
+        emptyResult.style.display = 'none';
+        listProductsModal.style.display = 'block';
+        allResult.style.display = 'block';
+
+        const displayProducts = products.slice(0, 6);
+        listProductsModal.innerHTML = displayProducts.map(product => createProductHTML(product)).join('');
+
+        const allResultLink = allResult.querySelector('a');
+        if (allResultLink) {
+            allResultLink.href = `/search?q=${encodeURIComponent(query)}`;
+            allResultLink.textContent = `К результату поиска (${products.length})`;
+        }
+
+        saveRecentSearch(query);
+    }
+
+    let searchTimeout;
+    searchInput.addEventListener('input', function() {
+        clearTimeout(searchTimeout);
+        const query = this.value;
+        
+        searchTimeout = setTimeout(() => {
+            performSearch(query);
+        }, 300); 
+    });
+
+    searchInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            const query = this.value.trim();
+            if (query) {
+                window.location.href = `/search?q=${encodeURIComponent(query)}`;
+            }
+        }
+    });
+
+    searchModal.addEventListener('shown.bs.modal', function() {
+        searchInput.focus();
+        if (!searchInput.value.trim()) {
+            showInitialState();
+            updateRecentSearches();
+        }
+    });
+
+    searchModal.addEventListener('hidden.bs.modal', function() {
+        searchInput.value = '';
+        showInitialState();
+    });
+
+    updateRecentSearches();
+    showInitialState();
+
+    document.addEventListener('click', function(e) {
+        if (e.target.closest('.all_rezult a')) {
+            const query = searchInput.value.trim();
+            if (query) {
+                saveRecentSearch(query);
+            }
+        }
+    });
+});
+
 
 $(function() {
 

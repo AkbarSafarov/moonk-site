@@ -208,8 +208,34 @@
     <div class="modal-dialog modal-dialog-slideout">
         <div class="modal-content">
             <div class="modal-header">
-                <input type="text" class="search_input">
+                <input type="text" class="search_input" placeholder="Поиск">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+            </div>
+            <div class="modal-body">
+                <div class="recent_result">
+                    <div class="item d-flex align-items-center">
+                        <a href="" class=" d-flex align-items-center"><i class="bi bi-recent"></i>Детская кровать</a>
+                        <div class="delete"><i class="bi bi-x"></i></div>
+                    </div>
+                    <div class="item d-flex align-items-center">
+                        <a href="" class=" d-flex align-items-center"><i class="bi bi-recent"></i>Стул</a>
+                        <div class="delete"><i class="bi bi-x"></i></div>
+                    </div>
+                    <div class="item d-flex align-items-center">
+                        <a href="" class=" d-flex align-items-center"><i class="bi bi-recent"></i>Детский стул</a>
+                        <div class="delete"><i class="bi bi-x"></i></div>
+                    </div>
+                </div>
+                <div class="empty_result">Ничего не найдено</div>
+                <div class="list_products_modal">
+                    include _product.jade
+                    include _product.jade
+                    include _product.jade
+                    include _product.jade
+                </div>
+                <div class="all_rezult">
+                    <a href="" class="btn_button black xl">К результату поиска</a>
+                </div>
             </div>
         </div>
     </div>

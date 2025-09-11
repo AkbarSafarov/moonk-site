@@ -565,7 +565,7 @@
 </div>
 <button class="checkout-btn btn btn_button black text-white rounded-2">Перейти к оформлению</button>
 </div>
-</div>
+</div>                
 <a href="#" class="sber-block d-flex align-items-center gap-2" data-тип="Сбер">
 <span class="sber-block__icon bg-white rounded-1 p-1" style="width: 40px; height: 40px;">
 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -601,6 +601,51 @@
 </i>
 </span>
 </a>
+</div>
+<!-- АЛЕРТЫ - добавлены здесь -->
+<div class="cart-alerts">
+<!-- Информационный алерт о сборке -->
+<div class="alert-item alert-info">
+<div class="alert-icon">
+<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M10 18.3333C14.6024 18.3333 18.3334 14.6024 18.3334 10C18.3334 5.39763 14.6024 1.66667 10 1.66667C5.39765 1.66667 1.66669 5.39763 1.66669 10C1.66669 14.6024 5.39765 18.3333 10 18.3333Z" stroke="#0c5460" stroke-width="1.5" />
+<path d="M10 6.66667V10" stroke="#0c5460" stroke-width="1.5" stroke-linecap="round" />
+<path d="M10 13.3333H10.0083" stroke="#0c5460" stroke-width="1.5" stroke-linecap="round" />
+</svg>
+</div>
+<div class="alert-content">
+<div class="alert-title">Сборка мебели</div>
+<div class="alert-text">                                Услуга сборки доступна только в Москве и МО. Стоимость рассчитывается индивидуально и составляет от 15% от стоимости товара.                            </div>
+</div>
+</div>
+<!-- Предупреждение о доставке -->
+<div class="alert-item alert-warning">
+<div class="alert-icon">
+<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M10 1.66667L18.3333 18.3333H1.66667L10 1.66667Z" stroke="#664d03" stroke-width="1.5" stroke-linejoin="round" />
+<path d="M10 7.5V11.25" stroke="#664d03" stroke-width="1.5" stroke-linecap="round" />
+<path d="M10 15H10.0083" stroke="#664d03" stroke-width="1.5" stroke-linecap="round" />
+</svg>
+</div>
+<div class="alert-content">
+<div class="alert-title">Доставка крупногабаритных товаров</div>
+<div class="alert-text">Доставка осуществляется до подъезда. Подъем на этаж оплачивается отдельно.                                <a href="#" class="alert-link">Подробнее об условиях</a>
+</div>
+</div>
+</div>
+<!-- Успешное уведомление -->
+<div class="alert-item alert-success">
+<div class="alert-icon">
+<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M10 18.3333C14.6024 18.3333 18.3334 14.6024 18.3334 10C18.3334 5.39763 14.6024 1.66667 10 1.66667C5.39765 1.66667 1.66669 5.39763 1.66669 10C1.66669 14.6024 5.39765 18.3333 10 18.3333Z" stroke="#0a3622" stroke-width="1.5" />
+<path d="M6.66669 10L8.75002 12.0833L13.3334 7.5" stroke="#0a3622" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+</svg>
+</div>
+<div class="alert-content">
+<div class="alert-title">Товары в наличии</div>
+<div class="alert-text">Все выбранные товары есть в наличии на складе. Готовность к отгрузке в течение 1-2 рабочих дней.                            </div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -814,8 +859,145 @@
 <div class="modal-dialog modal-dialog-slideout">
 <div class="modal-content">
 <div class="modal-header">
-<input type="text" class="search_input">
+<input type="text" class="search_input" placeholder="Поиск">
 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+</div>
+<div class="modal-body">
+<div class="recent_result">
+<div class="item d-flex align-items-center">
+<a href="" class=" d-flex align-items-center"><i class="bi bi-recent"></i>Детская кровать</a>
+<div class="delete"><i class="bi bi-x"></i></div>
+</div>
+<div class="item d-flex align-items-center">
+<a href="" class=" d-flex align-items-center"><i class="bi bi-recent"></i>Стул</a>
+<div class="delete"><i class="bi bi-x"></i></div>
+</div>
+<div class="item d-flex align-items-center">
+<a href="" class=" d-flex align-items-center"><i class="bi bi-recent"></i>Детский стул</a>
+<div class="delete"><i class="bi bi-x"></i></div>
+</div>
+</div>
+<div class="empty_result">Ничего не найдено</div>
+<div class="list_products_modal"><div class="card product_item border-0">
+<div class="image">
+<div class="age">от 2 до 7 лет</div>
+<a href="#">
+<img src="files/prod.jpg" class="card-img-top" alt="">
+<img src="files/prod-hov.jpg" class="card-img-top hov" alt="">
+</a>
+</div>
+<div class="card-body">
+<div class="colors d-flex flex-wrap align-items-center">
+<div class="color rounded-circle" style="background:#3983a0;"></div>
+<div class="color rounded-circle" style="background:#b792c5;"></div>
+<div class="color rounded-circle" style="background:#e9e2d2;"></div>
+<div class="color rounded-circle" style="background:#55abc4;"></div>
+<div class="color rounded-circle" style="background:#9c4a3e;"></div>
+<div class="color rounded-circle" style="background:#f1c73e;"></div>
+<div class="color rounded-circle" style="background:#97b777;"></div>
+<div class="color rounded-circle" style="background:#44659b;"></div>
+<div class="more small text-muted">+2</div>
+</div>
+<div class="name mb-1">
+<a href="#" class="text-decoration-none">Стул Malevich</a>
+<div class="favorite-add"></div>
+</div>
+<div class="price d-flex gap-2 align-items-center">
+<span class="current text-dark">16 700 ₽</span>
+<span class="old text-muted text-decoration-line-through">24 000 ₽</span>
+</div>
+</div>
+</div><div class="card product_item border-0">
+<div class="image">
+<div class="age">от 2 до 7 лет</div>
+<a href="#">
+<img src="files/prod.jpg" class="card-img-top" alt="">
+<img src="files/prod-hov.jpg" class="card-img-top hov" alt="">
+</a>
+</div>
+<div class="card-body">
+<div class="colors d-flex flex-wrap align-items-center">
+<div class="color rounded-circle" style="background:#3983a0;"></div>
+<div class="color rounded-circle" style="background:#b792c5;"></div>
+<div class="color rounded-circle" style="background:#e9e2d2;"></div>
+<div class="color rounded-circle" style="background:#55abc4;"></div>
+<div class="color rounded-circle" style="background:#9c4a3e;"></div>
+<div class="color rounded-circle" style="background:#f1c73e;"></div>
+<div class="color rounded-circle" style="background:#97b777;"></div>
+<div class="color rounded-circle" style="background:#44659b;"></div>
+<div class="more small text-muted">+2</div>
+</div>
+<div class="name mb-1">
+<a href="#" class="text-decoration-none">Стул Malevich</a>
+<div class="favorite-add"></div>
+</div>
+<div class="price d-flex gap-2 align-items-center">
+<span class="current text-dark">16 700 ₽</span>
+<span class="old text-muted text-decoration-line-through">24 000 ₽</span>
+</div>
+</div>
+</div><div class="card product_item border-0">
+<div class="image">
+<div class="age">от 2 до 7 лет</div>
+<a href="#">
+<img src="files/prod.jpg" class="card-img-top" alt="">
+<img src="files/prod-hov.jpg" class="card-img-top hov" alt="">
+</a>
+</div>
+<div class="card-body">
+<div class="colors d-flex flex-wrap align-items-center">
+<div class="color rounded-circle" style="background:#3983a0;"></div>
+<div class="color rounded-circle" style="background:#b792c5;"></div>
+<div class="color rounded-circle" style="background:#e9e2d2;"></div>
+<div class="color rounded-circle" style="background:#55abc4;"></div>
+<div class="color rounded-circle" style="background:#9c4a3e;"></div>
+<div class="color rounded-circle" style="background:#f1c73e;"></div>
+<div class="color rounded-circle" style="background:#97b777;"></div>
+<div class="color rounded-circle" style="background:#44659b;"></div>
+<div class="more small text-muted">+2</div>
+</div>
+<div class="name mb-1">
+<a href="#" class="text-decoration-none">Стул Malevich</a>
+<div class="favorite-add"></div>
+</div>
+<div class="price d-flex gap-2 align-items-center">
+<span class="current text-dark">16 700 ₽</span>
+<span class="old text-muted text-decoration-line-through">24 000 ₽</span>
+</div>
+</div>
+</div><div class="card product_item border-0">
+<div class="image">
+<div class="age">от 2 до 7 лет</div>
+<a href="#">
+<img src="files/prod.jpg" class="card-img-top" alt="">
+<img src="files/prod-hov.jpg" class="card-img-top hov" alt="">
+</a>
+</div>
+<div class="card-body">
+<div class="colors d-flex flex-wrap align-items-center">
+<div class="color rounded-circle" style="background:#3983a0;"></div>
+<div class="color rounded-circle" style="background:#b792c5;"></div>
+<div class="color rounded-circle" style="background:#e9e2d2;"></div>
+<div class="color rounded-circle" style="background:#55abc4;"></div>
+<div class="color rounded-circle" style="background:#9c4a3e;"></div>
+<div class="color rounded-circle" style="background:#f1c73e;"></div>
+<div class="color rounded-circle" style="background:#97b777;"></div>
+<div class="color rounded-circle" style="background:#44659b;"></div>
+<div class="more small text-muted">+2</div>
+</div>
+<div class="name mb-1">
+<a href="#" class="text-decoration-none">Стул Malevich</a>
+<div class="favorite-add"></div>
+</div>
+<div class="price d-flex gap-2 align-items-center">
+<span class="current text-dark">16 700 ₽</span>
+<span class="old text-muted text-decoration-line-through">24 000 ₽</span>
+</div>
+</div>
+</div></div>
+<div class="all_rezult">
+<a href="" class="btn_button black xl">К результату поиска</a>
+</div>
 </div>
 </div>
 </div>

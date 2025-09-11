@@ -1,0 +1,38 @@
+include _header-inner.jade
+<section class="content-padding title_page category_page">
+    <h1 class="title">Результат поиска</h1>
+</section>
+<section class="content-padding filter_section">
+    <div class="inner">
+        <div class="d-flex gap-4" style="--bs-gutter-x: 16px;">
+            <div class="col filter_btn">
+                <div class="action_btn"><i class="bi bi-filter"></i>Фильтр</div>
+            </div>
+            <div class="col soart_btn">
+                <div class="action_btn"><i class="bi bi-soart"></i>по умолчанию</div>
+            </div>
+            <div class="count_products">4 товаров</div>
+            <div class="view_btn">
+                <div class="thumb1 active"></div>
+                <div class="thumb2"></div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content-padding product_list_section">
+    <div class="row" style="--bs-gutter-x: 16px;">
+        <div class="item col-lg-3 col-md-4 col-6">
+            include _product-search.jade
+        </div>
+        <div class="item col-lg-3 col-md-4 col-6">
+            include _product-search.jade
+        </div>
+        <div class="item col-lg-3 col-md-4 col-6">
+            include _product-search.jade
+        </div>
+        <div class="item col-lg-3 col-md-4 col-6">
+            include _product-search.jade
+        </div>
+    </div>
+</section>
+include _footer.jade
