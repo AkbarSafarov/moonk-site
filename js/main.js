@@ -1063,24 +1063,19 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if(galleryContainer){
         let galleryThumbs = new Swiper(".gallery-thumbs", {
-            centeredSlides: true,
-            centeredSlidesBounds: true,
             slidesPerView: 'auto',
-            watchOverflow: true,
-            watchSlidesVisibility: true,
-            watchSlidesProgress: true,
             direction: 'vertical',
             spaceBetween: 12,
         });
 
         let galleryMain = new Swiper(".gallery-main", {
-            watchOverflow: true,
-            watchSlidesVisibility: true,
-            watchSlidesProgress: true,
-            preventInteractionOnTransition: true,
             pagination: {
                 el: '.swiper-pagination-gal',
                 clickable: true,
+            },
+            navigation: {
+                nextEl: '.gallery-main .next',
+                prevEl: '.gallery-main .prev',
             },
             effect: 'fade',
                 fadeEffect: {
@@ -1091,14 +1086,393 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
 
-        galleryMain.on('slideChangeTransitionStart', function() {
-            galleryThumbs.slideTo(galleryMain.activeIndex);
+        // galleryMain.on('slideChangeTransitionStart', function() {
+        //     galleryThumbs.slideTo(galleryMain.activeIndex);
+        // });
+
+        // galleryThumbs.on('transitionStart', function(){
+        //     galleryMain.slideTo(galleryThumbs.activeIndex);
+        // });
+
+
+        const mySwiperModal = new Swiper('.mySwiper_modal', {
+            loop: true,
+            navigation: {
+                nextEl: '.mySwiper_modal .swiper-button-next',
+                prevEl: '.mySwiper_modal .swiper-button-prev',
+            },
         });
 
-        galleryThumbs.on('transitionStart', function(){
-            galleryMain.slideTo(galleryThumbs.activeIndex);
+        const mainGalleryImages = document.querySelectorAll('.gallery-main .swiper-slide img');
+
+        mainGalleryImages.forEach((image, index) => {
+            image.addEventListener('click', () => {
+                const modal = new bootstrap.Modal(document.getElementById('showTabModal'));
+                modal.show();
+
+                mySwiperModal.slideToLoop(index);
+            });
         });
     }
+
+    const colors = document.querySelectorAll('.product_detals .colors .color');
+
+    if(colors.length) {
+        colors.forEach(color => {
+            color.addEventListener('click', () => {
+                colors.forEach(c => c.classList.remove('active'));
+                color.classList.add('active');
+            });
+        });
+    }
+
+    const productDetalsBlock = document.querySelector('.product_detals');
+
+    if(productDetalsBlock){
+
+        const state = {
+            size: null,
+            mechanism: null,
+            additional: [],
+            angle: null
+        };
+
+        function formatPrice(price) {
+            return price.toLocaleString('ru-RU') + ' ₽';
+        }
+
+        function calculateTotal() {
+            const totalPrice = document.querySelector('.prices .current'); 
+
+            console.log(totalPrice)
+
+            let total = +totalPrice.getAttribute('data-current');
+
+            if (state.size) {
+                total += state.size.price;
+            }
+            if (state.mechanism) {
+                total += state.mechanism.price;
+            }
+            state.additional.forEach(item => total += item.price);
+
+            return total;
+        }
+
+        function togglePricesClass() {
+            const prices = document.querySelector('.prices');
+            if (!prices) return;
+
+            if (state.size || state.mechanism || state.additional.length > 0) {
+                prices.classList.add('has-options');
+            } else {
+                prices.classList.remove('has-options');
+            }
+        }
+
+
+
+        function updatePriceTable() {
+            const priceBreakdown = document.getElementById('priceBreakdown');
+            const totalPrice = document.querySelector('.prices .current'); 
+
+            if (!priceBreakdown || !totalPrice) return;
+
+            let html = '';
+
+            if (state.size) {
+                html += `
+                    <div class="d-flex">
+                        <div class="name">Размер ${state.size.name}</div>
+                        <div class="price">${formatPrice(state.size.price)}</div>
+                    </div>
+                `;
+            }
+
+            if (state.mechanism) {
+                html += `
+                    <div class="d-flex">
+                        <div class="name">${state.mechanism.name}</div>
+                        <div class="price">+${formatPrice(state.mechanism.price)}</div>
+                    </div>
+                `;
+            }
+
+            state.additional.forEach(item => {
+                html += `
+                    <div class="d-flex">
+                        <div class="name">${item.name}</div>
+                        <div class="price">+${formatPrice(item.price)}</div>
+                    </div>
+                `;
+            });
+
+            priceBreakdown.innerHTML = html;
+            totalPrice.textContent = formatPrice(calculateTotal());
+
+            togglePricesClass();
+        }
+
+
+        function updateAccordionTitles() {
+            const sizeTitle = document.getElementById('sizeTitle');
+
+            if (state.size) {
+                sizeTitle.innerHTML = `Размер <span class="accordion-title-update">${state.size.name}</span>`;
+            } else {
+                sizeTitle.innerHTML = 'Размер';
+            }
+
+            const mechanismTitle = document.getElementById('mechanismTitle');
+            if (state.mechanism) {
+                mechanismTitle.innerHTML = `Механизмы <span class="accordion-title-update">${state.mechanism.name}</span>`;
+            } else {
+                mechanismTitle.innerHTML = 'Механизмы';
+            }
+
+            const additionalTitle = document.getElementById('additionalTitle');
+            if (state.additional.length > 0) {
+                const count = state.additional.length;
+                additionalTitle.innerHTML = `Дополнительно <span class="accordion-title-update">+${count}</span>`;
+            } else {
+                additionalTitle.innerHTML = 'Дополнительно';
+            }
+
+            const angleTitle = document.getElementById('angleTitle');
+            if (state.angle) {
+                angleTitle.innerHTML = `Угол кровати <span class="accordion-title-update">${state.angle}</span>`;
+            } else {
+                angleTitle.innerHTML = 'Угол кровати';
+            }
+        }
+
+
+        const sizes = document.querySelectorAll('.product_detals .size_block_item');
+        if (sizes.length) {
+            sizes.forEach(size => {
+                size.addEventListener('click', () => {
+                    if (size.classList.contains('disabled')) return;
+                    
+                    sizes.forEach(c => c.classList.remove('active'));
+                    size.classList.add('active');
+                    
+                    state.size = {
+                        name: size.dataset.size,
+                        price: parseInt(size.dataset.price)
+                    };
+                    
+                    updateAccordionTitles();
+                    updatePriceTable();
+                });
+            });
+        }
+
+        const params = document.querySelectorAll('.product_detals .param_block_item');
+        if (params.length) {
+            params.forEach(param => {
+                param.addEventListener('click', () => {
+                    params.forEach(c => c.classList.remove('active'));
+                    param.classList.add('active');
+                    
+                    state.angle = param.dataset.angle;
+                    
+                    updateAccordionTitles();
+                });
+            });
+        }
+
+        document.querySelectorAll('.d-flex.flex-column[data-group="mechanism"]').forEach(group => {
+            const mods = group.querySelectorAll('.mod:not(.disabled)');
+            mods.forEach(mod => {
+                const radio = mod.querySelector('.radio');
+                if (!radio) return;
+                
+                mod.addEventListener('click', () => {
+                    const wasActive = mod.classList.contains('active');
+                    
+                    mods.forEach(m => m.classList.remove('active'));
+                    
+                    if (!wasActive) {
+                        mod.classList.add('active');
+                        
+                        state.mechanism = {
+                            name: mod.dataset.name,
+                            price: parseInt(mod.dataset.price)
+                        };
+                    } else {
+                        state.mechanism = null;
+                    }
+                    
+                    updateAccordionTitles();
+                    updatePriceTable();
+                });
+            });
+        });
+
+        document.querySelectorAll('.d-flex.flex-column[data-group="additional"] .mod .checkbox').forEach(box => {
+            const mod = box.closest('.mod');
+            if (!mod.classList.contains('disabled')) {
+                mod.addEventListener('click', () => {
+                    mod.classList.toggle('active');
+                    
+                    const item = {
+                        name: mod.dataset.name,
+                        price: parseInt(mod.dataset.price)
+                    };
+                    
+                    if (mod.classList.contains('active')) {
+                        state.additional.push(item);
+                    } else {
+                        state.additional = state.additional.filter(
+                            existing => existing.name !== item.name
+                        );
+                    }
+                    
+                    updateAccordionTitles();
+                    updatePriceTable();
+                });
+            }
+        });
+
+        updateAccordionTitles();
+        //updatePriceTable();
+
+        const pricesBlock = document.querySelector('.prices');
+
+        if (pricesBlock) {
+            pricesBlock.addEventListener('click', () => {
+                if (!pricesBlock.classList.contains('has-options')) return; 
+
+                const priceTable = document.getElementById('priceBreakdown');
+                if (priceTable) {
+                    priceTable.classList.toggle('open'); 
+                }
+            });
+        }
+
+        const modal = document.getElementById('accordionModal');
+        const modalTitle = modal.querySelector('.accordion-modal__title');
+        const modalBody = modal.querySelector('.accordion-modal__body');
+        const modalClose = modal.querySelector('.accordion-modal__close');
+
+        document.querySelectorAll('.product_detals .accordion-button').forEach(btn => {
+            btn.addEventListener('click', e => {
+            if (window.innerWidth <= 768) { 
+                e.preventDefault();
+
+                let title = btn.innerText.trim();
+                let targetId = btn.getAttribute('data-bs-target');
+                let content = document.querySelector(targetId).querySelector('.accordion-inner').innerHTML;
+
+                modalTitle.textContent = title;
+                modalBody.innerHTML = content;
+
+                modal.classList.add('active');
+            }
+          });
+        });
+
+        modalBody.addEventListener('click', e => {
+            const item = e.target.closest('[data-type]');
+            if (!item || item.classList.contains('disabled')) return;
+
+            const type = item.dataset.type;
+
+            // снять active только у элементов этого же типа
+            modalBody.querySelectorAll(`[data-type="${type}"]`).forEach(el => el.classList.remove('active'));
+            item.classList.add('active');
+
+            // обновляем state
+            if (type === 'size') {
+                state.size = {
+                    name: item.dataset.size,
+                    price: parseInt(item.dataset.price)
+                };
+            } else if (type === 'mechanism') {
+                state.mechanism = {
+                    name: item.dataset.name,
+                    price: parseInt(item.dataset.price)
+                };
+            } else if (type === 'angle') {
+                state.angle = item.dataset.angle; 
+            } else if (type === 'additional') {
+                if (item.classList.contains('active')) {
+                    state.additional.push({
+                        name: item.dataset.name,
+                        price: parseInt(item.dataset.price)
+                    });
+                } else {
+                    state.additional = state.additional.filter(a => a.name !== item.dataset.additional);
+                }
+            }
+
+            updateAccordionTitles();
+            updatePriceTable();
+        });
+
+
+
+        modalClose.addEventListener('click', () => {
+            modal.classList.remove('active');
+
+            const opened = document.querySelector('.accordion-collapse.show');
+            const openedItem = document.querySelector('.accordion-item.active');
+
+            if (opened) {
+                opened.classList.remove('show');
+                openedItem.classList.remove('active');
+                const btn = document.querySelector(`[data-bs-target="#${opened.id}"]`);
+                if (btn) btn.classList.add('collapsed');
+            }
+        });
+
+    }
+
+    const reviewsSwiper = document.querySelector('.reviewsSwiper');
+
+    if(reviewsSwiper){
+        let reviewsMain = new Swiper(".reviewsSwiper", {
+            slidesPerView: 'auto',
+            spaceBetween: 8,
+            loop: true,
+            centeredSlides: true,
+            roundLengths: true,
+            navigation: {
+                nextEl: ".reviewsSwiper .arrow_btn.next",
+                prevEl: ".reviewsSwiper .arrow_btn.prev",
+            },
+            breakpoints: {
+                0: { slidesPerView: 'auto', centeredSlides: false },
+                992: { slidesPerView: 'auto' }
+            }
+        });
+    }
+
+    let reviewCardSliderSwiper = null;
+        
+    function initreviewCardSwiper() {
+        const reviewCardCwiper = document.querySelector(".review-card-swiper");
+
+        if(!reviewCardCwiper) return;
+
+        if (window.innerWidth <= 767) {
+            if (!reviewCardSliderSwiper) {
+                reviewCardSliderSwiper = new Swiper('.review-card-swiper', {
+                    slidesPerView: 'auto',
+                    spaceBetween: 12,
+                });
+            }
+        } else {
+            if (reviewCardSliderSwiper) {
+                reviewCardSliderSwiper.destroy(true, true);
+                reviewCardSliderSwiper = null;
+            }
+        }
+    }
+
+    window.addEventListener('load', initreviewCardSwiper);
+    
+    window.addEventListener('resize', debounce(initreviewCardSwiper, 250));
 });
 
 // Скрипт для поиска в модальном окне
