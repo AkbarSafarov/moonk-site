@@ -5783,3 +5783,207 @@
         }
     }
 }
+
+.product_main_block {
+    padding-top: 16px;
+
+    .gallery-container {
+        overflow: hidden;
+        padding-left: 104px;
+        position: relative;
+    }
+
+    .swiper {
+        width: 100%;
+        height: 100vh;
+        position: relative;
+    }
+
+    .swiper-wrapper {
+
+    }
+
+    .swiper-slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .gallery-main {
+        max-width: 100%;
+
+        .swiper-slide {
+            background: var(--gray);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+    }
+
+    .swiper-slide {
+        padding: 50px 50px;
+    }
+    
+
+    /* Thumbnail navigation */
+    .gallery-thumbs {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        z-index: 10;
+        width: 72px;
+
+        .swiper-slide {
+            padding: 0;
+            height: 92px;
+            border-radius: 4px;
+            background: var(--gray);
+            transition: all 0.3s ease;
+            cursor: pointer;
+
+            img {
+                border-radius: 4px;
+            }
+
+            &:hover,
+            &.swiper-slide-thumb-active{
+                opacity: 0.5;
+            }
+        }
+    }
+
+    .swiper-pagination-gal {
+        position: absolute;
+        bottom: 32px !important;
+        left: auto;
+        right: 44px;
+        z-index: 10;
+        display: flex;
+        justify-content: center;
+        gap: 4px;
+        width: auto !important;
+        transform: none !important;
+        display: none;
+    }
+
+    .swiper-pagination-gal .swiper-pagination-bullet {
+        width: 60px;
+        height: 4px;
+        border-radius: 2px;
+        background: rgba(255, 255, 255, 0.3);
+        opacity: 1;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .swiper-pagination-gal .swiper-pagination-bullet-active::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.8);
+        animation: progressBar 6s linear infinite;
+    }
+
+    @keyframes progressBar {
+        0% { width: 0%; }
+        100% { width: 100%; }
+    }
+
+
+
+    @media all and (max-width: 991px) {
+        .gallery-container{
+            padding-left: 0;
+            padding-bottom: 30px;
+        }
+
+        .gallery-thumbs {
+            display: none !important;
+        }
+
+        .swiper-pagination-gal {
+            bottom: 12px !important;
+            left: 0;
+            right: 0;
+            gap: 6px;
+            display: flex;
+        }
+
+        .swiper-pagination-gal .swiper-pagination-bullet {
+            width: 6px;
+            height: 6px;
+            border-radius: 4px;
+            background: var(--graphite-100);
+            margin: 0;
+        }
+
+        .swiper-pagination-gal .swiper-pagination-bullet-active {
+            width: 12px;
+            background: #373737;
+        }
+
+        .swiper-pagination-gal .swiper-pagination-bullet-active::before {
+            display: none;
+        }
+    }
+}
+
+.product_detals {
+    padding-left: 48px;
+    position: relative;
+
+    h1 {
+        padding-right: 40px;
+        margin: 0 0 8px;
+        font-family: var(--second-family);
+        font-weight: 500;
+        font-size: 28px;
+        line-height: 100%;
+        color: #373737;
+    }
+
+    .anons {
+        font-family: var(--font-family);
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 105%;
+        letter-spacing: 0.02em;
+        color: var(--graphite-400);
+        margin-bottom: 8px;
+    }
+
+    .prices{
+        position: relative;
+        margin-bottom: 12px;
+
+        .current {
+            font-family: var(--font-family);
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 105%;
+            letter-spacing: 0.02em;
+            color: #373737;
+        }
+
+        .price_table {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 392px;
+            padding: 8px 12px;
+            box-shadow: 0 0 32px 0 rgba(56, 56, 56, 0.24);
+            background: var(--white);
+
+            .d-flex {
+                padding: 4px 0;
+                justify-content: space-between;
+            }
+        }
+    }
+}

@@ -2262,6 +2262,25 @@ img, textarea, input, table {
 
 }
 
+.favorite-add {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 24px;
+    height: 24px;
+    background: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18.0002 14.5L12.0001 20.0001L6.00016 14.5C1.50014 10.5 2.00014 5 7.50014 5C9.00017 5 10.8332 6.48852 12.0001 7.50001C13.1671 6.48852 15.0001 5 16.5001 5.0035C22.0002 5.0035 22.5001 10.5 18.0002 14.5Z' stroke='%23373737' stroke-width='1.5' stroke-linecap='round' /%3E%3C/svg%3E") 50% no-repeat;
+    cursor: pointer;
+
+    &.plus {
+        background: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18.0002 14.5L12.0001 20.0001L6.00016 14.5C1.50014 10.5 2.00014 5 7.50014 5C9.00017 5 10.8332 6.48852 12.0001 7.50001C13.1671 6.48852 15.0001 5 16.5001 5.0035C22.0002 5.0035 22.5001 10.5 18.0002 14.5Z' stroke='%23c8283c' fill='%23c8283c' stroke-width='1.5' stroke-linecap='round' /%3E%3C/svg%3E") 50% no-repeat;
+    }
+
+    @media all and (max-width: 767px){
+        top: 10px;
+        right: 10px;
+    }
+}
+
 .product_item {
     display: flex;
     flex-direction: column;
@@ -2310,24 +2329,7 @@ img, textarea, input, table {
         opacity: 0;
     }
 
-    .favorite-add {
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 24px;
-        height: 24px;
-        background: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18.0002 14.5L12.0001 20.0001L6.00016 14.5C1.50014 10.5 2.00014 5 7.50014 5C9.00017 5 10.8332 6.48852 12.0001 7.50001C13.1671 6.48852 15.0001 5 16.5001 5.0035C22.0002 5.0035 22.5001 10.5 18.0002 14.5Z' stroke='%23373737' stroke-width='1.5' stroke-linecap='round' /%3E%3C/svg%3E") 50% no-repeat;
-        cursor: pointer;
-
-        &.plus {
-            background: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18.0002 14.5L12.0001 20.0001L6.00016 14.5C1.50014 10.5 2.00014 5 7.50014 5C9.00017 5 10.8332 6.48852 12.0001 7.50001C13.1671 6.48852 15.0001 5 16.5001 5.0035C22.0002 5.0035 22.5001 10.5 18.0002 14.5Z' stroke='%23c8283c' fill='%23c8283c' stroke-width='1.5' stroke-linecap='round' /%3E%3C/svg%3E") 50% no-repeat;
-        }
-
-        @media all and (max-width: 767px){
-            top: 10px;
-            right: 10px;
-        }
-    }
+    
 
     .card-body {
         padding-top: 20px;

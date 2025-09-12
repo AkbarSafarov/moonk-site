@@ -1058,6 +1058,47 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         });
     }
+
+    const galleryContainer = document.querySelector('.gallery-container');
+
+    if(galleryContainer){
+        let galleryThumbs = new Swiper(".gallery-thumbs", {
+            centeredSlides: true,
+            centeredSlidesBounds: true,
+            slidesPerView: 'auto',
+            watchOverflow: true,
+            watchSlidesVisibility: true,
+            watchSlidesProgress: true,
+            direction: 'vertical',
+            spaceBetween: 12,
+        });
+
+        let galleryMain = new Swiper(".gallery-main", {
+            watchOverflow: true,
+            watchSlidesVisibility: true,
+            watchSlidesProgress: true,
+            preventInteractionOnTransition: true,
+            pagination: {
+                el: '.swiper-pagination-gal',
+                clickable: true,
+            },
+            effect: 'fade',
+                fadeEffect: {
+                crossFade: true
+            },
+            thumbs: {
+                swiper: galleryThumbs
+            }
+        });
+
+        galleryMain.on('slideChangeTransitionStart', function() {
+            galleryThumbs.slideTo(galleryMain.activeIndex);
+        });
+
+        galleryThumbs.on('transitionStart', function(){
+            galleryMain.slideTo(galleryThumbs.activeIndex);
+        });
+    }
 });
 
 // Скрипт для поиска в модальном окне
