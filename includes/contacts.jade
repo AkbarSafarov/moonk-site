@@ -43,13 +43,23 @@ include _header-inner.jade
         </div>
     </div>
 </section>      
-<section class="content-padding poin_image_block pt-0 pb-0">
-    <div class="row">
-        <div class="col-12">
-            <div class="position-relative">
-                <img src="files/cont.jpg" alt="Мебель в проекте" class="img-fluid rounded">
+<section class="slider_bn_about slider_bn_block content-padding" style="padding-top: 0;padding-bottom: 0;">
+    <div class="position-relative">
+        <div class="arrows d-flex">
+            <div class="arrow_btn prev btn btn-outline-secondary btn-sm">‹</div>
+            <div class="arrow_btn next btn btn-outline-secondary btn-sm">›</div>
+        </div>
+        <div class="swiper mySwiper_bn" data-id="mySwiper_bn" data-arrow="bn">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="files/cont.jpg" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="files/room-sl.jpg" alt="">
+                </div>
             </div>
         </div>
+        <div class="swiper-pagination-bn"></div>
     </div>
 </section>
 <section class="content-padding faq_section">
@@ -459,8 +469,8 @@ include _header-inner.jade
                 <div class="club_content d-flex flex-column align-items-center justify-content-center h-100">
                     <div class="inner">
                         <div class="club_badge">КЛУБ MOONK</div>
-                        <div class="title">Что дальше? — <br>все просто!</div>
-                        <p class="club_description">Оставьте ваш контакт и получите доступ ко всем <br>привилегиям клуба Moonk</p>
+                        <div class="title">Вступайте в клуб Moonk — получите 2 000 ₽ на первую покупку</div>
+                        <p class="club_description">Станьте частью сообщества ценителей дизайна и детских интерьеров. Участники клуба получают закрытые спецпредложения, ранний доступ к новинкам, советы по оформлению и подарки от Moonk и партнёров.</p>
                         <form class="email_form">
                             <div class="field required email-input">
                                 <input type="email" placeholder="Почта">
