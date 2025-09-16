@@ -575,6 +575,10 @@ img, textarea, input, table {
         &:hover {
             opacity: .8;
         }        
+
+        &:active {
+            opacity: 1;
+        }
     }
 
     &.xl {
@@ -583,6 +587,8 @@ img, textarea, input, table {
         line-height: 125%;
         font-weight: 500;
     }
+
+
 }
 
 .content-padding {
@@ -1559,9 +1565,16 @@ img, textarea, input, table {
 }
 
 .modal.modal-right .modal-dialog {
+    right: 0;
+}
+
+.modal.modal-left .modal-dialog {
+    left: 0;
+}
+
+.modal .modal-dialog {
     position: fixed;
     margin: 0;
-    right: 0;
     top: 0;
     bottom: 0;
     height: 100%;
@@ -1748,7 +1761,7 @@ img, textarea, input, table {
     }
 }
 
-.modal.modal-right .modal-content {
+.modal .modal-content {
     height: 100%;
     border-radius: 0;
 }
@@ -1761,6 +1774,16 @@ img, textarea, input, table {
 .modal.modal-right.show .modal-dialog {
     transform: translateX(0);
 }
+
+.modal.modal-left .modal-dialog {
+    transform: translateX(-100%);
+    transition: transform .3s ease-out;
+}
+
+.modal.modal-left.show .modal-dialog {
+    transform: translateX(0);
+}
+
 
 .link_list_block {
 
@@ -2084,8 +2107,14 @@ img, textarea, input, table {
     padding-top: 40px;
     padding-bottom: 40px;
 
+    .position-relative {
+        aspect-ratio: 16/9; 
+        width: 100%;
+    }
+
     img {
         width: 100%;
+        height: 100%;
         object-fit: cover;
     }
 
@@ -2096,6 +2125,12 @@ img, textarea, input, table {
         letter-spacing: 0.02em;
         color: #373737;
         max-width: 620px;
+    }
+
+    .btn_button {
+        position: absolute;
+        bottom: 0;
+        right: 0;
     }
 
     @media all and (max-width: 991px) {

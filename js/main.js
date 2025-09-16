@@ -1115,7 +1115,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    const colors = document.querySelectorAll('.product_detals .colors .color');
+    const colors = document.querySelectorAll('.product_detals .colors .color, #filterModal .colors .color');
 
     if(colors.length) {
         colors.forEach(color => {
@@ -1159,8 +1159,8 @@ document.addEventListener("DOMContentLoaded", function() {
             return total;
         }
 
-        function togglePricesClass() {
-            const prices = document.querySelector('.prices');
+        function togglePricesClass(classPrice) {
+            const prices = document.querySelector(classPrice);
             if (!prices) return;
 
             if (state.size || state.mechanism || state.additional.length > 0) {
@@ -1174,7 +1174,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
         function updatePriceTable() {
             const priceBreakdown = document.getElementById('priceBreakdown');
-            const totalPrice = document.querySelector('.prices .current'); 
+            const priceBreakdown2 = document.getElementById('priceBreakdown2');
+            const totalPrice = document.querySelector('.product_detals .prices .current'); 
+            const totalPrice2 = document.querySelector('.fixed_product .prices .current'); 
 
             if (!priceBreakdown || !totalPrice) return;
 
@@ -1208,9 +1210,13 @@ document.addEventListener("DOMContentLoaded", function() {
             });
 
             priceBreakdown.innerHTML = html;
-            totalPrice.textContent = formatPrice(calculateTotal());
+            priceBreakdown2.innerHTML = html;
 
-            togglePricesClass();
+            totalPrice.textContent = formatPrice(calculateTotal());
+            totalPrice2.textContent = formatPrice(calculateTotal());
+
+            togglePricesClass('.product_detals .prices');
+            togglePricesClass('.fixed_product .prices');
         }
 
 
@@ -1337,17 +1343,27 @@ document.addEventListener("DOMContentLoaded", function() {
         updateAccordionTitles();
         //updatePriceTable();
 
-        const pricesBlock = document.querySelector('.prices');
+        function priceHandler(selector, selectorId){
+            selector.addEventListener('click', () => {
+                if (!selector.classList.contains('has-options')) return; 
 
-        if (pricesBlock) {
-            pricesBlock.addEventListener('click', () => {
-                if (!pricesBlock.classList.contains('has-options')) return; 
-
-                const priceTable = document.getElementById('priceBreakdown');
+                const priceTable = selectorId;
                 if (priceTable) {
                     priceTable.classList.toggle('open'); 
                 }
             });
+        }
+
+        const pricesBlock = document.querySelector('.product_detals .prices');
+
+        if (pricesBlock) {
+            priceHandler(pricesBlock, document.getElementById('priceBreakdown'));
+        }
+
+        const pricesBlock2 = document.querySelector('.fixed_product .prices');
+
+        if (pricesBlock2) {
+            priceHandler(pricesBlock2, document.getElementById('priceBreakdown2'));
         }
 
         const modal = document.getElementById('accordionModal');
@@ -1473,6 +1489,102 @@ document.addEventListener("DOMContentLoaded", function() {
     window.addEventListener('load', initreviewCardSwiper);
     
     window.addEventListener('resize', debounce(initreviewCardSwiper, 250));
+
+
+    const minRange = document.getElementById('minRange');
+    const maxRange = document.getElementById('maxRange');
+
+    if(minRange && maxRange) {
+        const sliderRange = document.getElementById('sliderRange');
+        const minValue = document.getElementById('minValue');
+        const maxValue = document.getElementById('maxValue');
+        
+        function formatPrice(price) {
+            return new Intl.NumberFormat('ru-RU').format(price);
+        }
+        
+        function updateSlider() {
+            const min = parseInt(minRange.value);
+            const max = parseInt(maxRange.value);
+            const minPercent = ((min - 7500) / (65500 - 7500)) * 100;
+            const maxPercent = ((max - 7500) / (65500 - 7500)) * 100;
+            
+            if (min >= max) {
+                if (minRange === document.activeElement) {
+                    minRange.value = max - 500;
+                } else {
+                    maxRange.value = min + 500;
+                }
+                updateSlider();
+                return;
+            }
+            
+            sliderRange.style.left = minPercent + '%';
+            sliderRange.style.width = (maxPercent - minPercent) + '%';
+            
+            minValue.textContent = formatPrice(min);
+            maxValue.textContent = formatPrice(max);
+        }
+        
+        minRange.addEventListener('input', updateSlider);
+        maxRange.addEventListener('input', updateSlider);
+
+        updateSlider();
+    }
+
+    const soartList = document.querySelectorAll('.soart_list a');
+    if (soartList.length) {
+        soartList.forEach(soart => {
+            soart.addEventListener('click', (e) => {
+                e.preventDefault();
+                soartList.forEach(c => c.classList.remove('active'));
+                soart.classList.add('active');
+            });
+        });
+    }
+
+    const soartBtnMobile = document.querySelector('.soart_btn_mobile');
+
+    if(soartBtnMobile){
+        const modalSoart = document.querySelector('.modal_soart');
+
+        soartBtnMobile.addEventListener('click', function(){
+            modalSoart.classList.add('opened');
+        });
+
+        modalSoart.querySelector('.soart_title').addEventListener('click', function(){
+            modalSoart.classList.remove('opened');
+        });
+    }
+
+    document.addEventListener("scroll", function () {
+        const block = document.querySelector(".fixed_product"); 
+        if(block){
+            const triggerPoint = 400; 
+
+            if (window.scrollY > triggerPoint) {
+                block.classList.add("opened");
+            } else {
+                block.classList.remove("opened");
+            }
+        }
+    });
+
+    document.querySelector(".up_btn").addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    document.querySelectorAll(".buy_btn.btn_button").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const toast = document.getElementById("cartToast");
+            toast.classList.add("show");
+
+            setTimeout(() => {
+                toast.classList.remove("show");
+            }, 2000);
+        });
+    });
+
 });
 
 // Скрипт для поиска в модальном окне

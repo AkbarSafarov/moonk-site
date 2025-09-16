@@ -1,4 +1,17 @@
 include _header-inner.jade
+<div class="content-padding fixed_product">
+    <div class="image"><img src="files/image_pr.png" alt=""></div>
+    <div class="detal_fixed">
+        <div class="name">Кровать Axioma на деревянных ножках</div>
+        <div class="prices d-flex gap-2 align-items-center">
+            <span class="current">16 700 ₽</span>
+            <div class="price_table" id="priceBreakdown2">
+            </div>
+        </div>
+    </div>
+    <button class="btn_button black buy_btn">В корзину</button>
+    <div class="up_btn"></div>
+</div>
 <section class="content-padding product_main_block">
     <div class="row" style="--bs-gutter-x: 16px;">
         <div class="col-lg-8 col-md-12">
@@ -700,7 +713,7 @@ include _header-inner.jade
                                             </div>
                                         </div>
                                     </div>
-                                    <button class="btn_button black xl"  data-bs-toggle="modal" data-bs-target="#formReviewModal" data-bs-dismiss="modal">Написать отзыв </button>
+                                    <button class="btn_button black xl" data-bs-toggle="modal" data-bs-target="#formReviewModal" data-bs-dismiss="modal">Написать отзыв </button>
                                 </div>
                             </div>
                         </div>
@@ -1018,5 +1031,14 @@ include _header-inner.jade
             </div>
         </div>
     </div>
+</div>
+<div class="cart-toast" id="cartToast">
+    <span class="icon">
+        <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10.5 17.5C6.3575 17.5 3 14.1425 3 10C3 5.8575 6.3575 2.5 10.5 2.5C14.6425 2.5 18 5.8575 18 10C18 14.1425 14.6425 17.5 10.5 17.5Z" fill="#01A078" />
+            <path d="M13.8332 8.33203L9.6665 12.4987L7.1665 9.9987" stroke="white" stroke-linecap="square" />
+        </svg>
+    </span>
+    <span class="text">Добавлен в корзину</span>
 </div>
 include _footer.jade
