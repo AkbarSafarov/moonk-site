@@ -528,6 +528,7 @@ img, textarea, input, table {
     font-family: var(--font-family);
     text-decoration: none;
     position: relative;
+    white-space: nowrap;
     
     @media all and (max-width: 991px) {
         padding: 14px 32px;
@@ -3357,11 +3358,22 @@ img, textarea, input, table {
             border-width: 1.5px !important;
         }
 
-        &.check {
+        &.check {            
 
             .form-check-label {
+                font-weight: 400;
+                font-size: 12px;
+                line-height: 105%;
+                letter-spacing: 0.02em;
+                color: var(--graphite-400);
+
                 i {
                     background-color: #fff;
+                    top: 0;
+                }
+
+                input:checked + i {
+                    background-color: #373737;
                 }
             }
         }
@@ -3625,16 +3637,17 @@ img, textarea, input, table {
     }
 
     .subscribe_mobile {
+        font-size: 0;
+        
         @media all and (min-width: 992px){
             display: none !important;
         }
-
-
 
         .btn {
             padding: 16px;
             background: var(--gray);
             border: none;
+            font-size: 0;
         }
     }
 

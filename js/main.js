@@ -629,6 +629,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 categorySwiper = new Swiper('.projects-swiper', {
                     slidesPerView: 'auto',
                     spaceBetween: 12,
+                    loop: true
                 });
             }
         } else {
@@ -669,7 +670,8 @@ document.addEventListener("DOMContentLoaded", function() {
             if (!swiperInstance) {
                 swiperInstance = new Swiper(".service_price-swiper", {
                     slidesPerView: 'auto',
-                    spaceBetween: 16
+                    spaceBetween: 16,
+                    loop: true
                 });
             }
         } else {
@@ -799,6 +801,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 comfortSwiper = new Swiper('.comfort-swiper', {
                     slidesPerView: 'auto',
                     spaceBetween: 12,
+                    loop: true
                 });
             }
         } else {
@@ -826,6 +829,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 faqSliderSwiper = new Swiper('.faq-slider-swiper', {
                     slidesPerView: 'auto',
                     spaceBetween: 12,
+                    loop: true
                 });
             }
         } else {
@@ -854,6 +858,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         articleSwiper = new Swiper(sliderClass, {
                             slidesPerView: 'auto',
                             spaceBetween: 12,
+                            loop: true
                         });
                     }
                 } else {
@@ -941,6 +946,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 viewedSwiper = new Swiper('.viewed-swiper', {
                     slidesPerView: 'auto',
                     spaceBetween: 12,
+                    loop: true
                 });
             }
         } else {
@@ -1066,9 +1072,11 @@ document.addEventListener("DOMContentLoaded", function() {
             slidesPerView: 'auto',
             direction: 'vertical',
             spaceBetween: 12,
+            loop: true,
         });
 
         let galleryMain = new Swiper(".gallery-main", {
+            loop: true,
             pagination: {
                 el: '.swiper-pagination-gal',
                 clickable: true,
@@ -1476,6 +1484,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 reviewCardSliderSwiper = new Swiper('.review-card-swiper', {
                     slidesPerView: 'auto',
                     spaceBetween: 12,
+                    loop: true
                 });
             }
         } else {
