@@ -6,12 +6,19 @@ include _header-inner.jade
     <div class="inner">
         <div class="d-flex gap-4" style="--bs-gutter-x: 16px;">
             <div class="col filter_btn">
-                <div class="action_btn"><i class="bi bi-filter"></i>Фильтр</div>
+                <div class="action_btn" data-bs-toggle="modal" data-bs-target="#filterModal" data-bs-dismiss="modal"><i class="bi bi-filter"></i>Фильтр</div>
             </div>
             <div class="col soart_btn">
-                <div class="action_btn"><i class="bi bi-soart"></i>по умолчанию</div>
+                <div class="action_btn" type="button" id="sortDropdown" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-soart"></i>по умолчанию</div>
+                <ul class="dropdown-menu soart_list" aria-labelledby="sortDropdown">
+                    <li><a class="dropdown-item active" href="#" data-sort="default">По умолчанию</a></li>
+                    <li><a class="dropdown-item" href="#" data-sort="price-asc">Возрастанию цены</a></li>
+                    <li><a class="dropdown-item" href="#" data-sort="price-desc">Убыванию цены</a></li>
+                    <li><a class="dropdown-item" href="#" data-sort="name-asc">Название A-Я</a></li>
+                    <li><a class="dropdown-item" href="#" data-sort="name-desc">Название Я-А</a></li>
+                </ul>
             </div>
-            <div class="count_products">4 товаров</div>
+            <div class="count_products">85 товаров</div>
             <div class="view_btn">
                 <div class="thumb1 active"></div>
                 <div class="thumb2"></div>
@@ -35,4 +42,145 @@ include _header-inner.jade
         </div>
     </div>
 </section>
+<div class="modal fade modal-left" id="filterModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-slideout">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Фильтр <i class="bi bi-loading"></i></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+            </div>
+            <div class="modal-body">
+                <div class="d-md-none soart_btn_mobile">
+                    <div class="name">Сортировка</div>
+                    <div class="action_btn">По умолчанияю</div>
+                </div>
+                <div class="accordion_filter" id="accordionFilter">
+                    <div class="accordion-item active">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFilter1" aria-expanded="true">Тип</button>
+                        </h2>
+                        <div id="collapseFilter1" class="accordion-collapse collapse show">
+                            <div class="accordion-inner">
+                                <div class="field check d-flex flex-column gap-2">
+                                    <label class="form-check-label">
+                                        <input type="checkbox">
+                                        <i></i>
+                                        <span>Односпальные</span>
+                                    </label>
+                                    <label class="form-check-label">
+                                        <input type="checkbox">
+                                        <i></i>
+                                        <span>Полутороспальные</span>
+                                    </label>
+                                    <label class="form-check-label">
+                                        <input type="checkbox">
+                                        <i></i>
+                                        <span>Двуспальные</span>
+                                    </label>
+                                    <label class="form-check-label">
+                                        <input type="checkbox">
+                                        <i></i>
+                                        <span>Двухъярусные</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFilter2">Рост</button>
+                        </h2>
+                        <div id="collapseFilter2" class="accordion-collapse collapse">
+                            <div class="accordion-inner">
+                                <div class="field check d-flex flex-column gap-2">
+                                    <label class="form-check-label">
+                                        <input type="checkbox">
+                                        <i></i>
+                                        <span>Односпальные</span>
+                                    </label>
+                                    <label class="form-check-label">
+                                        <input type="checkbox">
+                                        <i></i>
+                                        <span>Полутороспальные</span>
+                                    </label>
+                                    <label class="form-check-label">
+                                        <input type="checkbox">
+                                        <i></i>
+                                        <span>Двуспальные</span>
+                                    </label>
+                                    <label class="form-check-label">
+                                        <input type="checkbox">
+                                        <i></i>
+                                        <span>Двухъярусные</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item active">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFilter3" aria-expanded="true">Цвет</button>
+                        </h2>
+                        <div id="collapseFilter3" class="accordion-collapse collapse show">
+                            <div class="accordion-inner">
+                                <div class="colors d-flex flex-wrap align-items-center">
+                                    <div class="color rounded-circle active" style="background:#8c4e5f;"></div>
+                                    <div class="color rounded-circle" style="background:#55abc4;"></div>
+                                    <div class="color rounded-circle" style="background:#e9e2d2;"></div>
+                                    <div class="color rounded-circle" style="background:#51607f;"></div>
+                                    <div class="color rounded-circle" style="background:#241c19;"></div>
+                                    <div class="color rounded-circle" style="background:#d3a797;"></div>
+                                    <div class="color rounded-circle" style="background:#e5dfd6;"></div>
+                                    <div class="color rounded-circle" style="background:#958b4c;"></div>
+                                    <div class="color rounded-circle" style="background:#b5b6ba;"></div>
+                                    <div class="color rounded-circle" style="background:#97b777;"></div>
+                                    <div class="color rounded-circle" style="background:#4e7b67;"></div>
+                                    <div class="color rounded-circle" style="background:#f1c73e;"></div>
+                                    <div class="color rounded-circle" style="background:#8f6c5c;"></div>
+                                    <div class="color rounded-circle" style="background:#d84035;"></div>
+                                    <div class="color rounded-circle" style="background:#bcb796;"></div>
+                                    <div class="color rounded-circle" style="background:#2386a3;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item active">
+                        <div id="collapseFilter3" class="accordion-collapse collapse show">
+                            <div class="accordion-inner">
+                                <div class="price-range-container">
+                                    <div class="current-values">
+                                        <div class="value-display">от <span id="minValue">7 500</span> ₽</div>
+                                        <div class="value-display">до <span id="maxValue">65 500</span> ₽</div>
+                                    </div>
+                                    <div class="dual-range">
+                                        <div class="slider-track">
+                                            <div class="slider-range" id="sliderRange"></div>
+                                        </div>
+                                        <input type="range" id="minRange" min="7500" max="65500" value="7500" step="500">
+                                        <input type="range" id="maxRange" min="7500" max="65500" value="65500" step="500">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn_filter">
+                    <button class="btn_button black">Применить</button>
+                </div>
+            </div>
+            <div class="modal_soart">
+                <div class="soart_title">Сортировка</div>
+                <ul class="soart_list">
+                    <li><a class="active" href="#" data-sort="default"><i></i>По умолчанию</a></li>
+                    <li><a class="" href="#" data-sort="price-asc"><i></i>Возрастанию цены</a></li>
+                    <li><a class="" href="#" data-sort="price-desc"><i></i>Убыванию цены</a></li>
+                    <li><a class="" href="#" data-sort="name-asc"><i></i>Название A-Я</a></li>
+                    <li><a class="" href="#" data-sort="name-desc"><i></i>Название Я-А</a></li>
+                </ul>
+                <button class="btn_button black">Применить</button>
+            </div>
+        </div>
+        
+    </div>
+</div>
 include _footer.jade

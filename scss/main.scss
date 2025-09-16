@@ -2101,6 +2101,23 @@ img, textarea, input, table {
             height: 32px;
         }
     }
+
+    @media all and (max-width: 767px)  {
+        width: 30px;
+        height: 30px;
+
+        &:before {
+            width: 16px;
+            height: 16px;
+        }
+
+        &:hover {
+            &:before {
+                width: 22px;
+                height: 22px;
+            }
+        }
+    }
 }
 
 .poin_image_block {
@@ -2162,7 +2179,7 @@ img, textarea, input, table {
         padding-bottom: 40px;
 
         img {
-            height: 480px;
+            //height: 480px;
 
         }
 
