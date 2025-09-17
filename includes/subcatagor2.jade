@@ -8,20 +8,28 @@ include _header-inner.jade
         <div class="text">Сочетание уюта, безопасности и продуманного дизайна. В коллекции представлены модели для детей разных возрастов: от новорожденных до подростков. Каждая кровать создаётся с учётом эргономики, потребностей ребёнка и эстетики интерьера.</div>
     </div>
 </section>
-<div class="content-padding poin_image_block pt-0">
-    <div class="row">
-        <div class="col-12">
-            <div class="position-relative">
-                <img src="files/cat.jpg" alt="Мебель в проекте" class="img-fluid rounded">
-                <button class="btn btn_button ls position-absolute bottom-0 end-0 m-3" data-bs-toggle="modal" data-bs-target="#order0Modal" data-bs-dismiss="modal">Мебель в проекте</button>
-                <button type="button" class="btn-light rounded-circle position-absolute" data-bs-toggle="tooltip" style="top: 39%; left: 64%;" data-bs-html="true" title="<b>Стол - Мольберт Malevich</b><br><span class='text-success'>31 320 ₽</span> <span class='text-muted text-decoration-line-through'>34 800 ₽</span>">
+<div class="content-padding filter_section">
+    <div class="inner">
+        <div class="d-flex gap-4" style="--bs-gutter-x: 16px;">
+            <div class="col filter_btn">
+                <button class="action_btn" data-bs-toggle="modal" data-bs-target="#filterModal" data-bs-dismiss="modal" type="button">
+                    <i class="bi bi-filter"></i>Фильтр
                 </button>
-                <button type="button" class="btn-light rounded-circle position-absolute" data-bs-toggle="tooltip" style="top: 60%; left: 20%;" data-bs-html="true" title="<b>Кровать с ящиками</b><br><span class='text-success'>45 000 ₽</span>">
-                </button>
-                <button type="button" class="btn-light rounded-circle position-absolute" data-bs-toggle="tooltip" style="top: 65%; left: 74%;" data-bs-html="true" title="<b>Стул детский</b><br><span class='text-success'>12 800 ₽</span>">
-                </button>
-                <button type="button" class="btn-light rounded-circle position-absolute" data-bs-toggle="tooltip" style="top: 77%; left: 45%;" data-bs-html="true" title="<b>Ковер</b><br><span class='text-success'>12 800 ₽</span>">
-                </button>
+            </div>
+            <div class="col soart_btn">
+                <button class="action_btn" id="sortDropdown" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-soart"></i>по умолчанию</button>
+                <ul class="dropdown-menu soart_list" aria-labelledby="sortDropdown">
+                    <li><a class="dropdown-item active" href="#" data-sort="default">По умолчанию</a></li>
+                    <li><a class="dropdown-item" href="#" data-sort="price-asc">Возрастанию цены</a></li>
+                    <li><a class="dropdown-item" href="#" data-sort="price-desc">Убыванию цены</a></li>
+                    <li><a class="dropdown-item" href="#" data-sort="name-asc">Название A-Я</a></li>
+                    <li><a class="dropdown-item" href="#" data-sort="name-desc">Название Я-А</a></li>
+                </ul>
+            </div>
+            <div class="count_products">85 товаров</div>
+            <div class="view_btn">
+                <div class="thumb1 active"></div>
+                <div class="thumb2"></div>
             </div>
         </div>
     </div>
@@ -106,7 +114,7 @@ include _header-inner.jade
                 <div class="action_btn" data-bs-toggle="modal" data-bs-target="#filterModal" data-bs-dismiss="modal"><i class="bi bi-filter"></i>Фильтр</div>
             </div>
             <div class="col soart_btn">
-                <div class="action_btn" type="button" id="sortDropdown" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-soart"></i>по умолчанию</div>
+                <div class="action_btn" id="sortDropdown" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-soart"></i>по умолчанию</div>
                 <ul class="dropdown-menu soart_list" aria-labelledby="sortDropdown">
                     <li><a class="dropdown-item active" href="#" data-sort="default">По умолчанию</a></li>
                     <li><a class="dropdown-item" href="#" data-sort="price-asc">Возрастанию цены</a></li>
@@ -390,7 +398,7 @@ include _header-inner.jade
                         </div>
                     </div>
                     <div class="accordion-item active">
-                        <div id="collapseFilter3" class="accordion-collapse collapse show">
+                        <div id="collapseFilter4" class="accordion-collapse collapse show">
                             <div class="accordion-inner">
                                 <div class="price-range-container">
                                     <div class="current-values">

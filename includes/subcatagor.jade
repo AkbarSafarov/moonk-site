@@ -101,10 +101,12 @@ include _header-inner.jade
     <div class="inner">
         <div class="d-flex gap-4" style="--bs-gutter-x: 16px;">
             <div class="col filter_btn">
-                <div class="action_btn" data-bs-toggle="modal" data-bs-target="#filterModal" data-bs-dismiss="modal"><i class="bi bi-filter"></i>Фильтр</div>
+                <button class="action_btn" data-bs-toggle="modal" data-bs-target="#filterModal" data-bs-dismiss="modal" type="button">
+                    <i class="bi bi-filter"></i>Фильтр
+                </button>
             </div>
             <div class="col soart_btn">
-                <div class="action_btn" type="button" id="sortDropdown" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-soart"></i>по умолчанию</div>
+                <button class="action_btn" id="sortDropdown" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-soart"></i>по умолчанию</button>
                 <ul class="dropdown-menu soart_list" aria-labelledby="sortDropdown">
                     <li><a class="dropdown-item active" href="#" data-sort="default">По умолчанию</a></li>
                     <li><a class="dropdown-item" href="#" data-sort="price-asc">Возрастанию цены</a></li>
@@ -420,7 +422,7 @@ include _header-inner.jade
                         </div>
                     </div>
                     <div class="accordion-item active">
-                        <div id="collapseFilter3" class="accordion-collapse collapse show">
+                        <div id="collapseFilter4" class="accordion-collapse collapse show">
                             <div class="accordion-inner">
                                 <div class="price-range-container">
                                     <div class="current-values">
