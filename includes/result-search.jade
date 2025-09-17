@@ -2,7 +2,7 @@ include _header-inner.jade
 <section class="content-padding title_page category_page">
     <h1 class="title">Результат поиска</h1>
 </section>
-<section class="content-padding filter_section">
+<div class="content-padding filter_section">
     <div class="inner">
         <div class="d-flex gap-4" style="--bs-gutter-x: 16px;">
             <div class="col filter_btn">
@@ -25,8 +25,8 @@ include _header-inner.jade
             </div>
         </div>
     </div>
-</section>
-<section class="content-padding product_list_section">
+</div>
+<div class="content-padding product_list_section">
     <div class="row" style="--bs-gutter-x: 16px;">
         <div class="item col-lg-3 col-md-4 col-6">
             include _product-search.jade
@@ -41,7 +41,7 @@ include _header-inner.jade
             include _product-search.jade
         </div>
     </div>
-</section>
+</div>
 <div class="modal fade modal-left" id="filterModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-slideout">
         <div class="modal-content">

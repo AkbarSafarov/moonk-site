@@ -1579,20 +1579,25 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    document.querySelector(".up_btn").addEventListener("click", () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    });
-
-    document.querySelectorAll(".buy_btn.btn_button").forEach(btn => {
-        btn.addEventListener("click", () => {
-            const toast = document.getElementById("cartToast");
-            toast.classList.add("show");
-
-            setTimeout(() => {
-                toast.classList.remove("show");
-            }, 2000);
+    if(document.querySelector(".up_btn")){
+        document.querySelector(".up_btn").addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
         });
-    });
+    }
+
+    const buyBtn = document.querySelectorAll(".buy_btn.btn_button");
+    if(buyBtn.length){
+        buyBtn.forEach(btn => {
+            btn.addEventListener("click", () => {
+                const toast = document.getElementById("cartToast");
+                toast.classList.add("show");
+
+                setTimeout(() => {
+                    toast.classList.remove("show");
+                }, 2000);
+            });
+        });
+    }
 
 });
 
