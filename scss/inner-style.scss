@@ -1064,8 +1064,9 @@
 				}
 
                 .btn_button  {
-                    padding: 14px 24px;
+                    padding: 16px 24px;
                     font-size: 15px;
+                    line-height: 20px;
                 }
 			}
     	}
@@ -1758,6 +1759,11 @@
             margin-bottom: 32px;
         }
 
+        .btn_button {
+            padding-left: 24px;
+            padding-right: 24px;
+        }
+
         @media all and (max-width: 991px) {
 
         	&:before {
@@ -1873,7 +1879,7 @@
     padding-top: 80px;
     padding-bottom: 80px;
 
-    h2 {
+    .title  h2 {
         font-weight: 500;
         font-size: 64px;
         line-height: 80%;
@@ -1918,9 +1924,9 @@
     		border: none;
     		outline: none;
     		box-shadow: none;
-    		padding: 16px 40px 16px 0;
+    		padding: 28px 40px 28px 0;
     		font-weight: 500;
-			font-size: 18px;
+			font-size: 28px;
 			line-height: 100%;
 			color: #373737;
 			font-family: var(--second-family);
@@ -2532,7 +2538,7 @@
     }
 
     .btn_button.more {
-        padding: 14px 24px;
+        padding: 15px 24px;
         gap: 10px;
         display: inline-flex;
         align-items: center;
@@ -3116,7 +3122,7 @@
                 white-space: nowrap;
                 padding: 15px 24px;
                 font-size: 15px;
-                line-height: 133%;
+                line-height: 20px;
             }
         }
 
@@ -7874,13 +7880,10 @@
                 width: 100%;
             }
 
-            &.active {
+            .accordion-header .accordion-button[aria-expanded="true"]{
 
-                .accordion-header .accordion-button{
-
-                    &:before{
-                        background: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16 12H8' stroke='%23373737' stroke-width='1.4' stroke-linecap='square' stroke-linejoin='round' /%3E%3C/svg%3E") 50% no-repeat;
-                    }
+                &:before{
+                    background: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16 12H8' stroke='%23373737' stroke-width='1.4' stroke-linecap='square' stroke-linejoin='round' /%3E%3C/svg%3E") 50% no-repeat;
                 }
             }
         }

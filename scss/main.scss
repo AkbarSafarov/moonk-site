@@ -542,7 +542,7 @@ img, textarea, input, table {
     }
 
     &.ls {
-        padding: 8px 16px;
+        padding: 10px 16px;
         font-weight: 400;
         font-size: 13px;
         line-height: 154%;
@@ -557,11 +557,19 @@ img, textarea, input, table {
         border: 1.50px solid var(--graphite-100);
         background: none;
         color: #373737;
+        padding: 15px 32px;
 
         &:hover {
             background: #373737;
             color: var(--white);
             border-color: #373737;
+        }
+
+        &.ls {
+            padding: 10px 16px;
+            font-weight: 400;
+            font-size: 13px;
+            line-height: 154%;
         }
     }
 
@@ -589,7 +597,9 @@ img, textarea, input, table {
         font-weight: 500;
     }
 
-
+    &.xx {
+        padding: 18px 32px;
+    }
 }
 
 .content-padding {
@@ -1153,6 +1163,8 @@ img, textarea, input, table {
             }
         }
 
+
+
         @media all and (max-width: 991px) {
             padding-top: 100px;
             padding-bottom: 24px;
@@ -1684,7 +1696,7 @@ img, textarea, input, table {
                 transition: all .3s;
                 color: #373737;
 
-                .fw-bold {
+                .fw-bold-text {
                     font-weight: 500;
                     font-size: 24px;
                     line-height: 90%;
@@ -3501,7 +3513,7 @@ img, textarea, input, table {
 
     .footer_top {
 
-        h6.fw-bold {
+        h6.fw-bold-text {
             font-weight: 500;
             font-size: 24px;
             line-height: 90%;
@@ -4145,8 +4157,8 @@ img, textarea, input, table {
             background: var(--gray);
             border: none !important;
 
-            .fw-bold {
-                font-weight: 500 !important;
+            .fw-bold-text {
+                font-weight: 500;
                 font-size: 20px;
                 line-height: 100%;
                 color: #373737;
