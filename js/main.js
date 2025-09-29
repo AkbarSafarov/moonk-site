@@ -1991,12 +1991,12 @@ $(function() {
             }
         }
 
-        if ($(this).closest('form').find('.field').hasClass('incorrect-phone') || $(this).closest('form').find('.field').hasClass('error')) {
-            e.preventDefault();
-        } else {
-            e.preventDefault(); // пока для теста
+        // if ($(this).closest('form').find('.field').hasClass('incorrect-phone') || $(this).closest('form').find('.field').hasClass('error')) {
+        //     e.preventDefault();
+        // } else {
+        //     e.preventDefault(); // пока для теста
 
-            console.log("Форма прошла проверку, можно отправлять");
-        }
+        //     console.log("Форма прошла проверку, можно отправлять");
+        // }
     });
 });
