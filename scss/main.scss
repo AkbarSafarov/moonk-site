@@ -745,6 +745,11 @@ img, textarea, input, table {
         .address {
             margin-right: 16px;
             cursor: pointer;
+            transition: all .3s;
+
+            &:hover {
+                opacity: .7;
+            }
         }
 
         .text-decoration-none {
@@ -868,6 +873,14 @@ img, textarea, input, table {
 
         .left_header_inner {
             position: relative;
+
+            a {
+                transition: all .3s;
+
+                &:hover {
+                    opacity: .7;
+                }
+            }
         }
 
         @media all and (max-width: 991px) {
@@ -1017,7 +1030,7 @@ img, textarea, input, table {
         }
 
         &:hover {
-            opacity: .8;
+            opacity: .7;
         }
 
         
@@ -1127,6 +1140,7 @@ img, textarea, input, table {
             color: var(--white);            
             margin-bottom: 32px;
             position: relative;
+            max-width: 500px;
         }
 
         .text {
@@ -1141,12 +1155,14 @@ img, textarea, input, table {
             letter-spacing: 0.02em;
             color: var(--white);
             max-width: 500px;
+            font-family: var(--font-family);
 
             .date {
                 font-weight: 500;
                 font-size: 18px;
                 line-height: 100%;
                 color: var(--white);
+                font-family: var(--second-family);
             }
 
             .label {
@@ -1203,10 +1219,10 @@ img, textarea, input, table {
 
     &.top {
         .swiper-slide {
-            min-height: calc(100vh - 38px);
+            //min-height: calc(100vh - 38px);
 
             @media all and (max-width: 991px)  {
-                min-height: calc(100vh - 36px);
+                //min-height: calc(100vh - 36px);
             }
         }
     }
@@ -1453,6 +1469,16 @@ img, textarea, input, table {
                     &:hover > ul{
                         display: block;
                     }
+
+                    &.active-parent > ul {
+                        display: block !important;
+                    }
+
+                    > ul > li {
+                        &.active-parent > ul {
+                            display: block !important;
+                        }
+                    }
                 }
 
                 &:has(li:hover) > li > a {
@@ -1479,6 +1505,23 @@ img, textarea, input, table {
 
             .menu-header {
                 display: none;
+
+                &.show_menu {
+                    display: block; 
+                    border-color: var(--gray);
+
+                    .navbar-nav {
+                        > li {
+                            > a {
+                                color: #373737;
+
+                                &:after {
+                                    background: url("data:image/svg+xml,%3Csvg width='22' height='22' viewBox='0 0 22 22' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 13.5L8 9.5L14 9.5L11 13.5Z' fill='%23373737' /%3E%3C/svg%3E") 50% no-repeat;
+                                }
+                            }
+                        }
+                    }
+                }
             }
 
             .border-bottom {
@@ -1543,6 +1586,10 @@ img, textarea, input, table {
 
                         .bi.bi-person {
                             background: url("data:image/svg+xml,%3Csvg width='22' height='22' viewBox='0 0 22 22' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M17.4166 18.3333V17.6458C17.4166 16.6126 17.0061 15.6217 16.2755 14.8911C15.5449 14.1605 14.554 13.75 13.5208 13.75H8.47908C7.44585 13.75 6.45493 14.1605 5.72432 14.8911C4.9937 15.6217 4.58325 16.6126 4.58325 17.6458V18.3333' stroke='%23373737' stroke-width='1.5' stroke-linecap='square' stroke-linejoin='round' /%3E%3Cpath d='M10.9999 10.0833C13.025 10.0833 14.6666 8.44171 14.6666 6.41667C14.6666 4.39162 13.025 2.75 10.9999 2.75C8.97487 2.75 7.33325 4.39162 7.33325 6.41667C7.33325 8.44171 8.97487 10.0833 10.9999 10.0833Z' stroke='%23373737' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' /%3E%3C/svg%3E") 50% no-repeat;
+                        }
+
+                        &:hover {
+                            opacity: .7;
                         }
                     }
                 }
@@ -1840,12 +1887,15 @@ img, textarea, input, table {
                 font-size: 0;
                 margin: 0 auto 6px;
                 width: 84px;
+                height: 84px;
+                transition: all .3s;
 
                 img {
                     width: 72px;
                     height: 72px;
                     border-radius: 50%;
                     object-fit: cover;
+                    transition: all .3s;
                 }
             }
 
@@ -1860,6 +1910,14 @@ img, textarea, input, table {
             }
 
             &:hover {
+                .image {
+                    padding: 2px;
+
+                    img {
+                        width: 80px;
+                        height: 80px;
+                    }
+                }
                 .text {
                     color: var(--graphite-600);
                 }
@@ -1874,6 +1932,7 @@ img, textarea, input, table {
 
                 .image {
                     width: 62px;
+                    height: 62px;
                     padding: 2.5px;
                     margin-bottom: 8px;
 
@@ -1886,6 +1945,17 @@ img, textarea, input, table {
                 .text {
                     font-size: 11px;
                 }
+
+                &:hover {
+                    .image {
+                        padding: 2px;
+
+                        img {
+                            width: 58px;
+                            height: 58px;
+                        }
+                    }
+                }
             }
         } 
     }
@@ -1897,10 +1967,11 @@ img, textarea, input, table {
     position: relative;
 
     .btn_button {
-        padding: 14px 24px;
+        padding: 15px 24px;
         font-size: 15px;
-        line-height: 133%;
+        line-height: 20px;
         white-space: nowrap;
+        font-family: var(--font-family);
     }
 
     .title{
@@ -2127,6 +2198,7 @@ img, textarea, input, table {
         height: 20px;
         background: var(--white);
         transition: all .3s;
+        pointer-events: none;
     }
 
     &:hover {
@@ -2159,7 +2231,7 @@ img, textarea, input, table {
     padding-bottom: 40px;
 
     .position-relative {
-        aspect-ratio: 16/9; 
+        //aspect-ratio: 16/9; 
         width: 100%;
     }
 
@@ -2263,6 +2335,26 @@ img, textarea, input, table {
             color: var(--graphite-300);
         }
     }
+}
+
+.product-tooltip.tooltip {
+  pointer-events: auto; /* позволяем взаимодействовать */
+}
+
+.tooltip {
+  transition: opacity 0.15s ease;
+}
+
+.tooltip-inner {
+  cursor: pointer; /* курсор-указатель, можно кликать */
+}
+
+.tooltip-link {
+  color: #373737;
+  text-decoration: none;
+}
+.tooltip-link:hover {
+  text-decoration: underline;
 }
 
 .arrow_btn {
@@ -2402,6 +2494,7 @@ img, textarea, input, table {
         position: absolute;
         top: 12px;
         right: 12px;
+        pointer-events: none;
 
         @media all and (max-width: 767px){
             display: none;
@@ -3033,7 +3126,7 @@ img, textarea, input, table {
             }
 
             &.purple {
-                border-color: #ff7859;
+                border-color: #AE4ABE;
             }
 
             &.red {

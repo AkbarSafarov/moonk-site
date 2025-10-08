@@ -7,21 +7,91 @@ document.addEventListener("DOMContentLoaded", function() {
     const discountBanner = document.querySelector('.discount_banner');
     const header = document.querySelector('.header');
     const slider = document.querySelector('.slider_top_block');
+    const menuHeader = document.querySelector('.menu-header');
     const tmenuOffset = header.offsetTop;
 
+    let lastScrollY = window.scrollY; 
+    let isScrollingUp = false; 
+
     function checkScroll() {
+        const currentScrollY = window.scrollY;
+        
+        isScrollingUp = currentScrollY < lastScrollY;
+        
         if (window.scrollY > tmenuOffset + 10) {
             header.classList.add("fixed_block");
             menuBurger.classList.add('fixed_burger');
+            
+            if (isScrollingUp && menuHeader) {
+                menuHeader.classList.add('show_menu');
+            } else if (menuHeader) {
+                menuHeader.classList.remove('show_menu');
+            }
         } else {
             header.classList.remove("fixed_block");
             menuBurger.classList.remove('fixed_burger');
+            if (menuHeader) {
+                menuHeader.classList.remove('show_menu');
+            }
         }
+        
+        lastScrollY = currentScrollY;
     }
 
     checkScroll();
-
     window.addEventListener("scroll", checkScroll);
+
+    if (menuHeader) {
+        const secondLevelItems = menuHeader.querySelectorAll('.navbar-nav > li > ul > li');
+        
+        secondLevelItems.forEach(item => {
+            const hasSubmenu = item.querySelector('ul');
+            
+            item.addEventListener('mouseenter', function() {
+                secondLevelItems.forEach(sibling => {
+                    if (sibling !== item) {
+                        sibling.classList.remove('active-parent');
+                    }
+                });
+                
+                if (hasSubmenu) {
+                    this.classList.add('active-parent');
+                }
+            });
+        });
+
+        const thirdLevelItems = menuHeader.querySelectorAll('.navbar-nav > li > ul > li > ul > li');
+        
+        thirdLevelItems.forEach(item => {
+            const hasSubmenu = item.querySelector('ul');
+            
+            item.addEventListener('mouseenter', function() {
+                const parentUl = this.parentElement;
+                const siblings = parentUl.querySelectorAll(':scope > li');
+                
+                siblings.forEach(sibling => {
+                    if (sibling !== item) {
+                        sibling.classList.remove('active-parent');
+                    }
+                });
+                
+                if (hasSubmenu) {
+                    this.classList.add('active-parent');
+                }
+            });
+        });
+
+        const firstLevelItems = menuHeader.querySelectorAll('.navbar-nav > li');
+        
+        firstLevelItems.forEach(item => {
+            item.addEventListener('mouseleave', function() {
+                const allActiveParents = this.querySelectorAll('.active-parent');
+                allActiveParents.forEach(parent => {
+                    parent.classList.remove('active-parent');
+                });
+            });
+        });
+    }
 
     if (discountBanner) {
         const closeBanner = discountBanner.querySelector('.close-banner');
@@ -51,6 +121,48 @@ document.addEventListener("DOMContentLoaded", function() {
             ) {
                 contactsBlock.classList.remove('show');
             }
+        });
+    }
+
+
+    const tooltipButtons = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+
+    if(tooltipButtons.length){
+        tooltipButtons.forEach(button => {
+            const tooltip = new bootstrap.Tooltip(button, {
+                html: true,
+                trigger: 'manual', // управляем вручную
+                placement: 'top',
+                customClass: 'product-tooltip',
+            });
+
+            let tooltipElement;
+
+            const showTooltip = () => {
+                tooltip.show();
+                tooltipElement = document.querySelector('.tooltip.show');
+                if (tooltipElement) {
+                    tooltipElement.addEventListener('mouseenter', () => clearTimeout(hideTimeout));
+                    tooltipElement.addEventListener('mouseleave', hideTooltip);
+                }
+            };
+
+            const hideTooltip = () => {
+                tooltip.hide();
+            };
+
+            let hideTimeout;
+
+            button.addEventListener('mouseenter', () => {
+                clearTimeout(hideTimeout);
+                showTooltip();
+            });
+
+            button.addEventListener('mouseleave', () => {
+                hideTimeout = setTimeout(() => {
+                    hideTooltip();
+                }, 500); // задержка чтобы успеть перейти курсором
+            });
         });
     }
 
