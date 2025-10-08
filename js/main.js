@@ -166,6 +166,30 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+    const wrappers = document.querySelectorAll('.tooltip-wrapper');
+
+      wrappers.forEach(wrapper => {
+        const tooltip = wrapper.querySelector('.custom-tooltip');
+        let hideTimeout;
+
+        const showTooltip = () => {
+          clearTimeout(hideTimeout);
+          tooltip.classList.add('show');
+        };
+
+        const hideTooltip = () => {
+          hideTimeout = setTimeout(() => {
+            tooltip.classList.remove('show');
+          }, 300);
+        };
+
+        wrapper.addEventListener('mouseenter', showTooltip);
+        wrapper.addEventListener('mouseleave', hideTooltip);
+
+        tooltip.addEventListener('mouseenter', () => clearTimeout(hideTimeout));
+        tooltip.addEventListener('mouseleave', hideTooltip);
+      });
+
 
     const sliderTop = document.querySelector('.mySwiper_banner');
 
@@ -2112,3 +2136,246 @@ $(function() {
         // }
     });
 });
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const stItems = document.querySelectorAll('.story-trigger');
+
+    if(!stItems.length) return;
+
+    let swiper;
+    let currentStoryIndex = 0;
+    let storyTimeout;
+    let isPaused = false;
+
+    const storiesData = {
+        currentCategory: 0,
+        currentStory: 0
+    };
+
+    function stopAllStories() {
+        clearTimeout(storyTimeout);
+
+        const allSlides = document.querySelectorAll('.story-slide');
+        allSlides.forEach(slide => {
+            const fills = slide.querySelectorAll('.progress-segment-fill');
+            fills.forEach(fill => {
+                fill.style.animation = 'none';
+            });
+        });
+    }
+
+    function initSwiper(initialSlide = 0) {
+        if (swiper) {
+            swiper.destroy(true, true);
+        }
+
+        swiper = new Swiper('.storiesSwiper', {
+            direction: 'horizontal',
+            initialSlide: initialSlide,
+            speed: 1000,
+            allowTouchMove: true,
+            centeredSlides: true,
+            roundLengths: true,
+            slidesPerView: 'auto',
+            spaceBetween: 40,
+            loop: false,
+            breakpoints: {
+              0: {
+                slidesPerView: 1,
+                spaceBetween: 40,
+              },
+              561: {
+                slidesPerView: 'auto',
+                spaceBetween: 40,
+              }
+            },
+            on: {
+                init: function() {
+                    // Запускаем только центральный слайд
+                    storiesData.currentCategory = this.activeIndex;
+                    storiesData.currentStory = 0;
+                    resetCategoryStories(this.activeIndex);
+                    showStory(this.activeIndex, 0);
+                },
+                slideChangeTransitionStart: function() {
+                    // Останавливаем все истории при смене слайда
+                    stopAllStories();
+                    clearTimeout(storyTimeout);
+                },
+                slideChangeTransitionEnd: function() {
+                    // Запускаем только у активного слайда
+                    storiesData.currentCategory = this.activeIndex;
+                    storiesData.currentStory = 0;
+                    resetCategoryStories(this.activeIndex);
+                    showStory(this.activeIndex, 0);
+                }
+            }
+        });
+    }
+
+
+    function resetCategoryStories(categoryIndex) {
+        const slide = document.querySelectorAll('.story-slide')[categoryIndex];
+        if (!slide) return;
+
+        const stories = slide.querySelectorAll('.story-item');
+        stories.forEach((story, index) => {
+            story.classList.toggle('active', index === 0);
+        });
+
+        const segments = slide.querySelectorAll('.progress-segment');
+        segments.forEach((segment, index) => {
+            segment.classList.remove('active', 'completed');
+            const fill = segment.querySelector('.progress-segment-fill');
+            fill.style.animation = 'none';
+            fill.offsetHeight; // Reflow
+
+            if (index === 0) {
+                segment.classList.add('active');
+            }
+        });
+    }
+
+    function showStory(categoryIndex, storyIndex) {
+        clearTimeout(storyTimeout);
+
+        const slide = document.querySelectorAll('.story-slide')[categoryIndex];
+        if (!slide) return;
+
+        const stories = slide.querySelectorAll('.story-item');
+        const segments = slide.querySelectorAll('.progress-segment');
+
+        stories.forEach(story => story.classList.remove('active'));
+        if (stories[storyIndex]) {
+            stories[storyIndex].classList.add('active');
+        }
+
+        segments.forEach((segment, index) => {
+            const fill = segment.querySelector('.progress-segment-fill');
+            segment.classList.remove('active', 'completed');
+            fill.style.animation = 'none';
+            fill.offsetHeight;
+
+            if (index < storyIndex) {
+                segment.classList.add('completed');
+            } else if (index === storyIndex) {
+                segment.classList.add('active');
+                fill.style.animation = 'progressFill 5s linear forwards';
+            }
+        });
+
+        storyTimeout = setTimeout(() => {
+            nextStory();
+        }, 5000);
+    }
+
+    function nextStory() {
+        const slide = document.querySelectorAll('.story-slide')[storiesData.currentCategory];
+        const totalStories = slide.querySelectorAll('.story-item').length;
+
+        if (storiesData.currentStory < totalStories - 1) {
+            storiesData.currentStory++;
+            showStory(storiesData.currentCategory, storiesData.currentStory);
+        } else {
+            if (swiper.isEnd) {
+                closeStories();
+            } else {
+                swiper.slideNext();
+            }
+        }
+    }
+
+    function prevStory() {
+        if (storiesData.currentStory > 0) {
+            storiesData.currentStory--;
+            showStory(storiesData.currentCategory, storiesData.currentStory);
+        } else {
+            if (!swiper.isBeginning) {
+                swiper.slidePrev();
+                setTimeout(() => {
+                    const slide = document.querySelectorAll('.story-slide')[storiesData.currentCategory];
+                    const totalStories = slide.querySelectorAll('.story-item').length;
+                    storiesData.currentStory = totalStories - 1;
+                    showStory(storiesData.currentCategory, storiesData.currentStory);
+                }, 100);
+            }
+        }
+    }
+
+    function openStories(categoryIndex) {
+        const modal = document.getElementById('storiesModal');
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+
+        storiesData.currentCategory = categoryIndex;
+        storiesData.currentStory = 0;
+
+        initSwiper(categoryIndex);
+        showStory(categoryIndex, 0);
+    }
+
+    function closeStories() {
+        const modal = document.getElementById('storiesModal');
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+        clearTimeout(storyTimeout);
+
+        if (swiper) {
+            swiper.destroy(true, true);
+        }
+    }
+
+    function pauseStory() {
+        isPaused = true;
+        clearTimeout(storyTimeout);
+
+        const slide = document.querySelectorAll('.story-slide')[storiesData.currentCategory];
+        const activeSegment = slide.querySelector('.progress-segment.active .progress-segment-fill');
+        if (activeSegment) {
+            activeSegment.style.animationPlayState = 'paused';
+        }
+    }
+
+    function resumeStory() {
+        isPaused = false;
+
+        const slide = document.querySelectorAll('.story-slide')[storiesData.currentCategory];
+        const activeSegment = slide.querySelector('.progress-segment.active .progress-segment-fill');
+        if (activeSegment) {
+            activeSegment.style.animationPlayState = 'running';
+        }
+
+        storyTimeout = setTimeout(() => {
+            nextStory();
+        }, 5000);
+    }
+
+    const closeSt = document.querySelector('.close_stories');
+
+    closeSt.addEventListener('click', closeStories)
+
+    // === Обработчики событий ===
+    document.querySelectorAll('.story-trigger').forEach(trigger => {
+        trigger.addEventListener('click', e => {
+            e.preventDefault();
+            const categoryIndex = parseInt(trigger.dataset.category);
+            openStories(categoryIndex);
+        });
+    });
+
+    document.addEventListener('click', e => {
+        if (e.target.classList.contains('close-stories')) {
+            closeStories();
+        }
+        if (e.target.classList.contains('story-nav-prev')) {
+            prevStory();
+        }
+        if (e.target.classList.contains('story-nav-next')) {
+            nextStory();
+        }
+    });
+
+    document.addEventListener('mousedown', pauseStory);
+    document.addEventListener('mouseup', resumeStory);
+})

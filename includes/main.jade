@@ -1,28 +1,29 @@
 include _header.jade
 <div class="content-padding py-3 link_list_block">
     <div class="container d-flex justify-content-center flex-wrap text-center">
-        <a href="#" class="text-decoration-none">
+        <a href="#" class="text-decoration-none story-trigger" data-category="0">
             <span class="image"><img src="files/link-icon.jpg" class="img-fluid" alt=""></span>
             <div class="text">Sale</div>
         </a>
-        <a href="#" class="text-decoration-none">
+        <a href="#" class="text-decoration-none story-trigger" data-category="1">
             <span class="image"><img src="files/link-icon2.jpg" class="img-fluid" alt=""></span>
             <div class="text">Статьи</div>
         </a>
-        <a href="#" class="text-decoration-none">
+        <a href="#" class="text-decoration-none story-trigger" data-category="2">
             <span class="image"><img src="files/link-icon3.jpg" class="img-fluid" alt=""></span>
             <div class="text">Топ</div>
         </a>
-        <a href="#" class="text-decoration-none">
+        <a href="#" class="text-decoration-none story-trigger" data-category="3">
             <span class="image"><img src="files/link-icon4.jpg" class="img-fluid" alt=""></span>
             <div class="text">Проекты</div>
         </a>
-        <a href="#" class="text-decoration-none">
+        <a href="#" class="text-decoration-none story-trigger" data-category="4">
             <span class="image"><img src="files/link-icon5.jpg" class="img-fluid" alt=""></span>
             <div class="text">Новое</div>
         </a>
     </div>
 </div>
+include _story.jade
 <section class="content-padding popular_category">
     <div class="d-flex justify-content-between gap-3 align-items-end">
         <h2 class="title h4 mb-0">Популярные <br> категории</h2>
@@ -74,15 +75,42 @@ include _header.jade
         <div class="col-12">
             <div class="position-relative">
                 <img src="files/image-point.jpg" alt="Мебель в проекте" class="img-fluid rounded">
-                <button class="btn btn_button ls position-absolute bottom-0 end-0 m-3"  data-bs-toggle="modal" data-bs-target="#order0Modal" data-bs-dismiss="modal">Мебель в проекте</button>
-                <button type="button" class="btn-light rounded-circle position-absolute" data-bs-toggle="tooltip" style="top: 39%; left: 64%;" data-bs-html="true" title="<b><a href='/product/stol-malevich' class='tooltip-link'>Стол — Мольберт Malevich</a></b><br><span class='text-success'>31 320 ₽</span>">
-                </button>
-                <button type="button" class="btn-light rounded-circle position-absolute" data-bs-toggle="tooltip" style="top: 60%; left: 20%;" data-bs-html="true" title="<b>Кровать с ящиками</b><br><span class='text-success'>45 000 ₽</span>">
-                </button>
-                <button type="button" class="btn-light rounded-circle position-absolute" data-bs-toggle="tooltip" style="top: 65%; left: 74%;" data-bs-html="true" title="<b>Стул детский</b><br><span class='text-success'>12 800 ₽</span>">
-                </button>
-                <button type="button" class="btn-light rounded-circle position-absolute" data-bs-toggle="tooltip" style="top: 77%; left: 45%;" data-bs-html="true" title="<b>Ковер</b><br><span class='text-success'>12 800 ₽</span>">
-                </button>
+                <button class="btn btn_button ls position-absolute bottom-0 end-0 m-3" data-bs-toggle="modal" data-bs-target="#order0Modal" data-bs-dismiss="modal">Мебель в проекте</button>
+                <div class="tooltip-wrapper" style="top: 39%; left: 64%;">
+                    <button type="button" class="btn-light rounded-circle"></button>
+                    <div class="custom-tooltip">
+                        <a href="/product/stol-malevich" class="tooltip-link">
+                            <b>Стол — Мольберт Malevich</b><br>
+                            <span class="text_success">31 320 ₽</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="tooltip-wrapper" style="top: 60%; left: 20%;">
+                    <button type="button" class="btn-light rounded-circle"></button>
+                    <div class="custom-tooltip">
+                        <a href="/product/stol-malevich" class="tooltip-link">
+                            <b>Стол — Мольберт Malevich</b><br>
+                            <span class="text_success">31 320 ₽</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="tooltip-wrapper" style="top: 65%; left: 74%;">
+                    <button type="button" class="btn-light rounded-circle"></button>
+                    <div class="custom-tooltip">
+                        <a href="/product/stol-malevich" class="tooltip-link">
+                            <b>Стол — Мольберт Malevich</b><br>
+                            <span class="text_success">31 320 ₽</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="tooltip-wrapper" style="top: 77%; left: 45%;">
+                    <button type="button" class="btn-light rounded-circle"></button>
+                    <div class="custom-tooltip">
+                        <a href="/product/stol-malevich" class="tooltip-link">
+                            <b>Ковер</b><br><span class='text_success'>12 800 ₽</span>
+                        </a>
+                    </div>
+                </div>
             </div>
             <p class="mt-3 text-muted">Светлые тона и натуральное дерево создают ощущение простора. Рабочая зона организована для учебы, а мягкий уголок — для игр и отдыха. Мебель легко адаптируется под меняющиеся потребности ребенка. </p>
         </div>
@@ -297,15 +325,51 @@ include _header.jade
         <div class="col-12">
             <div class="position-relative">
                 <img src="files/image-point2.jpg" alt="Мебель в проекте" class="img-fluid rounded">
-                <button class="btn btn_button ls position-absolute bottom-0 end-0 m-3"  data-bs-toggle="modal" data-bs-target="#order1Modal" data-bs-dismiss="modal">Мебель в проекте</button>
-                <button type="button" class="btn-light rounded-circle position-absolute" data-bs-toggle="tooltip" style="top: 23%; left: 35%;" data-bs-html="true" title="<b>Стол - Мольберт Malevich</b><br><span class='text-success'>31 320 ₽</span> <span class='text-muted text-decoration-line-through'>34 800 ₽</span>">
-                </button>
-                <button type="button" class="btn-light rounded-circle position-absolute" data-bs-toggle="tooltip" style="top: 60%; left: 38%;" data-bs-html="true" title="<b>Кровать с ящиками</b><br><span class='text-success'>45 000 ₽</span>">
-                </button>
-                <button type="button" class="btn-light rounded-circle position-absolute" data-bs-toggle="tooltip" style="top: 33%; left: 80%;" data-bs-html="true" title="<b>Стул детский</b><br><span class='text-success'>12 800 ₽</span>">
-                </button>
-                <button type="button" class="btn-light rounded-circle position-absolute" data-bs-toggle="tooltip" style="top: 77%; left: 53%;" data-bs-html="true" title="<b>Ковер</b><br><span class='text-success'>12 800 ₽</span>">
-                </button>
+                <button class="btn btn_button ls position-absolute bottom-0 end-0 m-3" data-bs-toggle="modal" data-bs-target="#order1Modal" data-bs-dismiss="modal">Мебель в проекте</button>
+                <div class="tooltip-wrapper" style="top: 39%; left: 64%;">
+                    <button type="button" class="btn-light rounded-circle"></button>
+                    <div class="custom-tooltip">
+                        <a href="/product/stol-malevich" class="tooltip-link">
+                            <b>Стол — Мольберт Malevich</b><br>
+                            <span class="text-success">31 320 ₽</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="tooltip-wrapper" style="top: 39%; left: 64%;">
+                    <button type="button" class="btn-light rounded-circle"></button>
+                    <div class="custom-tooltip">
+                        <a href="/product/stol-malevich" class="tooltip-link">
+                            <b>Стол — Мольберт Malevich</b><br>
+                            <span class="text_success">31 320 ₽</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="tooltip-wrapper" style="top: 60%; left: 20%;">
+                    <button type="button" class="btn-light rounded-circle"></button>
+                    <div class="custom-tooltip">
+                        <a href="/product/stol-malevich" class="tooltip-link">
+                            <b>Стол — Мольберт Malevich</b><br>
+                            <span class="text_success">31 320 ₽</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="tooltip-wrapper" style="top: 65%; left: 74%;">
+                    <button type="button" class="btn-light rounded-circle"></button>
+                    <div class="custom-tooltip">
+                        <a href="/product/stol-malevich" class="tooltip-link">
+                            <b>Стол — Мольберт Malevich</b><br>
+                            <span class="text_success">31 320 ₽</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="tooltip-wrapper" style="top: 77%; left: 45%;">
+                    <button type="button" class="btn-light rounded-circle"></button>
+                    <div class="custom-tooltip">
+                        <a href="/product/stol-malevich" class="tooltip-link">
+                            <b>Ковер</b><br><span class='text_success'>12 800 ₽</span>
+                        </a>
+                    </div>
+                </div>
             </div>
             <p class="mt-3 text-muted">Светлые тона и натуральное дерево создают ощущение простора. Рабочая зона организована для учебы, а мягкий уголок — для игр и отдыха. Мебель легко адаптируется под меняющиеся потребности ребенка. </p>
         </div>
@@ -327,7 +391,7 @@ include _header.jade
                             <img src="files/art1.jpg" alt="">
                         </a>
                     </div>
-                    <div class="date">15.11.20244 <span>минуты</span></div>
+                    <div class="date">15.11.2024 <span>4 минуты</span></div>
                     <div class="name"><a href="">Какую кровать выбрать для ребенка: мягкую или деревянную?</a></div>
                 </div>
                 <div class="swiper-slide col-md-3">
@@ -336,7 +400,7 @@ include _header.jade
                             <img src="files/art2.jpg" alt="">
                         </a>
                     </div>
-                    <div class="date">15.11.20244 <span>минуты</span></div>
+                    <div class="date">15.11.2024 <span>4 минуты</span></div>
                     <div class="name"><a href="">Какую кровать выбрать для ребенка: мягкую или деревянную?</a></div>
                 </div>
                 <div class="swiper-slide col-md-3">
@@ -345,7 +409,7 @@ include _header.jade
                             <img src="files/art3.jpg" alt="">
                         </a>
                     </div>
-                    <div class="date">15.11.20244 <span>минуты</span></div>
+                    <div class="date">15.11.2024 <span>4 минуты</span></div>
                     <div class="name"><a href="">Какую кровать выбрать для ребенка: мягкую или деревянную?</a></div>
                 </div>
                 <div class="swiper-slide col-md-3">
@@ -354,7 +418,7 @@ include _header.jade
                             <img src="files/art4.jpg" alt="">
                         </a>
                     </div>
-                    <div class="date">15.11.20244 <span>минуты</span></div>
+                    <div class="date">15.11.2024 <span>4 минуты</span></div>
                     <div class="name"><a href="">Какую кровать выбрать для ребенка: мягкую или деревянную?</a></div>
                 </div>
             </div>
