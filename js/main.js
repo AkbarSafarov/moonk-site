@@ -2147,11 +2147,19 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentStoryIndex = 0;
     let storyTimeout;
     let isPaused = false;
+    let touchStartY = 0;
+    let touchEndY = 0;
 
     const storiesData = {
         currentCategory: 0,
         currentStory: 0
     };
+
+    // Получение длительности истории из атрибута data-duration (в миллисекундах)
+    function getStoryDuration(storyElement) {
+        const duration = storyElement.getAttribute('data-duration');
+        return duration ? parseInt(duration) : 5000; // По умолчанию 5 секунд
+    }
 
     function stopAllStories() {
         clearTimeout(storyTimeout);
@@ -2192,19 +2200,16 @@ document.addEventListener('DOMContentLoaded', function() {
             },
             on: {
                 init: function() {
-                    // Запускаем только центральный слайд
                     storiesData.currentCategory = this.activeIndex;
                     storiesData.currentStory = 0;
                     resetCategoryStories(this.activeIndex);
                     showStory(this.activeIndex, 0);
                 },
                 slideChangeTransitionStart: function() {
-                    // Останавливаем все истории при смене слайда
                     stopAllStories();
                     clearTimeout(storyTimeout);
                 },
                 slideChangeTransitionEnd: function() {
-                    // Запускаем только у активного слайда
                     storiesData.currentCategory = this.activeIndex;
                     storiesData.currentStory = 0;
                     resetCategoryStories(this.activeIndex);
@@ -2213,7 +2218,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-
 
     function resetCategoryStories(categoryIndex) {
         const slide = document.querySelectorAll('.story-slide')[categoryIndex];
@@ -2229,7 +2233,7 @@ document.addEventListener('DOMContentLoaded', function() {
             segment.classList.remove('active', 'completed');
             const fill = segment.querySelector('.progress-segment-fill');
             fill.style.animation = 'none';
-            fill.offsetHeight; // Reflow
+            fill.offsetHeight;
 
             if (index === 0) {
                 segment.classList.add('active');
@@ -2251,6 +2255,11 @@ document.addEventListener('DOMContentLoaded', function() {
             stories[storyIndex].classList.add('active');
         }
 
+        // Получаем длительность текущей истории
+        const currentStory = stories[storyIndex];
+        const duration = getStoryDuration(currentStory);
+        const durationInSeconds = duration / 1000;
+
         segments.forEach((segment, index) => {
             const fill = segment.querySelector('.progress-segment-fill');
             segment.classList.remove('active', 'completed');
@@ -2261,13 +2270,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 segment.classList.add('completed');
             } else if (index === storyIndex) {
                 segment.classList.add('active');
-                fill.style.animation = 'progressFill 5s linear forwards';
+                fill.style.animation = `progressFill ${durationInSeconds}s linear forwards`;
             }
         });
 
         storyTimeout = setTimeout(() => {
             nextStory();
-        }, 5000);
+        }, duration);
     }
 
     function nextStory() {
@@ -2346,16 +2355,59 @@ document.addEventListener('DOMContentLoaded', function() {
             activeSegment.style.animationPlayState = 'running';
         }
 
+        const stories = slide.querySelectorAll('.story-item');
+        const currentStory = stories[storiesData.currentStory];
+        const duration = getStoryDuration(currentStory);
+
         storyTimeout = setTimeout(() => {
             nextStory();
-        }, 5000);
+        }, duration);
+    }
+
+    // Обработка свайпа вверх/вниз для закрытия на мобильных
+    function handleTouchStart(e) {
+        touchStartY = e.touches[0].clientY;
+    }
+
+    function handleTouchEnd(e) {
+        touchEndY = e.changedTouches[0].clientY;
+        handleSwipe();
+    }
+
+    function handleSwipe() {
+        const swipeDistance = Math.abs(touchEndY - touchStartY);
+        const minSwipeDistance = 100; // Минимальное расстояние для срабатывания свайпа
+
+        if (swipeDistance > minSwipeDistance) {
+            // Свайп вверх или вниз
+            if (touchEndY < touchStartY || touchEndY > touchStartY) {
+                closeStories();
+            }
+        }
+    }
+
+    // Hotkeys
+    function handleKeyDown(e) {
+        const modal = document.getElementById('storiesModal');
+        if (!modal.classList.contains('active')) return;
+
+        switch(e.key) {
+            case 'Escape':
+                closeStories();
+                break;
+            case 'ArrowLeft':
+                prevStory();
+                break;
+            case 'ArrowRight':
+                nextStory();
+                break;
+        }
     }
 
     const closeSt = document.querySelector('.close_stories');
+    closeSt.addEventListener('click', closeStories);
 
-    closeSt.addEventListener('click', closeStories)
-
-    // === Обработчики событий ===
+    // Обработчики событий
     document.querySelectorAll('.story-trigger').forEach(trigger => {
         trigger.addEventListener('click', e => {
             e.preventDefault();
@@ -2378,4 +2430,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.addEventListener('mousedown', pauseStory);
     document.addEventListener('mouseup', resumeStory);
-})
+
+    // Hotkeys
+    document.addEventListener('keydown', handleKeyDown);
+
+    // Touch события для свайпа
+    const modal = document.getElementById('storiesModal');
+    modal.addEventListener('touchstart', handleTouchStart, { passive: true });
+    modal.addEventListener('touchend', handleTouchEnd, { passive: true });
+});
