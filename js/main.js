@@ -1735,7 +1735,11 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+    
+
 });
+
+
 
 // Скрипт для поиска в модальном окне
 document.addEventListener('DOMContentLoaded', function() {
@@ -1969,6 +1973,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
+
+
 });
 
 
