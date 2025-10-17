@@ -1385,6 +1385,8 @@ img, textarea, input, table {
                 height: calc(100vh - 186px);
                 padding: 32px 44px;
                 overflow-y: auto;
+                border-color: var(--gray);
+                border-width: 1px 0 0;
 
                 > li {
                     width: 264px;
@@ -2535,10 +2537,14 @@ img, textarea, input, table {
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.2s ease, transform 0.2s ease;
-    min-width: 140px;
+    min-width: 177px;
     text-align: left;
     z-index: 10;
     font-family: var(--font-family);
+
+    br {
+        display: none;
+    }
 }
 
 /* При показе */
@@ -2550,6 +2556,8 @@ img, textarea, input, table {
 
 .custom-tooltip b {
     font-weight: 500;
+    display: block;
+    margin-bottom: 4px;
 }
 
 .custom-tooltip a {
@@ -2575,7 +2583,7 @@ img, textarea, input, table {
         font-size: 14px;
         line-height: 105%;
         letter-spacing: 0.02em;
-        color: var(--graphite-300);
+        color: var(--graphite-300) !important;
         white-space: nowrap;
     }
 
