@@ -1147,7 +1147,8 @@ img, textarea, input, table {
     }
 
     .swiper-slide {
-        min-height: 100vh;
+        min-height: 100vh;  
+        min-height: 100dvh; 
         display: flex;
         flex-direction: column;
         justify-content: end;
@@ -1265,9 +1266,11 @@ img, textarea, input, table {
     &.top {
         .swiper-slide {
             min-height: calc(100vh - 38px);
+            min-height: calc(100dvh - 38px); 
 
             @media all and (max-width: 991px)  {
                 min-height: calc(100vh - 36px);
+                min-height: calc(100dvh - 36px); 
             }
         }
     }
