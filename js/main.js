@@ -20,18 +20,26 @@ document.addEventListener("DOMContentLoaded", function() {
         
         if (window.scrollY > tmenuOffset + 10) {
             header.classList.add("fixed_block");
+            discountBanner.classList.add("fixed_discount");
             menuBurger.classList.add('fixed_burger');
             
             if (isScrollingUp && menuHeader) {
                 menuHeader.classList.add('show_menu');
+                header.classList.add('show_header');
+                discountBanner.classList.add('show_discount');
             } else if (menuHeader) {
                 menuHeader.classList.remove('show_menu');
+                header.classList.remove('show_header');
+                discountBanner.classList.remove('show_discount');
             }
         } else {
             header.classList.remove("fixed_block");
+            discountBanner.classList.remove("fixed_discount");
             menuBurger.classList.remove('fixed_burger');
             if (menuHeader) {
                 menuHeader.classList.remove('show_menu');
+                header.classList.remove('show_header');
+                discountBanner.classList.remove('show_discount');
             }
         }
         

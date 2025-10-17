@@ -118,6 +118,10 @@
 .site_wrapper.inner_site_wrapper{
 	padding-top: 188px;
 
+    .discount_banner  {
+        position: fixed;
+    }
+
 	@media all and (max-width: 991px){
 		padding-top: 89px;
 	}
@@ -664,7 +668,7 @@
             margin-bottom: 32px !important;
         }
 
-        h4{
+        h2{
             font-size: 36px;
             line-height: 85%;
 
@@ -877,7 +881,7 @@
             margin-bottom: 32px !important;
         }
 
-        h4{
+        h2{
             font-size: 36px;
             line-height: 85%;
 
@@ -1173,7 +1177,7 @@
             margin-bottom: 32px !important;
         }
 
-        h4{
+        h2{
             font-size: 36px;
             line-height: 85%;
 
@@ -1843,7 +1847,7 @@
             margin-bottom: 32px !important;
         }
 
-        h4{
+        h2{
             font-size: 36px;
             line-height: 85%;
 
@@ -2009,7 +2013,7 @@
             font-size: 40px;
         }
 
-        h4{
+        h2{
             font-size: 36px;
             line-height: 85%;
 
@@ -2981,7 +2985,7 @@
             margin-bottom: 32px !important;
         }
 
-        h4{
+        h2{
             font-size: 36px;
             line-height: 85%;
             margin-bottom: 16px;
@@ -3157,7 +3161,7 @@
             margin-bottom: 32px !important;
         }
 
-        h4{
+        h2{
             font-size: 36px;
             line-height: 85%;
 
@@ -3710,7 +3714,7 @@
             margin-bottom: 32px !important;
         }
 
-        h4{
+        h2{
             font-size: 36px;
             line-height: 85%;
 
@@ -4752,7 +4756,7 @@
             margin-bottom: 32px !important;
         }
 
-        h4{
+        h2{
             font-size: 36px;
             line-height: 85%;
 
@@ -5057,7 +5061,7 @@
             margin-bottom: 32px !important;
         }
 
-        h4{
+        h2{
             font-size: 36px;
             line-height: 85%;
 
@@ -5715,7 +5719,7 @@
             margin-bottom: 32px !important;
         }
 
-        h4{
+        h2{
             font-size: 36px;
             line-height: 85%;
             margin-bottom: 16px;
