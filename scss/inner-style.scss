@@ -818,10 +818,35 @@
         padding: 0;
     }
 
+    .swiper-slide {
+        cursor: pointer;
+
+        &:hover {
+            .hov {
+                opacity: 1;
+            }
+        }
+    }
+
     img {
         width: 100%;
         object-fit: cover;
         border-radius: 4px;
+    }
+
+    @media all and (min-width: 992px) {
+
+        .ls_img {
+            img {
+                height: 338px;
+            }
+        }
+
+        .xl_img {
+            img {
+                height: 414px;
+            }
+        }
     }
 
     a {
@@ -1659,6 +1684,18 @@
     		height: 52px;
     		background-color: #fff;
     		border-radius: 50%;
+
+            &:hover {
+                background-color: #373737;
+
+                &.prev {
+                    background:  #373737 url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18.6666 10.6667L13.3333 16.0001L18.6666 21.3334' stroke='%23ffffff' stroke-width='1.5' stroke-linecap='square' /%3E%3C/svg%3E") 50% no-repeat;
+                }
+
+                &.next {
+                    background:  #373737 url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.3333 21.3334L18.6666 16.0001L13.3333 10.6667' stroke='%23ffffff' stroke-width='1.5' stroke-linecap='square' /%3E%3C/svg%3E") 50% no-repeat;
+                }
+            }
     	}
     }
 
@@ -1754,7 +1791,7 @@
         	bottom: 0;
         	left: 0;
         	right: 0;
-        	padding: 32px 44px;
+        	padding: 16px 16px;
         }
 
         .slide_btn {padding-right: 130px;}
@@ -5244,12 +5281,13 @@
 
             .text {
                 font-weight: 400;
-                font-size: 16px;
+                font-size: 14px;
                 line-height: 105%;
                 letter-spacing: 0.02em;
                 color: #373737;
                 margin-top: 16px;
                 margin-bottom: 16px;
+                font-family: var(--font-family);
             }
 
             .icon {
