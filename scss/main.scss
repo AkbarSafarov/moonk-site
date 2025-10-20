@@ -2544,7 +2544,7 @@ img, textarea, input, table {
             font-size: 14px;
             line-height: 105%;
             letter-spacing: 0.02em;
-            color: var(--graphite-300);
+            color: var(--graphite-300) !important;
         }
     }
 }
