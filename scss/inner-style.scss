@@ -2864,10 +2864,13 @@
 
     .item {
         margin-bottom: 48px;
+        display: flex;
 
         a {
-            display: block;
+            display: flex;
             text-decoration: none;
+            width: 100%;
+            flex-direction: column;
         }
 
         .image {
@@ -2875,9 +2878,10 @@
             padding: 28px;
             background: var(--gray);
             display: flex;
-            align-items: start;
+            align-items: center;
             justify-content: center;
             margin-bottom: 16px;
+            flex: 1 1 auto;
         }
 
         .name {
