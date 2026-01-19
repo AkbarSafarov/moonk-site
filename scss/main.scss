@@ -512,6 +512,13 @@ img, textarea, input, table {
     flex: 1 1 auto;
 }
 
+.contactsBtn, button {
+    border: none;   
+    padding: 0;
+    background: none;
+}
+
+
 .btn_button {
     display: inline-block;
     border: none;
@@ -712,11 +719,13 @@ img, textarea, input, table {
     transition: all .3s;
 
     &.top {
-        top: 38px;
+        top: calc(var(--v-sticker-height, 0px) + var(--v-header-top, 0px));
 
-        @media all and (max-width: 991px) {
-            top: 36px;
-        }
+        // top: 38px;
+
+        // @media all and (max-width: 991px) {
+        //     top: 36px;
+        // }
     }
 
     @media all and (min-width: 767px) and (max-width: 991px) {
@@ -1334,6 +1343,7 @@ img, textarea, input, table {
                     background: #fff;
                     opacity: 0;
                     transition: all .3s;
+                    z-index: 10;
                 }
 
                 &:hover {
@@ -1611,13 +1621,20 @@ img, textarea, input, table {
                 }
             }
 
-            &:hover > ul{
-                display: block;
+            &:hover {
+                > a {
+                    &:before {
+                        opacity: 1;
+                        z-index: 10000;
+                    }
+                }
+                > ul{
+                    display: block;
+                }
             }   
         }
     }
 }
-
 
 
 
@@ -2788,7 +2805,7 @@ img, textarea, input, table {
         bottom: 0;
         right: 0;
         left: 0;
-        z-index: 1;
+        z-index: 2;
     }
 
     a {
@@ -2804,6 +2821,7 @@ img, textarea, input, table {
         border-radius: 4px;
         overflow: hidden;
         position: relative;
+        z-index: 1;
     }
 
     .age {
@@ -2827,6 +2845,7 @@ img, textarea, input, table {
     img {
         width: 100%;
         border-radius: 4px;
+        transition: all .3s;
     }
 
     .card-img-top.hov {
@@ -2835,8 +2854,8 @@ img, textarea, input, table {
         left: 0;
         right: 0;
         bottom: 0;
-        transition: all .3s;
-        opacity: 0;
+        opacity: 1;
+        z-index: -1;
     }
 
     
@@ -2957,11 +2976,11 @@ img, textarea, input, table {
 
     &:hover {
 
-        .card-img-top{
-            opacity: 0;
+        .card-img-top.hov{
+            opacity: 1;
 
-            &.hov {
-                opacity: 1;
+            & + .card-img-top {
+                opacity: 0;
             }
         }
     }

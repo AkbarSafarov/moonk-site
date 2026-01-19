@@ -13,6 +13,45 @@ document.addEventListener("DOMContentLoaded", function() {
     let lastScrollY = window.scrollY; 
     let isScrollingUp = false; 
 
+    // Функция для работы с cookies
+    function setCookie(name, value, days) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        const expires = "expires=" + date.toUTCString();
+        document.cookie = name + "=" + value + ";" + expires + ";path=/";
+    }
+
+    function getCookie(name) {
+        const nameEQ = name + "=";
+        const ca = document.cookie.split(';');
+        for(let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+    }
+
+    function updateStickerHeight() {
+        const discountBanner = document.querySelector('.discount_banner');
+        if (discountBanner && discountBanner.classList.contains('show')) {
+            const height = discountBanner.offsetHeight;
+            document.documentElement.style.setProperty('--v-sticker-height', `${height}px`);
+        } else {
+            document.documentElement.style.setProperty('--v-sticker-height', '0px');
+        }
+    }
+
+    function updateAdminBarOffset() {
+        const adminBar = document.querySelector('.bx-panel-fixed'); 
+        if (adminBar && window.getComputedStyle(adminBar).display !== 'none') {
+            const height = adminBar.offsetHeight;
+            document.documentElement.style.setProperty('--v-header-top', `${height}px`);
+        } else {
+            document.documentElement.style.setProperty('--v-header-top', '0px');
+        }
+    }
+
     function checkScroll() {
         const currentScrollY = window.scrollY;
         
@@ -103,14 +142,47 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if (discountBanner) {
         const closeBanner = discountBanner.querySelector('.close-banner');
-
+        
+        // Проверяем cookie при загрузке страницы
+        const bannerClosed = getCookie('discount_banner_closed');
+        
+        if (bannerClosed === 'true') {
+            discountBanner.classList.remove('show');
+            header.classList.remove('top');
+            if (slider) slider.classList.remove('top');
+            if (menuBurger) menuBurger.classList.remove('top');
+            updateStickerHeight();
+        } else {
+            discountBanner.classList.add('show');
+            header.classList.add('top');
+            if (slider) slider.classList.add('top');
+            if (menuBurger) menuBurger.classList.add('top');
+            updateStickerHeight();
+        }
+        
+        updateAdminBarOffset();
+        
         closeBanner.addEventListener('click', function() {
             discountBanner.classList.remove('show');
             header.classList.remove('top');
             if (slider) slider.classList.remove('top');
             if (menuBurger) menuBurger.classList.remove('top');
-        })
-    } 
+            
+            // Сохраняем cookie на 10 дней
+            setCookie('discount_banner_closed', 'true', 10);
+            
+            updateStickerHeight();
+        });
+        
+        window.addEventListener('resize', function() {
+            updateStickerHeight();
+            updateAdminBarOffset();
+        });
+    }
+
+    window.addEventListener('load', function() {
+        updateAdminBarOffset();
+    });
 
     const contactsBtn = document.querySelector('.contactsBtn');
 
@@ -176,7 +248,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const wrappers = document.querySelectorAll('.tooltip-wrapper');
 
-      wrappers.forEach(wrapper => {
+    wrappers.forEach(wrapper => {
         const tooltip = wrapper.querySelector('.custom-tooltip');
         let hideTimeout;
 
@@ -196,150 +268,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
         tooltip.addEventListener('mouseenter', () => clearTimeout(hideTimeout));
         tooltip.addEventListener('mouseleave', hideTooltip);
-      });
+    });
 
 
-    const sliderTop = document.querySelector('.mySwiper_banner');
-
-    if (sliderTop) {
-        const swiper = new Swiper('.mySwiper_banner', {
-            loop: true,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: '.swiper-pagination-top',
-                clickable: true,
-            },
-            effect: 'fade',
-            fadeEffect: {
-                crossFade: true
-            },
-            speed: 1000,
-            on: {
-                autoplayTimeLeft(s, time, progress) {
-                    const activeButton = document.querySelector('.swiper-pagination-top .swiper-pagination-bullet-active::before');
-                    if (activeButton) {
-                        const remainingTime = (time / 1000);
-                        activeButton.style.animationDuration = `${remainingTime}s`;
-                    }
-                },
-                slideChange() {
-                    setTimeout(() => {
-                        const activeButton = document.querySelector('.swiper-pagination-top .swiper-pagination-bullet-active');
-                        if (activeButton) {
-                            const beforeEl = activeButton.querySelector('::before');
-                            if (beforeEl) {
-                                beforeEl.style.animation = 'none';
-                                setTimeout(() => {
-                                    beforeEl.style.animation = 'progressBar 6s linear infinite';
-                                }, 10);
-                            }
-                        }
-                    }, 50);
-                }
-            }
-        });
-    }
 
     const imageTooltip = document.querySelectorAll('[data-bs-toggle="tooltip"]');
 
     if (imageTooltip.length) {
         imageTooltip.forEach(el => {
             new bootstrap.Tooltip(el)
-        });
-    }
-
-    const sliderProductsHits = document.querySelector('.hits .mySwiper_products');
-
-    if (sliderProductsHits) {
-
-        const swiperHits = new Swiper(".hits .mySwiper_products", {
-            slidesPerView: 4,
-            spaceBetween: 16,
-            loop: true,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-            },
-            navigation: {
-                nextEl: ".hits .arrow_btn.next",
-                prevEl: ".hits .arrow_btn.prev",
-            },
-            breakpoints: {
-                0: { slidesPerView: 'auto' },
-                992: { slidesPerView: 4 }
-            }
-        });
-    }
-
-    const sliderProductsNews = document.querySelector('.news .mySwiper_products');
-
-    if (sliderProductsNews) {
-
-        const swiperNews = new Swiper(".news .mySwiper_products", {
-            slidesPerView: 4,
-            spaceBetween: 16,
-            loop: true,
-            autoplay: {
-                delay: 4500,
-                disableOnInteraction: false,
-            },
-            navigation: {
-                nextEl: ".news .arrow_btn.next",
-                prevEl: ".news .arrow_btn.prev",
-            },
-            breakpoints: {
-                0: { slidesPerView: 'auto' },
-                992: { slidesPerView: 4 }
-            }
-        });
-    }
-
-    const sliderProductsBuys = document.querySelector('.buys .mySwiper_products');
-
-    if (sliderProductsBuys) {
-
-        const swiperBuys = new Swiper(".buys .mySwiper_products", {
-            slidesPerView: 4,
-            spaceBetween: 16,
-            loop: true,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-            },
-            navigation: {
-                nextEl: ".buys .arrow_btn.next",
-                prevEl: ".buys .arrow_btn.prev",
-            },
-            breakpoints: {
-                0: { slidesPerView: 'auto' },
-                992: { slidesPerView: 4 }
-            }
-        });
-    }
-
-    const sliderProductsLikes = document.querySelector('.likes .mySwiper_products');
-
-    if (sliderProductsLikes) {
-
-        const swiperLikes = new Swiper(".likes .mySwiper_products", {
-            slidesPerView: 4,
-            spaceBetween: 16,
-            loop: true,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-            },
-            navigation: {
-                nextEl: ".likes .arrow_btn.next",
-                prevEl: ".likes .arrow_btn.prev",
-            },
-            breakpoints: {
-                0: { slidesPerView: 'auto' },
-                992: { slidesPerView: 4 }
-            }
         });
     }
 
@@ -501,50 +438,6 @@ document.addEventListener("DOMContentLoaded", function() {
         handleMenuItems(menuWrap, true);
     }
 
-    const sliderRoom = document.querySelector('.mySwiper_room');
-
-    if (sliderRoom) {
-        const swiperRoom = new Swiper('.mySwiper_room', {
-            loop: true,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: '.swiper-pagination-room',
-                clickable: true,
-            },
-            effect: 'fade',
-            fadeEffect: {
-                crossFade: true
-            },
-            speed: 1000,
-            on: {
-                autoplayTimeLeft(s, time, progress) {
-                    const activeButton = document.querySelector('.swiper-pagination-room .swiper-pagination-bullet-active::before');
-                    if (activeButton) {
-                        const remainingTime = (time / 1000);
-                        activeButton.style.animationDuration = `${remainingTime}s`;
-                    }
-                },
-                slideChange() {
-                    setTimeout(() => {
-                        const activeButton = document.querySelector('.swiper-pagination-room .swiper-pagination-bullet-active');
-                        if (activeButton) {
-                            const beforeEl = activeButton.querySelector('::before');
-                            if (beforeEl) {
-                                beforeEl.style.animation = 'none';
-                                setTimeout(() => {
-                                    beforeEl.style.animation = 'progressBar 6s linear infinite';
-                                }, 10);
-                            }
-                        }
-                    }, 50);
-                }
-            }
-        });
-    }
-
     const loadingBtn = document.querySelector('.loading_btn');
 
     if(loadingBtn){
@@ -555,191 +448,6 @@ document.addEventListener("DOMContentLoaded", function() {
             setTimeout(function(){
                 loadingBtn.classList.remove('loaded');
             }, 2000)
-        });
-    }
-
-    const sliderReview = document.querySelector('.mySwiper_review');
-
-    if (sliderReview) {
-
-        const swiperReview = new Swiper(".mySwiper_review", {
-            slidesPerView: 4,
-            spaceBetween: 16,
-            loop: true,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-            },
-            navigation: {
-                nextEl: ".review_section .arrow_btn.next",
-                prevEl: ".review_section .arrow_btn.prev",
-            },
-            breakpoints: {
-                0: { slidesPerView: 'auto' },
-                992: { slidesPerView: 4 }
-            }
-        });
-    }
-
-    const sliderDetals = document.querySelector('.mySwiper_project_detals');
-
-    if (sliderDetals) {
-
-        const swiperDetals = new Swiper(".mySwiper_project_detals", {
-            slidesPerView: 1,
-            spaceBetween: 16,
-            loop: true,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-            },
-            navigation: {
-                nextEl: ".project_detals_section .arrow_btn.next",
-                prevEl: ".project_detals_section .arrow_btn.prev",
-            }
-        });
-    }
-
-    const sliderBn = document.querySelector('.mySwiper_bn');
-
-    if (sliderBn) {
-        const swiperBn = new Swiper('.mySwiper_bn', {
-            loop: true,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: '.swiper-pagination-bn',
-                clickable: true,
-            },
-            effect: 'fade',
-            fadeEffect: {
-                crossFade: true
-            },
-            navigation: {
-                nextEl: ".slider_bn_block .arrow_btn.next",
-                prevEl: ".slider_bn_block .arrow_btn.prev",
-            },
-            speed: 1000,
-            on: {
-                autoplayTimeLeft(s, time, progress) {
-                    const activeButton = document.querySelector('.swiper-pagination-room .swiper-pagination-bullet-active::before');
-                    if (activeButton) {
-                        const remainingTime = (time / 1000);
-                        activeButton.style.animationDuration = `${remainingTime}s`;
-                    }
-                },
-                slideChange() {
-                    setTimeout(() => {
-                        const activeButton = document.querySelector('.swiper-pagination-room .swiper-pagination-bullet-active');
-                        if (activeButton) {
-                            const beforeEl = activeButton.querySelector('::before');
-                            if (beforeEl) {
-                                beforeEl.style.animation = 'none';
-                                setTimeout(() => {
-                                    beforeEl.style.animation = 'progressBar 6s linear infinite';
-                                }, 10);
-                            }
-                        }
-                    }, 50);
-                }
-            }
-        });
-    }
-
-    const sliderTabs = document.querySelector('.mySwiper_tabs');
-
-    if (sliderTabs) {
-
-        const swiperTabs = new Swiper(".mySwiper_tabs", {
-            slidesPerView: 1,
-            spaceBetween: 16,
-            effect: "fade",
-            loop: true,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-            },
-            navigation: {
-                nextEl: ".tabs_imag .arrow_btn.next",
-                prevEl: ".tabs_imag .arrow_btn.prev",
-            }
-        });
-    }
-
-    const sliderModal = document.querySelector('.mySwiper_modal');
-
-    if (sliderModal) {
-        const swiperModal = new Swiper('.mySwiper_modal', {
-            slidesPerView: 1,
-            spaceBetween: 30,
-            loop: false,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-            },
-            speed: 800,
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            keyboard: {
-                enabled: true,
-            },
-            mousewheel: {
-                invert: false,
-            },
-            touchRatio: 1,
-            touchAngle: 45,
-            grabCursor: true,
-        });
-
-        const thumbnails = document.querySelectorAll('.thumbnail');
-        const zoomLinks = document.querySelectorAll('.zoom');
-        const modalEl = document.getElementById('showTabModal');
-
-        // Клики по превьюшкам в модалке
-        thumbnails.forEach((thumb, index) => {
-            thumb.addEventListener('click', () => {
-                swiperModal.slideTo(index);
-                updateActiveThumbnail(index);
-            });
-        });
-
-        // Клики по zoom в карточках
-        zoomLinks.forEach((zoom, i) => {
-            zoom.addEventListener('click', (e) => {
-                e.preventDefault();
-
-                // Берём ссылку на картинку
-                const href = zoom.getAttribute('href');
-
-                // Находим слайд в модалке с таким src
-                const slides = sliderModal.querySelectorAll('.swiper-slide img, .swiper-slide video');
-                let targetIndex = 0;
-                slides.forEach((slide, idx) => {
-                    if (slide.getAttribute('src') === href || slide.getAttribute('poster') === href) {
-                        targetIndex = idx;
-                    }
-                });
-
-                // После открытия модалки выставляем слайд
-                modalEl.addEventListener('shown.bs.modal', () => {
-                    swiperModal.slideTo(targetIndex);
-                    updateActiveThumbnail(targetIndex);
-                }, { once: true });
-            });
-        });
-
-        function updateActiveThumbnail(activeIndex) {
-            thumbnails.forEach((thumb, index) => {
-                thumb.classList.toggle('active', index === activeIndex);
-            });
-        }
-
-        swiperModal.on('slideChange', () => {
-            updateActiveThumbnail(swiperModal.realIndex);
         });
     }
 
@@ -760,74 +468,6 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     }
-
-    let categorySwiper = null;
-        
-    function initSwiper() {
-        const projectsSlider = document.querySelector(".projects-swiper");
-
-        if(!projectsSlider) return;
-
-        if (window.innerWidth <= 991) {
-            if (!categorySwiper) {
-                categorySwiper = new Swiper('.projects-swiper', {
-                    slidesPerView: 'auto',
-                    spaceBetween: 12,
-                    loop: true
-                });
-            }
-        } else {
-            if (categorySwiper) {
-                categorySwiper.destroy(true, true);
-                categorySwiper = null;
-            }
-        }
-    }
-    
-    window.addEventListener('load', initSwiper);
-    
-    window.addEventListener('resize', debounce(initSwiper, 250));
-    
-    // Функция debounce для оптимизации
-    function debounce(func, wait) {
-        let timeout;
-        return function executedFunction(...args) {
-            const later = () => {
-                clearTimeout(timeout);
-                func(...args);
-            };
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-        };
-    }
-
-    let swiperInstance = null;
-
-    function initSwiper2() {
-        const InstanceSlider = document.querySelector(".service_price-swiper");
-
-        if(!InstanceSlider) return;
-
-        const windowWidth = window.innerWidth;
-
-        if (windowWidth >= 560 && windowWidth < 1300) {
-            if (!swiperInstance) {
-                swiperInstance = new Swiper(".service_price-swiper", {
-                    slidesPerView: 'auto',
-                    spaceBetween: 16,
-                    loop: true
-                });
-            }
-        } else {
-            if (swiperInstance) {
-                swiperInstance.destroy(true, true);
-                swiperInstance = null;
-            }
-        }
-    }
-
-    initSwiper2();
-    window.addEventListener("resize", initSwiper2);
 
     const phoneFields = document.querySelectorAll(".phone-input");
 
@@ -852,28 +492,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    const sliderInterior = document.querySelector('.interiors_review');
-
-    if (sliderInterior) {
-
-        const swiperInterior = new Swiper(".interiors_review", {
-            slidesPerView: 4,
-            spaceBetween: 16,
-            loop: true,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-            },
-            navigation: {
-                nextEl: ".interiors_section .arrow_btn.next",
-                prevEl: ".interiors_section .arrow_btn.prev",
-            },
-            breakpoints: {
-                0: { slidesPerView: 'auto' },
-                992: { slidesPerView: 4 }
-            }
-        });
-    }
+    
 
     const fileFields = document.querySelectorAll(".field.file input[type='file']");
 
@@ -890,181 +509,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    const sliderSay = document.querySelector('.say_section');
-
-    if (sliderSay) {
-
-        const swiperSay = new Swiper(".say_review", {
-            slidesPerView: 3,
-            spaceBetween: 16,
-            loop: true,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-            },
-            navigation: {
-                nextEl: ".say_section .arrow_btn.next",
-                prevEl: ".say_section .arrow_btn.prev",
-            },
-            breakpoints: {
-                0: { slidesPerView: 'auto' },
-                992: { slidesPerView: 3 }
-            }
-        });
-    }
-
-    const sliderReviewModal = document.querySelector('.review-slider-modal');
-
-    if (sliderReviewModal) {
-
-        const swiperReviewModal = new Swiper(".review-slider-swiper", {
-            slidesPerView: 1,
-            spaceBetween: 16,
-            loop: true,
-            effect: 'fade',
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-            },
-            navigation: {
-                nextEl: ".review-slider-modal .arrow_btn.next",
-                prevEl: ".review-slider-modal .arrow_btn.prev",
-            }
-        });
-    }
-
-    let comfortSwiper = null;
-        
-    function initComfortSwiper2() {
-        const comfortSlider = document.querySelector(".comfort-swiper");
-
-        if(!comfortSlider) return;
-
-        if (window.innerWidth <= 991) {
-            if (!comfortSwiper) {
-                comfortSwiper = new Swiper('.comfort-swiper', {
-                    slidesPerView: 'auto',
-                    spaceBetween: 12,
-                    loop: true
-                });
-            }
-        } else {
-            if (comfortSwiper) {
-                comfortSwiper.destroy(true, true);
-                comfortSwiper = null;
-            }
-        }
-    }
-
-    window.addEventListener('load', initComfortSwiper2);
     
-    window.addEventListener('resize', debounce(initComfortSwiper2, 250));
-
-
-    let faqSliderSwiper = null;
-        
-    function initFaqSwiper() {
-        const slider = document.querySelector(".faq-slider-swiper");
-
-        if(!slider) return;
-
-        if (window.innerWidth <= 991) {
-            if (!faqSliderSwiper) {
-                faqSliderSwiper = new Swiper('.faq-slider-swiper', {
-                    slidesPerView: 'auto',
-                    spaceBetween: 12,
-                    loop: true
-                });
-            }
-        } else {
-            if (faqSliderSwiper) {
-                faqSliderSwiper.destroy(true, true);
-                faqSliderSwiper = null;
-            }
-        }
-    }
-
-    window.addEventListener('load', initFaqSwiper);
-    
-    window.addEventListener('resize', debounce(initFaqSwiper, 250));
-
-    const articleSlider = document.querySelectorAll(".article_section");
-
-    if (articleSlider.length) {
-        articleSlider.forEach((slider) => {
-            const sliderClass = slider.querySelector('.article-swiper');
-
-            let articleSwiper = null;
-
-            function initArticleSwiper() {
-                if (window.innerWidth <= 991) {
-                    if (!articleSwiper) {
-                        articleSwiper = new Swiper(sliderClass, {
-                            slidesPerView: 'auto',
-                            spaceBetween: 12,
-                            loop: true
-                        });
-                    }
-                } else {
-                    if (articleSwiper) {
-                        articleSwiper.destroy(true, true);
-                        articleSwiper = null;
-                    }
-                }
-            }
-
-            window.addEventListener('load', initArticleSwiper);
-            window.addEventListener('resize', debounce(initArticleSwiper, 250));
-        });
-    }
-
-    function initResponsiveSwiper(selector, swiperClass) {
-        let swiperInstance = null;
-        const row = document.querySelector(selector);
-        
-        if (!row) return;
-        
-        function enableSwiper() {
-            if (!swiperInstance && window.innerWidth <= 1426) {
-                const children = Array.from(row.children);
-                row.classList.add("swiper");
-                row.classList.remove("row");
-                row.innerHTML = `<div class="swiper-wrapper">
-                    ${children.map(child => `<div class="swiper-slide">${child.outerHTML}</div>`).join("")}
-                </div>`;
-                swiperInstance = new Swiper(selector, {
-                    slidesPerView: 'auto',
-                    spaceBetween: 8,
-                });
-            }
-        }
-        
-        function disableSwiper() {
-            if (swiperInstance && window.innerWidth > 1426) {
-                swiperInstance.destroy(true, true);
-                swiperInstance = null;
-                const slides = row.querySelectorAll(".swiper-slide .col");
-                row.classList.remove("swiper");
-                row.classList.add("row");
-                row.innerHTML = "";
-                slides.forEach(slide => row.appendChild(slide));
-            }
-        }
-        
-        function checkSwiper() {
-            if (window.innerWidth <= 1426) {
-                enableSwiper();
-            } else {
-                disableSwiper();
-            }
-        }
-        
-        checkSwiper();
-        window.addEventListener("resize", checkSwiper);
-    }
-
-    initResponsiveSwiper(".js-subcat-row", "js-subcat-row");
-    initResponsiveSwiper(".js-subcat2-row", "js-subcat2-row");
 
     const textBlock = document.querySelector(".js-text");
     const moreBtn = document.querySelector(".js-more");
@@ -1078,28 +523,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    let viewedSwiper = null;
-        
-    function initComfortSwiper() {
-        const viewedSlider = document.querySelector(".viewed-swiper");
-
-        if(!viewedSlider) return;
-
-        if (window.innerWidth <= 991) {
-            if (!viewedSwiper) {
-                viewedSwiper = new Swiper('.viewed-swiper', {
-                    slidesPerView: 'auto',
-                    spaceBetween: 12,
-                    loop: true
-                });
-            }
-        } else {
-            if (viewedSwiper) {
-                viewedSwiper.destroy(true, true);
-                viewedSwiper = null;
-            }
-        }
-    }
 
     const menuLinks = document.querySelectorAll('.anchor_menu a[href^="#"]');
 
@@ -1156,115 +579,6 @@ document.addEventListener("DOMContentLoaded", function() {
         window.addEventListener('scroll', updateActiveMenu);
         
         updateActiveMenu();
-    }
-
-    const contentSwiperWrap = document.querySelector('.contentSwiperWrap');
-
-    if(contentSwiperWrap){
-        const swiperThumbs = new Swiper(".contentSwiperThumb", {
-            spaceBetween: 12,
-            slidesPerView: 'auto',
-            
-            watchSlidesProgress: true,
-        });
-
-        const swiperMain = new Swiper(".contentSwiper", {
-            spaceBetween: 12,
-            slidesPerView: 1,
-            freeMode: true,
-            thumbs: {
-                swiper: swiperThumbs,
-            },
-        });
-    }
-
-    const sliderModalNew = document.querySelectorAll(".slider_modal");
-
-    if (sliderModalNew.length) {
-        sliderModalNew.forEach((slider) => {
-            const sliderClass = slider.querySelector('.mySwiper_slider_modal');
-            const nextBtn = slider.querySelector('.arrow_btn.next');
-            const prevBtn = slider.querySelector('.arrow_btn.prev');
-            const pagination = slider.querySelector('.swiper-pagination-slider_modal');
-
-            if (!sliderClass) return;
-
-            const modalSwiper = new Swiper(sliderClass, {
-                slidesPerView: 1,
-                spaceBetween: 12,
-                loop: true,
-                autoplay: {
-                    delay: 5000,
-                    disableOnInteraction: false,
-                },
-                navigation: {
-                    nextEl: nextBtn,
-                    prevEl: prevBtn,
-                },
-                pagination: {
-                    el: pagination,
-                    clickable: true,
-                }
-            });
-        });
-    }
-
-    const galleryContainer = document.querySelector('.gallery-container');
-
-    if(galleryContainer){
-        let galleryThumbs = new Swiper(".gallery-thumbs", {
-            slidesPerView: 'auto',
-            direction: 'vertical',
-            spaceBetween: 12,
-            loop: true,
-        });
-
-        let galleryMain = new Swiper(".gallery-main", {
-            loop: true,
-            pagination: {
-                el: '.swiper-pagination-gal',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.gallery-main .next',
-                prevEl: '.gallery-main .prev',
-            },
-            effect: 'fade',
-                fadeEffect: {
-                crossFade: true
-            },
-            thumbs: {
-                swiper: galleryThumbs
-            }
-        });
-
-        // galleryMain.on('slideChangeTransitionStart', function() {
-        //     galleryThumbs.slideTo(galleryMain.activeIndex);
-        // });
-
-        // galleryThumbs.on('transitionStart', function(){
-        //     galleryMain.slideTo(galleryThumbs.activeIndex);
-        // });
-
-
-        const mySwiperModal = new Swiper('.mySwiper_modal', {
-            loop: true,
-            navigation: {
-                nextEl: '.mySwiper_modal .swiper-button-next',
-                prevEl: '.mySwiper_modal .swiper-button-prev',
-            },
-        });
-
-        const mainGalleryImages = document.querySelectorAll('.gallery-main .swiper-slide img');
-
-        mainGalleryImages.forEach((image, index) => {
-            image.addEventListener('click', () => {
-                const modal = new bootstrap.Modal(document.getElementById('showTabModal'));
-                modal.show();
-
-                mySwiperModal.slideToLoop(index);
-            });
-        });
     }
 
     const colors = document.querySelectorAll('.product_detals .colors .color, #filterModal .colors .color');
@@ -1596,52 +910,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     }
 
-    const reviewsSwiper = document.querySelector('.reviewsSwiper');
-
-    if(reviewsSwiper){
-        let reviewsMain = new Swiper(".reviewsSwiper", {
-            slidesPerView: 'auto',
-            spaceBetween: 8,
-            loop: true,
-            centeredSlides: true,
-            roundLengths: true,
-            navigation: {
-                nextEl: ".reviewsSwiper .arrow_btn.next",
-                prevEl: ".reviewsSwiper .arrow_btn.prev",
-            },
-            breakpoints: {
-                0: { slidesPerView: 'auto', centeredSlides: false },
-                992: { slidesPerView: 'auto' }
-            }
-        });
-    }
-
-    let reviewCardSliderSwiper = null;
-        
-    function initreviewCardSwiper() {
-        const reviewCardCwiper = document.querySelector(".review-card-swiper");
-
-        if(!reviewCardCwiper) return;
-
-        if (window.innerWidth <= 767) {
-            if (!reviewCardSliderSwiper) {
-                reviewCardSliderSwiper = new Swiper('.review-card-swiper', {
-                    slidesPerView: 'auto',
-                    spaceBetween: 12,
-                    loop: true
-                });
-            }
-        } else {
-            if (reviewCardSliderSwiper) {
-                reviewCardSliderSwiper.destroy(true, true);
-                reviewCardSliderSwiper = null;
-            }
-        }
-    }
-
-    window.addEventListener('load', initreviewCardSwiper);
     
-    window.addEventListener('resize', debounce(initreviewCardSwiper, 250));
 
 
     const minRange = document.getElementById('minRange');
