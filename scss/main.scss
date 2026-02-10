@@ -2819,9 +2819,25 @@ img, textarea, input, table {
     .image {
         background: var(--gray);
         border-radius: 4px;
-        overflow: hidden;
         position: relative;
+        overflow: hidden;
         z-index: 1;
+
+        span {
+            display: block;
+            padding-top: 100%;
+            position: relative;
+        }
+
+        img {
+            object-fit: contain;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+        }
     }
 
     .age {
@@ -2976,11 +2992,15 @@ img, textarea, input, table {
 
     &:hover {
 
-        .card-img-top.hov{
-            opacity: 1;
+        .card-img-top{
+            opacity: 0;
+            
+            &.hov{
+                opacity: 1;
 
-            & + .card-img-top {
-                opacity: 0;
+                & + .card-img-top {
+                    opacity: 0;
+                }
             }
         }
     }

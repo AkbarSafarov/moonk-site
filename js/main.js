@@ -600,26 +600,38 @@ document.addEventListener("DOMContentLoaded", function() {
             size: null,
             mechanism: null,
             additional: [],
-            angle: null
+            angle: null,
+            color: null
         };
 
         function formatPrice(price) {
             return price.toLocaleString('ru-RU') + ' ₽';
         }
 
+        function getBasePrice() {
+            const totalPrice = document.querySelector('.prices .current');
+            return +totalPrice.getAttribute('data-current');
+        }
+
         function calculateTotal() {
-            const totalPrice = document.querySelector('.prices .current'); 
-
-            console.log(totalPrice)
-
-            let total = +totalPrice.getAttribute('data-current');
-
+            const basePrice = getBasePrice(); // Базовая цена 
+            
+            let total = 0;
+            
             if (state.size) {
-                total += state.size.price;
+                total = state.size.price; 
+            } else {
+                total = basePrice; // Используем базовую цену
             }
+            
+            if (state.color && state.color.price) {
+                total += state.color.price;
+            }
+            
             if (state.mechanism) {
                 total += state.mechanism.price;
             }
+            
             state.additional.forEach(item => total += item.price);
 
             return total;
@@ -629,14 +641,12 @@ document.addEventListener("DOMContentLoaded", function() {
             const prices = document.querySelector(classPrice);
             if (!prices) return;
 
-            if (state.size || state.mechanism || state.additional.length > 0) {
+            if (state.size || state.mechanism || state.additional.length > 0 || (state.color && state.color.price > 0)) {
                 prices.classList.add('has-options');
             } else {
                 prices.classList.remove('has-options');
             }
         }
-
-
 
         function updatePriceTable() {
             const priceBreakdown = document.getElementById('priceBreakdown');
@@ -646,6 +656,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             if (!priceBreakdown || !totalPrice) return;
 
+            const basePrice = getBasePrice();
             let html = '';
 
             if (state.size) {
@@ -653,6 +664,24 @@ document.addEventListener("DOMContentLoaded", function() {
                     <div class="d-flex">
                         <div class="name">Размер ${state.size.name}</div>
                         <div class="price">${formatPrice(state.size.price)}</div>
+                    </div>
+                `;
+            } else {
+                if (state.mechanism || state.additional.length > 0 || (state.color && state.color.price > 0)) {
+                    html += `
+                        <div class="d-flex">
+                            <div class="name">Базовая цена</div>
+                            <div class="price">${formatPrice(basePrice)}</div>
+                        </div>
+                    `;
+                }
+            }
+
+            if (state.color && state.color.price > 0) {
+                html += `
+                    <div class="d-flex">
+                        <div class="name">Цвет</div>
+                        <div class="price">+${formatPrice(state.color.price)}</div>
                     </div>
                 `;
             }
@@ -676,15 +705,18 @@ document.addEventListener("DOMContentLoaded", function() {
             });
 
             priceBreakdown.innerHTML = html;
-            priceBreakdown2.innerHTML = html;
+            if (priceBreakdown2) {
+                priceBreakdown2.innerHTML = html;
+            }
 
             totalPrice.textContent = formatPrice(calculateTotal());
-            totalPrice2.textContent = formatPrice(calculateTotal());
+            if (totalPrice2) {
+                totalPrice2.textContent = formatPrice(calculateTotal());
+            }
 
             togglePricesClass('.product_detals .prices');
             togglePricesClass('.fixed_product .prices');
         }
-
 
         function updateAccordionTitles() {
             const sizeTitle = document.getElementById('sizeTitle');
@@ -718,6 +750,66 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
 
+        function initializeState() {
+            let hasActiveElements = false;
+
+            const activeColor = document.querySelector('.product_detals .colors .color.active');
+            if (activeColor && activeColor.dataset.price) {
+                state.color = {
+                    price: parseInt(activeColor.dataset.price) || 0
+                };
+                hasActiveElements = true;
+            }
+
+            const activeMechanism = document.querySelector('.mod[data-type="mechanism"].active');
+            if (activeMechanism) {
+                state.mechanism = {
+                    name: activeMechanism.dataset.name,
+                    price: parseInt(activeMechanism.dataset.price)
+                };
+                hasActiveElements = true;
+            }
+
+            const activeAdditional = document.querySelectorAll('.mod[data-type="additional"].active');
+            activeAdditional.forEach(item => {
+                state.additional.push({
+                    name: item.dataset.name,
+                    price: parseInt(item.dataset.price)
+                });
+                hasActiveElements = true;
+            });
+
+            const activeSize = document.querySelector('.size_block_item.active');
+            if (activeSize) {
+                state.size = {
+                    name: activeSize.dataset.size,
+                    price: parseInt(activeSize.dataset.price)
+                };
+                hasActiveElements = true;
+            }
+
+            const activeAngle = document.querySelector('.param_block_item.active');
+            if (activeAngle) {
+                state.angle = activeAngle.dataset.angle;
+                hasActiveElements = true;
+            }
+
+            if (hasActiveElements) {
+                updateAccordionTitles();
+                updatePriceTable();
+            } else {
+                const totalPrice = document.querySelector('.product_detals .prices .current');
+                const totalPrice2 = document.querySelector('.fixed_product .prices .current');
+                const basePrice = getBasePrice();
+                
+                if (totalPrice) {
+                    totalPrice.textContent = formatPrice(basePrice);
+                }
+                if (totalPrice2) {
+                    totalPrice2.textContent = formatPrice(basePrice);
+                }
+            }
+        }
 
         const sizes = document.querySelectorAll('.product_detals .size_block_item');
         if (sizes.length) {
@@ -734,6 +826,22 @@ document.addEventListener("DOMContentLoaded", function() {
                     };
                     
                     updateAccordionTitles();
+                    updatePriceTable();
+                });
+            });
+        }
+
+        const colors = document.querySelectorAll('.product_detals .colors .color');
+        if (colors.length) {
+            colors.forEach(color => {
+                color.addEventListener('click', () => {
+                    colors.forEach(c => c.classList.remove('active'));
+                    color.classList.add('active');
+                    
+                    state.color = {
+                        price: parseInt(color.dataset.price) || 0
+                    };
+                    
                     updatePriceTable();
                 });
             });
@@ -806,9 +914,6 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
 
-        updateAccordionTitles();
-        //updatePriceTable();
-
         function priceHandler(selector, selectorId){
             selector.addEventListener('click', () => {
                 if (!selector.classList.contains('has-options')) return; 
@@ -833,83 +938,84 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         const modal = document.getElementById('accordionModal');
-        const modalTitle = modal.querySelector('.accordion-modal__title');
-        const modalBody = modal.querySelector('.accordion-modal__body');
-        const modalClose = modal.querySelector('.accordion-modal__close');
+        
+        if (modal) {
+            const modalTitle = modal.querySelector('.accordion-modal__title');
+            const modalBody = modal.querySelector('.accordion-modal__body');
+            const modalClose = modal.querySelector('.accordion-modal__close');
 
-        document.querySelectorAll('.product_detals .accordion-button').forEach(btn => {
-            btn.addEventListener('click', e => {
-            if (window.innerWidth <= 768) { 
-                e.preventDefault();
+            document.querySelectorAll('.product_detals .accordion-button').forEach(btn => {
+                btn.addEventListener('click', e => {
+                    if (window.innerWidth <= 768) { 
+                        e.preventDefault();
 
-                let title = btn.innerText.trim();
-                let targetId = btn.getAttribute('data-bs-target');
-                let content = document.querySelector(targetId).querySelector('.accordion-inner').innerHTML;
+                        let title = btn.innerText.trim();
+                        let targetId = btn.getAttribute('data-bs-target');
+                        let content = document.querySelector(targetId).querySelector('.accordion-inner').innerHTML;
 
-                modalTitle.textContent = title;
-                modalBody.innerHTML = content;
+                        modalTitle.textContent = title;
+                        modalBody.innerHTML = content;
 
-                modal.classList.add('active');
-            }
-          });
-        });
+                        modal.classList.add('active');
+                    }
+                });
+            });
 
-        modalBody.addEventListener('click', e => {
-            const item = e.target.closest('[data-type]');
-            if (!item || item.classList.contains('disabled')) return;
+            modalBody.addEventListener('click', e => {
+                const item = e.target.closest('[data-type]');
+                if (!item || item.classList.contains('disabled')) return;
 
-            const type = item.dataset.type;
+                const type = item.dataset.type;
 
-            // снять active только у элементов этого же типа
-            modalBody.querySelectorAll(`[data-type="${type}"]`).forEach(el => el.classList.remove('active'));
-            item.classList.add('active');
+                modalBody.querySelectorAll(`[data-type="${type}"]`).forEach(el => el.classList.remove('active'));
+                item.classList.add('active');
 
-            // обновляем state
-            if (type === 'size') {
-                state.size = {
-                    name: item.dataset.size,
-                    price: parseInt(item.dataset.price)
-                };
-            } else if (type === 'mechanism') {
-                state.mechanism = {
-                    name: item.dataset.name,
-                    price: parseInt(item.dataset.price)
-                };
-            } else if (type === 'angle') {
-                state.angle = item.dataset.angle; 
-            } else if (type === 'additional') {
-                if (item.classList.contains('active')) {
-                    state.additional.push({
+                if (type === 'size') {
+                    state.size = {
+                        name: item.dataset.size,
+                        price: parseInt(item.dataset.price)
+                    };
+                } else if (type === 'mechanism') {
+                    state.mechanism = {
                         name: item.dataset.name,
                         price: parseInt(item.dataset.price)
-                    });
-                } else {
-                    state.additional = state.additional.filter(a => a.name !== item.dataset.additional);
+                    };
+                } else if (type === 'angle') {
+                    state.angle = item.dataset.angle; 
+                } else if (type === 'additional') {
+                    if (item.classList.contains('active')) {
+                        state.additional.push({
+                            name: item.dataset.name,
+                            price: parseInt(item.dataset.price)
+                        });
+                    } else {
+                        state.additional = state.additional.filter(a => a.name !== item.dataset.name);
+                    }
                 }
-            }
 
-            updateAccordionTitles();
-            updatePriceTable();
-        });
+                updateAccordionTitles();
+                updatePriceTable();
+            });
 
+            modalClose.addEventListener('click', () => {
+                modal.classList.remove('active');
 
+                const opened = document.querySelector('.accordion-collapse.show');
+                const openedItem = document.querySelector('.accordion-item.active');
 
-        modalClose.addEventListener('click', () => {
-            modal.classList.remove('active');
-
-            const opened = document.querySelector('.accordion-collapse.show');
-            const openedItem = document.querySelector('.accordion-item.active');
-
-            if (opened) {
-                opened.classList.remove('show');
-                openedItem.classList.remove('active');
-                const btn = document.querySelector(`[data-bs-target="#${opened.id}"]`);
-                if (btn) btn.classList.add('collapsed');
-            }
-        });
-
+                if (opened) {
+                    opened.classList.remove('show');
+                    if (openedItem) {
+                        openedItem.classList.remove('active');
+                    }
+                    const btn = document.querySelector(`[data-bs-target="#${opened.id}"]`);
+                    if (btn) btn.classList.add('collapsed');
+                }
+            });
+        }
+        
+        initializeState();
     }
-
     
 
 

@@ -497,7 +497,7 @@ class SwiperManager {
                 slidesPerView: 'auto',
                 direction: 'vertical',
                 spaceBetween: 12,
-                loop: true,
+                loop: false,
             });
 
             const galleryMain = new Swiper('.gallery-main', {
