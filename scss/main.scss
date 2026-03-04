@@ -2907,6 +2907,9 @@ img, textarea, input, table {
                 cursor: pointer;
                 position: relative;
                 z-index: 2;
+                background-position: 50%;
+                background-repeat: no-repeat;
+                background-size: cover;
             }
 
             .more {
