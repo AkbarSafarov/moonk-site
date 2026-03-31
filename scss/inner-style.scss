@@ -1614,6 +1614,10 @@
 	    		height: 52px;
 	    		background-color: #fff;
 	    		border-radius: 50%;
+
+                &:hover {
+                    background-color: #373737;
+                }
 	    	}
 	    }
     }
