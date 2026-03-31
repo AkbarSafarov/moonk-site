@@ -660,9 +660,9 @@ img, textarea, input, table {
         transition: all .3s;
 
         &.show_discount {
-            opacity: 1;
-            visibility: visible;
-            top: 0;
+            // opacity: 1;
+            // visibility: visible;
+            // top: 0;
         }
     }
 
@@ -1656,7 +1656,7 @@ img, textarea, input, table {
                 top: 0;
 
                 &.top {
-                    top: 36px;
+                    //top: 36px;
                 }
             }
 
@@ -1664,7 +1664,7 @@ img, textarea, input, table {
                 display: none;
 
                 &.show_menu {
-                    display: block; 
+                    //display: block; 
                     border-color: var(--gray);
 
                     .navbar-nav {
@@ -1687,6 +1687,7 @@ img, textarea, input, table {
 
             .border-bottom {
                 color: #373737;
+                padding: 10px 0 !important;
 
                 a {
                     color: #373737;
