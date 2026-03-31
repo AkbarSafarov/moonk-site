@@ -4431,6 +4431,12 @@
 
             a {
                 color: #373737;
+                font-weight: bold;
+                transition: all .3s;
+
+                &:hover {
+                    color: var(--graphite-600);
+                }
             }
         }
 
