@@ -8328,3 +8328,59 @@
         display: block;
     }
 }
+
+// 404 page
+.error_404_section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+
+    @media (max-width: 768px) {
+        padding-top: 48px;
+        padding-bottom: 48px;
+    }
+
+    .error_404_content {
+        max-width: 700px;
+    }
+
+    .container {
+        padding: 0;
+        margin: 0;
+    }
+
+    .error_404_title {
+        font-size: 56px;
+        font-weight: 700;
+        line-height: 1.1;
+        margin-bottom: 24px;
+
+        @media (max-width: 768px) {
+            font-size: 36px;
+            margin-bottom: 16px;
+        }
+    }
+
+    .error_404_subtitle {
+        font-size: 20px;
+        font-weight: 500;
+        margin-bottom: 16px;
+
+        @media (max-width: 768px) {
+            font-size: 16px;
+        }
+    }
+
+    .error_404_text {
+        font-size: 16px;
+        color: var(--graphite);
+        margin-bottom: 40px;
+
+        @media (max-width: 768px) {
+            margin-bottom: 24px;
+        }
+    }
+
+    .error_404_btns {
+        flex-wrap: wrap;
+    }
+}
