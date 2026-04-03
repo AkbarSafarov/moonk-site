@@ -8353,13 +8353,16 @@
     }
 
     .error_404_title {
-        font-size: 56px;
-        font-weight: 700;
-        line-height: 1.1;
+        font-weight: 500;
+        font-size: 72px;
+        line-height: 80%;
+        color: #373737;
+        font-family: var(--second-family);
         margin-bottom: 24px;
 
-        @media (max-width: 768px) {
-            font-size: 36px;
+        @media (max-width: 991px) {
+            font-size: 40px;        
+            line-height: 85%;
             margin-bottom: 16px;
         }
     }
