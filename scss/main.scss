@@ -1663,14 +1663,12 @@ img, textarea, input, table {
 
             .menu-header {
                 transition: all .3s;
-                //transform: translate(0, -100%); 
                 position: relative;
                 display: none;
 
                 &.show_menu {
                     border-color: var(--gray);
                     display: block;
-                    //transform: translate(0, 0%); 
 
                     .navbar-nav {
                         > li {
@@ -2878,6 +2876,7 @@ img, textarea, input, table {
         bottom: 0;
         opacity: 1;
         z-index: -1;
+        visibility: hidden;
     }
 
     
@@ -3003,12 +3002,15 @@ img, textarea, input, table {
 
         .card-img-top{
             opacity: 0;
+            visibility: hidden;
             
             &.hov{
                 opacity: 1;
+                visibility: visible;
+
 
                 & + .card-img-top {
-                    opacity: 0;
+                    opacity: 0;visibility: hidden;
                 }
             }
         }
