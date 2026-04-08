@@ -63,11 +63,14 @@ document.addEventListener("DOMContentLoaded", function() {
             menuBurger.classList.add('fixed_burger');
             
             if (isScrollingUp && menuHeader) {
-                menuHeader.classList.add('show_menu');
+                setTimeout(function(){
+                    menuHeader.classList.add('show_menu');
+                }, 500);
+                
                 header.classList.add('show_header');
                 discountBanner.classList.add('show_discount');
             } else if (menuHeader) {
-                menuHeader.classList.remove('show_menu');
+                 menuHeader.classList.remove('show_menu');
                 header.classList.remove('show_header');
                 discountBanner.classList.remove('show_discount');
             }
