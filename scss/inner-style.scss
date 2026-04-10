@@ -2109,7 +2109,7 @@
 }
 
 .slider_top_block.about_slider {
-	min-height: 100vh;
+	min-height: 130vh;
 	position: relative;
 	margin-bottom: 0;
 
@@ -4562,6 +4562,8 @@
 
     .article_data {
         padding-left: 24px;
+        position: sticky;
+        top: 150px;
 
         .name {
             font-weight: 400;
@@ -4582,6 +4584,7 @@
 
         @media all and (max-width: 991px) {
             padding: 0;
+            position: static;
 
             .mb-4 {
                 margin-bottom: 0 !important;

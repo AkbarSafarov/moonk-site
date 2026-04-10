@@ -9,6 +9,26 @@ document.addEventListener("DOMContentLoaded", function() {
     const slider = document.querySelector('.slider_top_block');
     const menuHeader = document.querySelector('.menu-header');
     const tmenuOffset = header.offsetTop;
+    const yearActual = document.querySelector('.year-actual');
+    
+    if(yearActual){
+        yearActual.textContent = new Date().getFullYear();
+    }
+
+    const topLevelItems = document.querySelectorAll(
+        '.menu-header .navbar-nav > .nav-item.dropdown'
+    );
+
+    topLevelItems.forEach(function (item) {
+
+        item.addEventListener('mouseenter', function () {
+            header.classList.add('white_bg');
+        });
+
+        item.addEventListener('mouseleave', function () {
+            header.classList.remove('white_bg');
+        });
+    });
 
     let lastScrollY = window.scrollY; 
     let isScrollingUp = false; 
