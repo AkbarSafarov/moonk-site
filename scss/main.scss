@@ -1184,6 +1184,11 @@ img, textarea, input, table {
         background-position: 50% 100%;
         background-repeat: no-repeat;
 
+        @media all and (max-width: 991px) {
+            min-height: calc(100vh - 150px);  
+            min-height: calc(100dvh - 150px); 
+        }
+
         @media all and (max-width: 767px) {
             background-position: 80% 100%;
         }
@@ -2392,7 +2397,7 @@ img, textarea, input, table {
 }
 
 .popular_category {
-    padding-top: 40px;
+    padding-top: 60px;
     padding-bottom: 80px;
     position: relative;
 
@@ -3608,6 +3613,7 @@ img, textarea, input, table {
         @media all and (max-width: 767px)  {
             .container {
                 background: #373737 url(../img/bg-blue-mob.png) 50% 108px no-repeat;
+                background-size: 100%;
             }
         }
     }
@@ -3620,6 +3626,7 @@ img, textarea, input, table {
         @media all and (max-width: 767px)  {
             .container {
                 background: #373737 url(../img/bg-blue2-mob.png) 50% 108px no-repeat;
+                background-size: 100%;
             }
         }
     }
@@ -3632,6 +3639,7 @@ img, textarea, input, table {
         @media all and (max-width: 767px)  {
             .container {
                 background: #373737 url(../img/bg-orange-mob.png) 50% 108px no-repeat;
+                background-size: 100%;
             }
         }
     }
@@ -3644,6 +3652,7 @@ img, textarea, input, table {
         @media all and (max-width: 767px)  {
             .container {
                 background: #373737 url(../img/bg-orange2-mob.png) 50% 108px no-repeat;
+                background-size: 100%;
             }
         }
     }
@@ -3656,6 +3665,7 @@ img, textarea, input, table {
         @media all and (max-width: 767px)  {
             .container {
                 background: #373737 url(../img/bg-yellow2-mob.png) 50% 108px no-repeat;
+                background-size: 100%;
             }
         }
     }
@@ -4389,10 +4399,14 @@ img, textarea, input, table {
         }
 
         .btn {
-            padding: 16px;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             background: var(--gray);
             border: none;
             font-size: 0;
+            min-height: 52px;
         }
     }
 

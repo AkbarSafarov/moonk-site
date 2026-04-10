@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const menuHeader = document.querySelector('.menu-header');
     const tmenuOffset = header.offsetTop;
     const yearActual = document.querySelector('.year-actual');
-    
+
     if(yearActual){
         yearActual.textContent = new Date().getFullYear();
     }
@@ -361,6 +361,7 @@ document.addEventListener("DOMContentLoaded", function() {
         burger.addEventListener('click', function(){
             burger.classList.toggle('opened');
             menuBurger.classList.toggle('opened');
+            header.classList.toggle('white_bg');
             html.classList.toggle(overflowHidden);
         })
     }
