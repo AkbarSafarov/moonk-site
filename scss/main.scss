@@ -654,9 +654,9 @@ img, textarea, input, table {
     }
 
     &.fixed_discount {
-        opacity: 0;
-        visibility: hidden;
-        top: -100%;
+        // opacity: 0;
+        // visibility: hidden;
+        // top: -100%;
         transition: all .3s;
 
         &.show_discount {
@@ -1662,7 +1662,7 @@ img, textarea, input, table {
             //opacity: 0;
             //visibility: hidden;
             //top: -100%;
-            top: 0;
+            //top: 0;
             transition: all .3s;
             background: var(--white);
             position: fixed;
@@ -1671,7 +1671,7 @@ img, textarea, input, table {
             &.show_header {
                 opacity: 1;
                 visibility: visible;
-                top: 0;
+                //top: 0;
 
                 &.top {
                     //top: 36px;
