@@ -6165,6 +6165,14 @@
             background: var(--gray);
             border-radius: 4px;
             overflow: hidden;
+            padding-top: 100%;
+
+            img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-size: contain;
+            }
         }
     }
 
@@ -6257,11 +6265,12 @@
         }
 
         .swiper-pagination-gal {
-            bottom: 12px !important;
-            left: 0;
-            right: 0;
+            position: static;
             gap: 6px;
             display: flex;
+            flex-wrap:wrap;
+            margin-top: 10px;
+
         }
 
         .swiper-pagination-gal .swiper-pagination-bullet {
