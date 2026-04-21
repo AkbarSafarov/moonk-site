@@ -48,8 +48,8 @@ const SWIPER_CONFIGS = {
     baseProductsConfig: {
         slidesPerView: 4,
         spaceBetween: 16,
-        loop: true,
-        autoplay: { delay: 5000, disableOnInteraction: false },
+        loop: false,
+        //autoplay: { delay: 5000, disableOnInteraction: false },
         breakpoints: {
             0: { slidesPerView: 'auto' },
             992: { slidesPerView: 4 }
@@ -89,7 +89,6 @@ const SLIDER_CONFIGS = {
     },
     '.news .mySwiper_products': {
         ...SWIPER_CONFIGS.baseProductsConfig,
-        autoplay: { delay: 4500, disableOnInteraction: false },
         navigation: { nextEl: '.news .arrow_btn.next', prevEl: '.news .arrow_btn.prev' }
     },
     '.buys .mySwiper_products': {
