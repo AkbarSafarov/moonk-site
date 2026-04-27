@@ -750,6 +750,7 @@ img, textarea, input, table {
         font-weight: 500;
         font-size: 13px;
         color: var(--white);
+        transition: all .3s;
 
         .container-fluid {
             padding: 2px 0;
@@ -861,12 +862,12 @@ img, textarea, input, table {
 
                     .label {
                         position: absolute;
-                        bottom: 14px;
+                        bottom: 13px;
                         right: 0;
                         left: 0;
                         margin: auto;
-                        width: 20px;
-                        height: 11px;
+                        width: 22px;
+                        height: 13px;
                         background: #fff;
                         border-radius: 6px;
                         font-weight: 500;
@@ -876,6 +877,7 @@ img, textarea, input, table {
                         text-align: center;
                         color: #373737;
                         font-family: var(--second-family);
+                        border: 1px solid #fff;
                     }
                 }
             }
@@ -1070,7 +1072,7 @@ img, textarea, input, table {
         visibility: visible;
     }
 
-    a {
+    a, button {
         margin-bottom: 4px;
         font-weight: 400;
         font-size: 14px;
@@ -1603,6 +1605,32 @@ img, textarea, input, table {
                     > ul > li {
                         &.active-parent > ul {
                             display: block !important;
+                        }
+                    }
+                }
+
+                &.block-image {
+
+                    &:after {
+                        content: '';
+                        clear: both;
+                        display: block;
+                        width: 100%;
+                    }
+
+                    .menu_block_text {
+                        width: 560px;
+                        float: right;
+                        margin-left: 24px;
+
+                        .text {
+                            font-family: var(--font-family);
+                            font-weight: 400;
+                            font-size: 14px;
+                            line-height: 105%;
+                            letter-spacing: 0.02em;
+                            color: #373737;
+                            padding-top: 16px;
                         }
                     }
                 }
