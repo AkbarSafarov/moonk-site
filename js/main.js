@@ -344,7 +344,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     navigator.clipboard.writeText(text).then(
                         () => {
                             btn.classList.add("copied");
-                            setTimeout(() => btn.classList.remove("copied"), 1500);
+                            setTimeout(() => btn.classList.remove("copied"), 1000);
                         },
                         (err) => {
                             console.error("Ошибка копирования:", err);

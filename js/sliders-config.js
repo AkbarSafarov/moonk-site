@@ -492,12 +492,6 @@ class SwiperManager {
 
         const galleryContainer = document.querySelector('.gallery-container');
         if (galleryContainer && !galleryContainer.hasAttribute('data-swiper')) {
-            const galleryThumbs = new Swiper('.gallery-thumbs', {
-                slidesPerView: 'auto',
-                direction: 'vertical',
-                spaceBetween: 12,
-                loop: false,
-            });
 
             const galleryMain = new Swiper('.gallery-main', {
                 loop: true,
@@ -505,21 +499,60 @@ class SwiperManager {
                 navigation: { nextEl: '.gallery-main .next', prevEl: '.gallery-main .prev' },
                 effect: 'fade',
                 fadeEffect: { crossFade: true },
-                thumbs: { swiper: galleryThumbs }
             });
 
             this.swiperInstances.set('gallery', galleryMain);
-            this.swiperInstances.set('gallery-thumbs', galleryThumbs);
+
+            const thumbsContainer = document.querySelector('.gallery-thumbs');
+            const thumbSlides = thumbsContainer.querySelectorAll('.swiper-slide');
+
+            const setActiveThumb = (index) => {
+                thumbSlides.forEach(s => s.classList.remove('swiper-slide-thumb-active'));
+                if (thumbSlides[index]) {
+                    thumbSlides[index].classList.add('swiper-slide-thumb-active');
+                    thumbSlides[index].scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+                }
+            };
+
+            thumbSlides.forEach((slide, index) => {
+                slide.addEventListener('click', () => {
+                    galleryMain.slideToLoop(index);
+                    setActiveThumb(index);
+                });
+            });
+
+            galleryMain.on('slideChange', () => {
+                setActiveThumb(galleryMain.realIndex);
+            });
+
+            let autoScrollInterval = null;
+            const ZONE = 80;
+            const SPEED = 3;
+
+            thumbsContainer.addEventListener('mousemove', (e) => {
+                const rect = thumbsContainer.getBoundingClientRect();
+                const y = e.clientY - rect.top;
+                clearInterval(autoScrollInterval);
+
+                if (y < ZONE) {
+                    autoScrollInterval = setInterval(() => {
+                        thumbsContainer.scrollTop -= SPEED;
+                    }, 16);
+                } else if (y > rect.height - ZONE) {
+                    autoScrollInterval = setInterval(() => {
+                        thumbsContainer.scrollTop += SPEED;
+                    }, 16);
+                }
+            });
+
+            thumbsContainer.addEventListener('mouseleave', () => clearInterval(autoScrollInterval));
 
             document.querySelectorAll('.gallery-main .swiper-slide img').forEach((image, index) => {
                 image.addEventListener('click', () => {
                     const modal = new bootstrap.Modal(document.getElementById('showTabModal'));
                     modal.show();
-                    
                     const modalSwiper = this.swiperInstances.get('.mySwiper_modal');
-                    if (modalSwiper) {
-                        modalSwiper.slideToLoop(index);
-                    }
+                    if (modalSwiper) modalSwiper.slideToLoop(index);
                 });
             });
         }

@@ -155,7 +155,7 @@
 
 }
 
-.menu_burger.top + .site_wrapper {
+.menu_burger.top + .site_wrapper.inner_site_wrapper {
     padding-top: 188px;
 
     @media all and (max-width: 991px){
@@ -3887,6 +3887,16 @@
         }
     }
 
+    ._link {
+        text-decoration: none;
+        display: block;
+        height: 100%;
+
+        .position-relative {
+            height: 100%;
+        }
+    }
+
     .position-relative {
 
         &:before {
@@ -3932,6 +3942,8 @@
             font-size: 15px;
             padding: 17px 24px 16px;
         }
+
+
     }
 
     .col-md-6 > .d-flex {
@@ -6157,7 +6169,7 @@
         cursor: pointer;
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
     }
 
     .swiper {
@@ -6190,7 +6202,6 @@
         }
 
         .swiper-slide {
-            background: var(--gray);
             border-radius: 4px;
             overflow: hidden;
             padding-top: 100%;
@@ -6337,6 +6348,66 @@
                     object-fit: contain;
                 }
             }
+        }
+    }
+
+    .gallery-thumbs {
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 50px;
+            z-index: 20;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        &::before {
+            top: 0;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.7), transparent);
+        }
+
+        &::after {
+            bottom: 0;
+            background: linear-gradient(to top, rgba(255,255,255,0.7), transparent);
+        }
+
+        &:hover::before,
+        &:hover::after {
+            opacity: 1;
+        }
+    }
+
+    .gallery-thumbs {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 72px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        .swiper-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transform: none !important;
+            height: auto !important;
+            will-change: unset !important;
+        }
+
+        .swiper-slide {
+            width: 72px !important;
+            height: 92px !important;
+            flex-shrink: 0;
         }
     }
 }
@@ -6532,7 +6603,7 @@
     }
 
     .icon_info {
-        padding: 16px 0;
+        padding: 16px 0 0;
 
         a {
             gap: 8px;
@@ -6552,6 +6623,7 @@
     }
 
     .btn_del_pay {
+        margin-top: 16px;
         padding: 2px 0;
         display: inline-flex;
         gap: 4px;
