@@ -146,6 +146,20 @@ const SLIDER_CONFIGS = {
             992: { slidesPerView: 4 }
         }
     },
+    '.mySwiper_review': {
+        slidesPerView: 4,
+        spaceBetween: 16,
+        loop: true,
+        autoplay: { delay: 5000, disableOnInteraction: false },
+        navigation: {
+            nextEl: '.review_section .arrow_btn.next',
+            prevEl: '.review_section .arrow_btn.prev'
+        },
+        breakpoints: {
+            0: { slidesPerView: 'auto' },
+            992: { slidesPerView: 4 }
+        }
+    },
     '.say_review': {
         slidesPerView: 3,
         spaceBetween: 16,
@@ -394,35 +408,55 @@ class SwiperManager {
             this.initResponsiveSwiper(config);
         });
 
-        document.querySelectorAll('.article_section').forEach(slider => {
-            const sliderClass = slider.querySelector('.article-swiper');
-            if (sliderClass && !sliderClass.hasAttribute('data-swiper')) {
-                this.initResponsiveSwiper({
-                    selector: `.${sliderClass.className}`,
-                    breakpoint: 991,
-                    instanceKey: `article-${Date.now()}`,
-                    config: SWIPER_CONFIGS.baseMobileSwiper
-                });
-            }
-        });
+        const articleSliderWrap = document.querySelectorAll('.article_section');
+
+        if(articleSliderWrap.length) {
+            articleSliderWrap.forEach((slider, i) => {
+                const sliderEl = slider.querySelector('.article-swiper');
+                if (sliderEl && !sliderEl.hasAttribute('data-swiper')) {
+                    this.initResponsiveSwiper({
+                        element: sliderEl,
+                        breakpoint: 991,
+                        instanceKey: `article-${i}`,
+                        config: SWIPER_CONFIGS.baseMobileSwiper
+                    });
+                }
+            });
+        }
+
+        // const reviewSliderWrap = document.querySelectorAll('.review_section');
+
+        // if(reviewSliderWrap.length) {
+        //     reviewSliderWrap.forEach((slider, i) => {
+        //         const sliderEl = slider.querySelector('.mySwiper_review');
+        //         if (sliderEl && !sliderEl.hasAttribute('data-swiper')) {
+        //             this.initResponsiveSwiper({
+        //                 element: sliderEl,
+        //                 breakpoint: 991,
+        //                 instanceKey: `review-${i}`,
+        //                 config: SWIPER_CONFIGS.baseMobileSwiper
+        //             });
+        //         }
+        //     });
+        // }
 
         this.initDynamicResponsiveSwiper('.js-subcat-row');
         this.initDynamicResponsiveSwiper('.js-subcat2-row');
     }
 
     
-    initResponsiveSwiper({ selector, breakpoint, minWidth, maxWidth, instanceKey, config }) {
-        const element = document.querySelector(selector);
+    initResponsiveSwiper({ selector, element: el, breakpoint, minWidth, maxWidth, instanceKey, config }) {
+        const element = el || document.querySelector(selector);
         if (!element || element.hasAttribute('data-swiper')) return;
 
         const checkAndInit = () => {
             const width = window.innerWidth;
-            const shouldBeActive = 
+            const shouldBeActive =
                 (breakpoint && width <= breakpoint) ||
                 (minWidth && maxWidth && width >= minWidth && width < maxWidth);
 
             if (shouldBeActive && !this.responsiveSwipers.has(instanceKey)) {
-                this.responsiveSwipers.set(instanceKey, new Swiper(selector, config));
+                this.responsiveSwipers.set(instanceKey, new Swiper(element, config));
             } else if (!shouldBeActive && this.responsiveSwipers.has(instanceKey)) {
                 this.responsiveSwipers.get(instanceKey).destroy(true, true);
                 this.responsiveSwipers.delete(instanceKey);

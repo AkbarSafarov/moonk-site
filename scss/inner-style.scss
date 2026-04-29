@@ -873,6 +873,14 @@
     }
 
     @media all and (min-width: 992px) {
+        // .mySwiper_review {
+
+        //     .swiper-wrapper {
+        //         display: grid;
+        //         gap: 1.5rem;
+        //         grid-template-columns: repeat(4, 1fr);
+        //     }
+        // }
 
         .ls_img {
             img {
@@ -1234,7 +1242,7 @@
         }
 
         .service_price-swiper {
-            margin: 36px -44px 20px 0;
+            margin: 36px 0 20px 0;
         }
     }
 
@@ -1256,13 +1264,13 @@
         }
 
         .service_price-swiper {
-            margin: 36px -33px 20px 0;
+            margin: 36px 0 20px 0;
         }
     }
 
     @media all and (max-width: 767px)  {
         .service_price-swiper {
-            margin: 36px -16px 20px 0;
+            margin: 36px 0 20px 0;
         }
     }
 
@@ -1290,7 +1298,7 @@
 
             .col-md-4 {
                 padding: 0;
-                margin: 0 0 14px 0;
+                margin: 0 0 16px 0;
                 width: 100%;
 
             	.item {

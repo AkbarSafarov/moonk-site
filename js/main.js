@@ -369,14 +369,17 @@ document.addEventListener("DOMContentLoaded", function() {
     const showroomBtnMobile = document.querySelector('.showroom_mobile_btn');
     const showroomModalMobile = document.querySelector('.showroom_mobile_modal');
 
-    if(showroomBtnMobile){
+    if(showroomBtnMobile && showroomModalMobile){
         showroomBtnMobile.addEventListener('click', function(){
             showroomModalMobile.classList.add('loaded')    
         });
         
-        showroomModalMobile.querySelector('.title').addEventListener('click', function(){
-            showroomModalMobile.classList.remove('loaded');
-        })
+        const titleBtn = showroomModalMobile.querySelector('.title');
+        if (titleBtn) {  
+            titleBtn.addEventListener('click', function() {
+                showroomModalMobile.classList.remove('loaded');
+            });
+        }
     }
 
     const clockBtnMobile = document.querySelector('.clock_btn');
@@ -1694,15 +1697,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function nextStory() {
         const slide = document.querySelectorAll('.story-slide')[storiesData.currentCategory];
-        const totalStories = slide.querySelectorAll('.story-item').length;
+        if (!slide) return; 
 
+        const totalStories = slide.querySelectorAll('.story-item').length;
         if (storiesData.currentStory < totalStories - 1) {
             storiesData.currentStory++;
             showStory(storiesData.currentCategory, storiesData.currentStory);
         } else {
-            if (swiper.isEnd) {
+            if (typeof swiper !== 'undefined' && swiper && swiper.isEnd) {  
                 closeStories();
-            } else {
+            } else if (typeof swiper !== 'undefined' && swiper) {
                 swiper.slideNext();
             }
         }
