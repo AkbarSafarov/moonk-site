@@ -1242,7 +1242,7 @@
         }
 
         .service_price-swiper {
-            margin: 36px 0 20px 0;
+            margin: 36px -44px 20px 0
         }
     }
 
@@ -1264,13 +1264,13 @@
         }
 
         .service_price-swiper {
-            margin: 36px 0 20px 0;
+            margin: 36px -33px 20px 0
         }
     }
 
     @media all and (max-width: 767px)  {
         .service_price-swiper {
-            margin: 36px 0 20px 0;
+            margin: 36px -16px 20px 0
         }
     }
 
@@ -1298,7 +1298,7 @@
 
             .col-md-4 {
                 padding: 0;
-                margin: 0 0 16px 0;
+                margin: 0 0 14px 0;
                 width: 100%;
 
             	.item {
@@ -2058,12 +2058,17 @@
     	}
 
     	.accordion-body {
-    		padding: 0 0 16px;
+    		padding: 0 40px 16px 0;
     		font-weight: 400;
-			font-size: 14px; 
-			line-height: 105%;
+			font-size: 18px; 
+			line-height: 160%;
 			letter-spacing: 0.02em;
 			color: #373737;
+            max-width: 700px;
+
+            @media all and (max-width: 767px) {
+                font-size: 16px;
+            }
     	}
 
     	.accordion-item {
@@ -8619,6 +8624,10 @@
             margin-top: 36px;
             margin-bottom: 16px;
         }
+    }
+
+    table {
+        margin: 20px 0;
     }
 
     h3 {

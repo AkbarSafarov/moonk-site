@@ -3659,6 +3659,7 @@ img, textarea, input, table {
     &.blue2 {
         .container {
             background: #373737 url(../img/bg-blue2.svg) 100% 50% no-repeat;
+            background-size: contain;
         }
 
         @media all and (max-width: 767px)  {
