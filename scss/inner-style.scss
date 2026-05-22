@@ -4458,6 +4458,21 @@
                     }
                 }
 
+                &.is-sub {
+                    padding-left: 10px;
+
+                    a {
+                        font-size: 14px;
+                    }
+
+                    &-sub {
+                        padding-left: 18px;
+                        a {
+                            font-size: 13px;
+                        }
+                    }
+                }
+
                 &.active {
                     a {
                         color: #373737;
