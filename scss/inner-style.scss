@@ -4533,7 +4533,7 @@
             margin-bottom: 1.5rem;
         }
 
-        a {
+        a:not(.btn_button) {
             color: #373737;
             font-weight: bold;
             transition: all .3s;
