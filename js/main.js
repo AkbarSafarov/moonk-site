@@ -19,15 +19,60 @@ document.addEventListener("DOMContentLoaded", function() {
         '.menu-header .navbar-nav > .nav-item.dropdown'
     );
 
+    // Находим самую вложенную открытую в данный момент подменю-панель
+    function getActivePanel(dropdown) {
+        let current = dropdown.querySelector(':scope > li.active-parent > ul');
+        while (current) {
+            const next = current.querySelector(':scope > li.active-parent > ul');
+            if (!next) break;
+            current = next;
+        }
+        return current;
+    }
+
+    function updateDropdownHeight(topItem) {
+        if (window.innerWidth < 992) return;
+
+        const dropdown = topItem.querySelector(':scope > ul');
+        if (!dropdown) return;
+
+        const activePanel = getActivePanel(dropdown);
+        const contentHeight = Math.max(dropdown.scrollHeight, activePanel ? activePanel.scrollHeight : 0);
+        const available = window.innerHeight - dropdown.getBoundingClientRect().top;
+
+        if (contentHeight > available) {
+            dropdown.style.maxHeight = available + 'px';
+            dropdown.classList.add('has-scroll');
+        } else {
+            dropdown.style.maxHeight = contentHeight + 'px';
+            dropdown.classList.remove('has-scroll');
+        }
+    }
+
+    function resetDropdownHeight(topItem) {
+        const dropdown = topItem.querySelector(':scope > ul');
+        if (dropdown) {
+            dropdown.style.maxHeight = '';
+            dropdown.classList.remove('has-scroll');
+        }
+    }
+
     topLevelItems.forEach(function (item) {
 
         item.addEventListener('mouseenter', function () {
             header.classList.add('white_bg');
+            updateDropdownHeight(item);
         });
 
         item.addEventListener('mouseleave', function () {
             header.classList.remove('white_bg');
+            resetDropdownHeight(item);
         });
+    });
+
+    window.addEventListener('resize', function () {
+        const openItem = Array.from(topLevelItems).find(item => item.matches(':hover'));
+        if (openItem) updateDropdownHeight(openItem);
     });
 
     let lastScrollY = window.scrollY; 
@@ -116,17 +161,20 @@ document.addEventListener("DOMContentLoaded", function() {
         
         secondLevelItems.forEach(item => {
             const hasSubmenu = item.querySelector('ul');
-            
+
             item.addEventListener('mouseenter', function() {
                 secondLevelItems.forEach(sibling => {
                     if (sibling !== item) {
                         sibling.classList.remove('active-parent');
                     }
                 });
-                
+
                 if (hasSubmenu) {
                     this.classList.add('active-parent');
                 }
+
+                const topItem = this.closest('.navbar-nav > .nav-item.dropdown');
+                if (topItem) updateDropdownHeight(topItem);
             });
         });
 
@@ -134,20 +182,23 @@ document.addEventListener("DOMContentLoaded", function() {
         
         thirdLevelItems.forEach(item => {
             const hasSubmenu = item.querySelector('ul');
-            
+
             item.addEventListener('mouseenter', function() {
                 const parentUl = this.parentElement;
                 const siblings = parentUl.querySelectorAll(':scope > li');
-                
+
                 siblings.forEach(sibling => {
                     if (sibling !== item) {
                         sibling.classList.remove('active-parent');
                     }
                 });
-                
+
                 if (hasSubmenu) {
                     this.classList.add('active-parent');
                 }
+
+                const topItem = this.closest('.navbar-nav > .nav-item.dropdown');
+                if (topItem) updateDropdownHeight(topItem);
             });
         });
 

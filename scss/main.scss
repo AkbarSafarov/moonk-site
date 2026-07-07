@@ -261,7 +261,7 @@ img, textarea, input, table {
 
             i {
                 position: absolute;
-                top: -5px;
+                top: 3px;
                 left: 2px;
                 width: 20px;
                 height: 20px;
@@ -1421,19 +1421,23 @@ img, textarea, input, table {
                 left: -44px;
                 right: -44px;   
                 border-radius: 0;
-                height: calc(100vh - 186px);
                 padding: 32px 44px;
-                overflow-y: auto;
+                overflow-y: hidden;
                 border-color: var(--gray);
                 border-width: 1px 0 0;
                 transition: all .3s;
-                box-shadow: calc((100vw - 1352px) / 2) 0 0 0 #fff, calc((100vw - 1352px) / -2) 0 0 0 #fff;    
+                box-shadow: calc((100vw - 1352px) / 2) 0 0 0 #fff, calc((100vw - 1352px) / -2) 0 0 0 #fff;
+
+                &.has-scroll {
+                    overflow-y: auto;
+                }
 
                 
 
                 > li {
                     width: 264px;
                     position: static;
+                    padding-right: 32px;
 
                     > a {
                         font-weight: 500;
@@ -1441,7 +1445,7 @@ img, textarea, input, table {
                         line-height: 22px;
                         letter-spacing: 0.02em;
                         color: #373737;
-                        padding: 6px 32px 6px 0;
+                        padding: 6px 0 6px 0;
                         display: flex;
                         align-items: center;
                         justify-content: space-between;
@@ -1493,6 +1497,7 @@ img, textarea, input, table {
 
                         > li {
                             position: static;
+                            padding-right: 32px;
                             
                             > a {
                                 font-weight: 500;
@@ -1500,7 +1505,7 @@ img, textarea, input, table {
                                 line-height: 22px;
                                 letter-spacing: 0.02em;
                                 color: #373737;
-                                padding: 6px 32px 6px 0;
+                                padding: 6px 0 6px 0;
                                 display: flex;
                                 align-items: center;
                                 justify-content: space-between;
@@ -1836,7 +1841,7 @@ img, textarea, input, table {
         &.fixed_block {
             background: var(--white);
             position: fixed;
-            top: 0;
+            top: calc(var(--v-sticker-height, 0px) + var(--v-header-top, 0px));
             border-bottom: 1px solid var(--gray);
 
             .border-bottom {
@@ -5635,6 +5640,79 @@ img, textarea, input, table {
         font-size: 15px;
         line-height: 133%;
         padding: 16px;
+        width: 100%;
+
+        &:disabled {
+            opacity: 0.45;
+            cursor: not-allowed;
+            pointer-events: auto;
+        }
+    }
+
+    .field.check {
+        padding: 0;
+        margin-bottom: 7px;
+        max-width: 295px;
+
+        .form-check-label {
+            font-size: 14px !important;
+            font-weight: 500 !important;
+            color: #373737 !important;
+            margin: 0;
+            min-height: 26px;
+            display: inline-flex;
+            align-items: center;
+
+            span {
+                font-family: var(--font-family);
+                font-weight: 400;
+                font-size: 12px;
+                line-height: 105%;
+                color: var(--graphite-400);
+            }
+
+            a {
+                font-weight: 500;
+                text-decoration: underline;
+                color: var(--graphite-400);
+            }
+
+            i {
+                top: 0;
+                bottom: 2px;
+                margin: auto;
+                background-color: #fff;
+            }
+
+            input:checked + i {
+                background-image: url("data:image/svg+xml,%3Csvg width='14' height='14' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.6666 3.5L5.24992 9.91667L2.33325 7' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+                background-color: #373737;
+
+                & + span {
+                    color: var(--graphite);
+
+                    a {
+                        color: var(--graphite);
+                    }
+                }
+            }
+        }
+
+        &.agree-master-field {
+
+            .form-check-label {
+                i {
+                    border: 0.20px solid #000;
+                }
+                span {
+                    color: var(--graphite);
+                }
+            }
+        }
+    }
+
+    .agreement-sub-fields {
+
     }
 
     

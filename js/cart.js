@@ -131,5 +131,32 @@ $(function(){
             $(this).toggleClass('active');
             $('.assembly-notice').slideToggle(200);
         });
+
+        // Agreement checkboxes
+        var $masterCheckbox = $('[data-agree-master]');
+        var $subCheckboxes = $('[data-agree-sub]');
+        var $requiredCheckboxes = $('[data-agree-required]');
+        var $checkoutBtn = $('.checkout-btn');
+
+        function updateCheckoutBtn() {
+            var allRequired = $requiredCheckboxes.toArray().every(function(cb){ return cb.checked; });
+            $checkoutBtn.prop('disabled', !allRequired);
+        }
+
+        function updateMaster() {
+            var allChecked = $subCheckboxes.toArray().every(function(cb){ return cb.checked; });
+            $masterCheckbox.prop('checked', allChecked);
+        }
+
+        $masterCheckbox.on('change', function(){
+            var checked = this.checked;
+            $subCheckboxes.prop('checked', checked);
+            updateCheckoutBtn();
+        });
+
+        $subCheckboxes.on('change', function(){
+            updateMaster();
+            updateCheckoutBtn();
+        });
     }
 })

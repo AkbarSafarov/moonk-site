@@ -298,7 +298,7 @@
 <span class="forma-djr-text cart-item-count">3 товара</span>
 </div>
 <div class="d-flex gap-2 cart-header-btns">
-<a href="javascript:void(0);" class="p-2" data-tooltip="Поделиться корзиной">
+<a href="javascript:void(0);" class="p-2 share-cart-btn" data-tooltip="Поделиться корзиной">
 <i>
 <svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M9.91667 13.1349C5.7055 13.1349 2.58333 14.6667 0.75 17.4167C0.75 11.94 3.94619 7.45399 9.91667 7.06017V2.75L17.25 10.0833L9.91667 17.4167V13.1386" stroke="#373737" stroke-width="1.5" stroke-linecap="round" />
@@ -594,7 +594,49 @@
 </i>
 </div>
 </div>
-<button class="checkout-btn btn btn_button black text-white rounded-2">Перейти к оформлению</button>
+<div class="cart-privacy">
+<p class="error-form-privacy" style="display: none;">Пожалуйста, подтвердите согласие с офертой, на обработку и передачу данных – без этого мы не можем оформить заказ</p>
+<div class="agreement-form">
+<div class="agreement-field field required check agree-master-field">
+<label class="form-check-label" for="agree-all">
+<input type="checkbox" id="agree-all" data-agree-master="">
+<i></i>
+<span>Принимаю все согласия</span>
+</label>
+</div>
+<div class="agreement-sub-fields">
+<div class="agreement-field field required check">
+<label class="form-check-label" for="agree-offer">
+<input type="checkbox" name="form_checkbox_AGREEMENT_PRIVACY[]" id="agree-offer" value="13" data-agree-sub data-agree-required="">
+<i></i>
+<span>Cогласен с <a target="_blank" href="/documents/data/">публичной офертой</a></span>
+</label>
+</div>
+<div class="agreement-field field required check">
+<label class="form-check-label" for="agree-personal">
+<input type="checkbox" name="form_checkbox_AGREEMENT_PRIVACY[]" id="agree-personal" value="13" data-agree-sub data-agree-required="">
+<i></i>
+<span>Я даю согласие на <a target="_blank" href="/documents/data/">обработку персональных данных</a> в соответствии с <a target="_blank" href="/documents/privacy/">политикой</a></span>
+</label>
+</div>
+<div class="agreement-field field required check">
+<label class="form-check-label" for="agree-transfer">
+<input type="checkbox" name="form_checkbox_AGREEMENT_PRIVACY[]" id="agree-transfer" value="13" data-agree-sub data-agree-required="">
+<i></i>
+<span>Я даю согласие на <a target="_blank" href="/documents/data/">передачу данных третьим лицам</a> (курьеры, транспортная компания)</span>
+</label>
+</div>
+<div class="agreement-field field check">
+<label class="form-check-label" for="agree-ads">
+<input type="checkbox" name="form_checkbox_AGREEMENT_ADVERTISING[]" id="agree-ads" value="14" data-agree-sub>
+<i></i>
+<span>Согласен на <a target="_blank" href="/documents/advertising/">получение рассылок</a></span>
+</label>
+</div>
+</div>
+</div>
+</div>
+<button class="checkout-btn btn btn_button black text-white rounded-2" disabled>Перейти к оформлению</button>
 </div>
 </div>                
 <a href="#" class="sber-block d-flex align-items-center gap-2" data-тип="Сбер">
