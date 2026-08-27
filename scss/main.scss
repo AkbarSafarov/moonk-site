@@ -880,6 +880,12 @@ img, textarea, input, table {
                         border: 1px solid #fff;
                     }
                 }
+
+                &.favorite_btn.active {
+                    i.bi-heart {
+                        background: url("data:image/svg+xml,%3Csvg width='22' height='22' viewBox='0 0 22 22' fill='%23c8283c' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M16.5 13.2917L10.9999 18.3334L5.49997 13.2917C1.37495 9.62501 1.83328 4.58334 6.87494 4.58334C8.24998 4.58334 9.93023 5.94782 10.9999 6.87502C12.0697 5.94782 13.75 4.58335 15.1249 4.58655C20.1666 4.58655 20.6249 9.62501 16.5 13.2917Z' stroke='%23c8283c' stroke-width='1.5' stroke-linecap='round' /%3E%3C/svg%3E") 50% no-repeat;
+                    }
+                }
             }
         }
 
@@ -1181,7 +1187,7 @@ img, textarea, input, table {
 
     .swiper-slide {
         min-height: 100vh;  
-        min-height: 100dvh; 
+        min-height: 100svh; 
         display: flex;
         flex-direction: column;
         justify-content: end;
@@ -1195,7 +1201,7 @@ img, textarea, input, table {
 
         @media all and (max-width: 991px) {
             min-height: calc(100vh - 150px);  
-            min-height: calc(100dvh - 150px); 
+            min-height: calc(100svh - 150px); 
         }
 
         @media all and (max-width: 767px) {
@@ -1304,11 +1310,11 @@ img, textarea, input, table {
     &.top {
         .swiper-slide {
             min-height: calc(100vh - 38px);
-            min-height: calc(100dvh - 38px); 
+            min-height: calc(100svh - 38px); 
 
             @media all and (max-width: 991px)  {
                 min-height: calc(100vh - 36px);
-                min-height: calc(100dvh - 36px); 
+                min-height: calc(100svh - 36px); 
             }
         }
     }
@@ -2711,6 +2717,7 @@ img, textarea, input, table {
 .poin_image_block {
     padding-top: 40px;
     padding-bottom: 40px;
+    overflow: hidden;
 
     .position-relative {
         //aspect-ratio: 16/9; 
@@ -3860,6 +3867,7 @@ img, textarea, input, table {
 .article_section {
     padding-top: 80px;
     padding-bottom: 80px;
+    overflow: hidden;
 
     h2,h4 {
         font-weight: 500;
@@ -4726,7 +4734,7 @@ img, textarea, input, table {
 
 .menu_burger {
     position: fixed;
-    top: 52px;
+    top: calc(var(--v-sticker-height, 0px) + var(--v-header-height, 0px));
     left: 0;
     bottom: 0;
     width: 100%;
@@ -4743,13 +4751,13 @@ img, textarea, input, table {
         display: none;
     }
 
-    &.top {
-        top: 88px;
-    }
+    // &.top {
+    //     top: 88px;
+    // }
 
-    &.fixed_burger {
-        top: 52px;
-    }
+    // &.fixed_burger {
+    //     top: 52px;
+    // }
 
     &.opened {    
         opacity: 1;

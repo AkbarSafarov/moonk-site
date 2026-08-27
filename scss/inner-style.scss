@@ -3527,6 +3527,7 @@
             font-family: var(--font-family);
             border: none;
             background: none;
+            outline: none;
 
 
             .bi {
@@ -3559,6 +3560,7 @@
                 width: 240px;
                 border: none;
                 border-radius: 0;
+                z-index: 3;
 
                 li {
                     a {
@@ -3732,23 +3734,26 @@
         justify-content: center;
         min-width: 52px;
         height: 52px;
-        padding: 0 4px;
+        padding: 2px 4px 0;
         border-radius: 8px;
         font-weight: 500;
         font-size: 15px;
         letter-spacing: 0.02em;
         color: var(--graphite-600);
         text-decoration: none;
+        border: 1.5px solid transparent;
         transition: all .2s;
 
 
         &:hover {
             color: #373737;
+            border-color: var(--graphite-600);
         }
 
         &.active {
             background: var(--gray);
             color: #373737;
+            border-color: transparent;
         }
     }
 
@@ -3858,7 +3863,7 @@
         transition: transform 0.3s;
     }
 
-    .text.js-text.open .more::after {
+    .text.js-text.open + .more::after {
         transform: rotate(180deg);
     }
 
@@ -4086,6 +4091,20 @@
                 opacity: 0;
                 transition: all .3s;
                 pointer-events: none;
+                z-index: 1;
+            }
+
+            &::after {      
+                content: "";        
+                position: absolute;     
+                top: 0;     
+                bottom: 0;      
+                right: 0;       
+                left: 0;        
+                opacity: 0;     
+                transition: all 0.3s;       
+                background: linear-gradient(360deg,rgba(54,53,48,0.25) 0%,rgba(54,53,48,0) 100%);       
+                pointer-events: none        
             }
 
             img {
@@ -4095,7 +4114,7 @@
 
         &:hover {
             .image {
-                &:before {
+                &:before,&:after {
                     opacity: 1;
                 }
             }
@@ -5826,7 +5845,7 @@
                 }
 
                 .phone {
-                    margin-bottom: 2px;
+                    margin-bottom: 4px;
                 }
 
                 svg path {
@@ -8616,8 +8635,27 @@
 .article_section {
 
     .swiper-slide {
+        .image {
+            overflow: hidden;
+
+            &:before{
+                content: "";
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                opacity: 0;
+                transition: all 0.3s;
+                background: linear-gradient(360deg, rgba(54, 53, 48, 0.25) 0%, rgba(54, 53, 48, 0) 100%);
+                pointer-events: none;   
+            }
+        }
         &:hover {
             .image {
+                &:before {
+                    opacity: 1;
+                }
                 .hov {
                     opacity: 1;
                 }
@@ -8629,8 +8667,25 @@
 .artigle_items,.reviews_items  {
     .item:hover {
         .image {
+            overflow: hidden;
+
+            &:before{
+                content: "";
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                opacity: 0;
+                transition: all 0.3s;
+                background: linear-gradient(360deg, rgba(54, 53, 48, 0.25) 0%, rgba(54, 53, 48, 0) 100%);
+                pointer-events: none;   
+            }
             .hov {
                 opacity: 1;
+                &:before {
+                    opacity: 1;
+                }
             }
         }
     }
@@ -8741,7 +8796,40 @@
     }
 
     table {
+        width: 100%;
         margin: 20px 0;
+        border-collapse: collapse;
+        table-layout: fixed;
+        border: 1px solid var(--graphite-100);
+
+        th,
+        td {
+            padding: 12px;
+            text-align: center;
+            vertical-align: middle;
+            border: 1px solid var(--graphite-100);
+            font-size: 16px;
+            line-height: 140%;
+            color: #373737;
+        }
+
+        th {
+            font-weight: 500;
+            background: var(--gray);
+        }
+
+        td {
+            font-weight: 400;
+        }
+
+        @media (max-width: 767px) {
+
+            th,
+            td {
+                padding: 8px;
+                font-size: 13px;
+            }
+        }
     }
 
     h3 {
@@ -8856,4 +8944,8 @@
     br {
         display: none;
     }
+}
+
+.action_btn {       
+    outline: none;      
 }
